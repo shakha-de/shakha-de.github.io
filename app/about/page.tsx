@@ -6,7 +6,7 @@ export default function AboutPage() {
     const { about } = portfolioData;
 
     return (
-        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background-light dark:bg-background-dark text-text-main transition-colors duration-300">
+        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
             <main className="grow flex flex-col items-center w-full px-4 md:px-10 lg:px-40 py-20 max-w-[1440px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 w-full">
@@ -27,7 +27,7 @@ export default function AboutPage() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                             {about.highlights?.map((item, i) => (
-                                <div key={i} className="flex flex-col gap-3 p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-border-light dark:border-zinc-800 shadow-sm transition-all hover:border-primary/30 group">
+                                <div key={i} className="flex flex-col gap-3 p-6 rounded-2xl bg-background border border-border shadow-sm transition-all hover:border-primary/30 group">
                                     <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">{item.icon}</span>
                                     <h4 className="font-bold text-text-main">{item.title}</h4>
                                     <p className="text-sm text-text-muted leading-snug">{item.description}</p>
@@ -37,7 +37,7 @@ export default function AboutPage() {
                     </div>
 
                     <div className="md:col-span-5 flex flex-col gap-8">
-                        <div className="w-full h-64 bg-gray-100 dark:bg-zinc-800 rounded-2xl overflow-hidden relative border border-border-light dark:border-zinc-700 group">
+                        <div className="w-full h-64 bg-surface rounded-2xl overflow-hidden relative border border-border group">
                             <iframe
                                 src="https://www.openstreetmap.org/export/embed.html?bbox=11.838455200195314%2C51.42858079624508%2C12.100067138671877%2C51.53696147429189&amp;layer=mapnik"
                                 width="100%"
@@ -45,7 +45,7 @@ export default function AboutPage() {
                                 style={{ border: 0 }}
                                 className="grayscale opacity-60 group-hover:grayscale-0 transition-all duration-500"
                             ></iframe>
-                            <div className="absolute bottom-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md pointer-events-none">
+                            <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md pointer-events-none">
                                 <div className="flex items-center gap-2 text-sm font-bold text-text-main">
                                     <span className="material-symbols-outlined text-[18px] text-primary">
                                         location_on
@@ -57,7 +57,7 @@ export default function AboutPage() {
 
                         <div className="grid grid-cols-2 gap-6 mb-8">
                             {about.stats.map((stat, i) => (
-                                <div key={i} className="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-800 border border-border-light dark:border-zinc-700">
+                                <div key={i} className="p-6 rounded-2xl bg-surface border border-border">
                                     <p className="text-text-muted text-sm font-medium">{stat.label}</p>
                                     <p className="text-4xl font-bold text-text-main mt-2 font-mono">
                                         {stat.value}

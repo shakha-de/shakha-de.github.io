@@ -15,7 +15,7 @@ export default function SkillsPage() {
     ];
 
     return (
-        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background-light dark:bg-background-dark text-text-main transition-colors duration-300">
+        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
             <main className="grow flex flex-col items-center w-full px-4 md:px-10 lg:px-40 py-20 max-w-[1440px] mx-auto">
                 <div className="w-full max-w-4xl">
@@ -23,7 +23,7 @@ export default function SkillsPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
                         {categories.map((cat, i) => (
-                            <div key={i} className="flex flex-col gap-6 p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-border-light dark:border-zinc-700 shadow-sm">
+                            <div key={i} className="flex flex-col gap-6 p-8 rounded-3xl bg-background border border-border shadow-sm">
                                 <div className="flex items-center gap-4">
                                     <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                                         <span className="material-symbols-outlined">{cat.icon}</span>
@@ -34,7 +34,7 @@ export default function SkillsPage() {
                                     {cat.items.map((skill) => (
                                         <span
                                             key={skill}
-                                            className="px-4 py-2 bg-gray-50 dark:bg-zinc-800 text-text-main text-sm font-mono border border-border-light dark:border-zinc-700 rounded-lg"
+                                            className="px-4 py-2 bg-surface text-text-main text-sm font-mono border border-border rounded-lg"
                                         >
                                             {skill}
                                         </span>

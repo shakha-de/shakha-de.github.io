@@ -35,7 +35,7 @@ export default function Hero() {
                             href={personalInfo.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center h-12 px-6 rounded-lg border border-border-light bg-background-light dark:bg-background-dark text-text-main text-base font-bold transition-all hover:bg-gray-50 dark:hover:bg-gray-700"
+                            className="flex items-center justify-center h-12 px-6 rounded-lg border border-border bg-background text-text-main text-base font-bold transition-all hover:bg-surface"
                         >
                             <span className="material-symbols-outlined text-[20px] mr-2">
                                 link
@@ -52,7 +52,7 @@ export default function Hero() {
                     <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full -z-10 hidden md:block"></div>
 
 
-                    <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl rotate-3 transition-transform hover:rotate-0 duration-500 border-4 border-white dark:border-border-light bg-gray-100 dark:bg-background-dark">
+                    <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl rotate-3 transition-transform hover:rotate-0 duration-500 border-4 border-background bg-surface">
 
                         <div
                             className="w-full h-full bg-cover bg-center"

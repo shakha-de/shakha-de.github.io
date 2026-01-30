@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   keywords: ["Backend Developer", "Java", "Spring Boot", "Microservices", "Reliable Systems", "Halle", "Germany"],
 };
 
+import { ThemeProvider } from "./components/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,8 +35,15 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${spaceMono.variable} antialiased bg-background text-text-main transition-colors duration-300`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
-    </html >
+    </html>
   );
 }

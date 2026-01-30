@@ -2,12 +2,16 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { theme, setTheme, resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
@@ -33,10 +37,14 @@ export default function Header() {
         { name: "Contact", href: "/contact" },
     ];
 
+    const toggleTheme = () => {
+        setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    };
+
     return (
         <header
             className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled || isMenuOpen
-                ? "bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-border-light dark:border-zinc-800 py-3"
+                ? "bg-background/90 backdrop-blur-md border-b border-border py-3 shadow-sm"
                 : "bg-transparent py-5"
                 }`}
         >
@@ -67,7 +75,19 @@ export default function Header() {
                 </nav>
 
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 md:gap-4">
+                    {mounted && (
+                        <button
+                            onClick={toggleTheme}
+                            className="flex items-center justify-center size-10 text-text-main hover:bg-primary/5 rounded-lg transition-colors border border-border md:border-none"
+                            aria-label="Toggle theme"
+                        >
+                            <span className="material-symbols-outlined text-[24px]">
+                                {resolvedTheme === "dark" ? "light_mode" : "dark_mode"}
+                            </span>
+                        </button>
+                    )}
+
                     <Link
                         href="/contact"
                         className="hidden sm:flex items-center justify-center h-10 px-5 rounded-lg bg-primary text-white text-sm font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
@@ -89,7 +109,7 @@ export default function Header() {
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 top-[65px] h-[calc(100vh-65px)] w-full bg-white dark:bg-zinc-950 z-40 md:hidden transition-all duration-300 border-t border-border-light dark:border-zinc-800 ${isMenuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-4"
+                className={`fixed inset-0 top-[65px] h-[calc(100vh-65px)] w-full bg-background z-40 md:hidden transition-all duration-300 border-t border-border ${isMenuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-4"
                     }`}
             >
                 <nav className="flex flex-col p-6 gap-2">

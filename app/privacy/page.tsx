@@ -6,13 +6,13 @@ export default function PrivacyPage() {
     const { personalInfo } = portfolioData;
 
     return (
-        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background-light dark:bg-background-dark text-text-main transition-colors duration-300">
+        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
             <main className="grow flex flex-col items-center w-full px-4 md:px-10 lg:px-40 py-20 max-w-[1440px] mx-auto">
                 <div className="w-full max-w-3xl">
                     <h1 className="text-4xl font-bold mb-12">Privacy Policy, <span className="text-text-muted">hopefully</span></h1>
 
-                    <section className="prose prose-invert max-w-none space-y-8 text-text-muted leading-relaxed">
+                    <section className="max-w-none space-y-8 text-text-muted leading-relaxed">
                         <div>
                             <h2 className="text-xl font-bold text-text-main mb-4">1. An overview of data protection</h2>
                             <p>Generally, you can use our website without providing any personal information (Anyway i don&apos;t collect any data, this is static site). However, different rules may apply to certain services on our site, and these are explained separately below.</p>
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
                             <p>You have the right at any time to receive information free of charge about your stored personal data, its origin and recipient and the purpose of the data processing. You also have a right to correction, blocking or deletion of this data.</p>
                         </div>
 
-                        <div className="pt-8 border-t border-border-light dark:border-zinc-800 text-sm italic">
+                        <div className="pt-8 border-t border-border text-sm italic">
                             <p>Generated for educational/portfolio purposes. I&apos;m not a lawyer, so this is not legal advice. And this thing is not even DSGVO-compliant.</p>
                         </div>
                     </section>

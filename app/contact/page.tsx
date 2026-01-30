@@ -27,7 +27,7 @@ export default function ContactPage() {
     ];
 
     return (
-        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background-light dark:bg-background-dark text-text-main transition-colors duration-300">
+        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
             <main className="grow flex flex-col items-center justify-center w-full px-4 md:px-10 lg:px-40 py-20 max-w-[1440px] mx-auto">
                 <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -48,7 +48,7 @@ export default function ContactPage() {
                                     target={method.link.startsWith("http") ? "_blank" : undefined}
                                     rel={method.link.startsWith("http") ? "noopener noreferrer" : undefined}
                                 >
-                                    <div className="size-14 bg-gray-50 dark:bg-zinc-800 rounded-2xl flex items-center justify-center border border-border-light dark:border-zinc-700 group-hover:border-primary group-hover:bg-primary/5 transition-all">
+                                    <div className="size-14 bg-surface rounded-2xl flex items-center justify-center border border-border group-hover:border-primary group-hover:bg-primary/5 transition-all">
                                         <span className="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">{method.icon}</span>
                                     </div>
                                     <div>
@@ -60,7 +60,7 @@ export default function ContactPage() {
                         </div>
                     </div>
 
-                    <div className="relative p-12 rounded-[2.5rem] bg-gray-50 dark:bg-zinc-800 border border-border-light dark:border-zinc-700 overflow-hidden">
+                    <div className="relative p-12 rounded-[2.5rem] bg-surface border border-border overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full"></div>
                         <div className="relative z-10">
                             <h3 className="text-2xl font-bold mb-6">Current Location</h3>
@@ -71,7 +71,7 @@ export default function ContactPage() {
                             <p className="text-text-muted leading-relaxed">
                                 Currently studying at Martin Luther University Halle-Wittenberg and open to relocation for the right opportunity, especially in the automotive sector.
                             </p>
-                            <div className="mt-12 pt-8 border-t border-border-light dark:border-zinc-700">
+                            <div className="mt-12 pt-8 border-t border-border">
                                 <div className="flex gap-4">
                                     {personalInfo.languages.map((lang, i) => (
                                         <div key={i} className="flex flex-col">

@@ -8,13 +8,13 @@ export default function Home() {
   const { projects } = portfolioData;
 
   return (
-    <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background-light dark:bg-background-dark text-text-main transition-colors duration-300">
+    <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
       <Header />
       <main className="grow flex flex-col items-center w-full">
         <Hero />
 
         {/* Featured Projects Snapshots */}
-        <section className="w-full px-4 md:px-10 lg:px-40 py-20 bg-gray-50 dark:bg-zinc-900/50 border-y border-border-light dark:border-zinc-800">
+        <section className="w-full px-4 md:px-10 lg:px-40 py-20 bg-surface border-y border-border">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="flex justify-between items-end mb-12">
               <div>
@@ -28,7 +28,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {projects.slice(0, 2).map((project, i) => (
-                <div key={i} className="p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-border-light dark:border-zinc-800 shadow-sm">
+                <div key={i} className="p-8 rounded-3xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow">
                   <h3 className="text-xl font-bold mb-3">{project.title}</h3>
                   <p className="text-text-muted text-sm mb-6 line-clamp-2">{project.description}</p>
                   <Link href="/projects" className="text-sm font-bold text-primary hover:underline">View Details</Link>

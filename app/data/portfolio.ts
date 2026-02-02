@@ -55,7 +55,7 @@ export const portfolioData = {
             role: "Student Teaching Assistant – Data Science",
             company: "Martin-Luther-University Halle-Wittenberg",
             location: "Halle (Saale), Germany",
-            period: "Oct 2025 – Present",
+            period: "Oct 2025 – Feb 2026",
             description: "Graded assignments for 100+ students using Python and Jupyter Notebooks; integrated with Stud.IP LMS. Automated repetitive grading tasks and refined assignment instructions to reduce confusion.",
         },
         {

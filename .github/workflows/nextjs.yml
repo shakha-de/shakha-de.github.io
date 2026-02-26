@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     env:
       NEXT_PUBLIC_GOATCOUNTER_URL: ${{ vars.NEXT_PUBLIC_GOATCOUNTER_URL }}
     steps:

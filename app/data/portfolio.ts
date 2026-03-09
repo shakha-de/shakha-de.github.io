@@ -10,7 +10,7 @@ export const portfolioData = {
             { language: "Russian", proficiency: "Native" },
             { language: "Uzbek", proficiency: "Native" },
             { language: "German", proficiency: "C2" },
-            { language: "English", proficiency: "B2" },
+            { language: "English", proficiency: "C1" },
             { language: "Turkish", proficiency: "A2" },
         ],
     },

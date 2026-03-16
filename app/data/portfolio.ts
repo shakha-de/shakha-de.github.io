@@ -1,3 +1,12 @@
+import { 
+    mnistDiagram, 
+    simityDiagram, 
+    foliaDiagram, 
+    gitStatsDiagram, 
+    avpDiagram, 
+    sifrDiagram 
+} from "./diagrams";
+
 export const portfolioData = {
     personalInfo: {
         name: "Shakhriyor Kadamboev",
@@ -84,19 +93,6 @@ export const portfolioData = {
     },
     projects: [
         {
-            title: "MNIST Digit Classifier Service",
-            slug: "mnist-classifier",
-            description: "RESTful microservice serving a pre-trained ML model via Spring Boot. TensorFlow Java for inference; 99% accuracy on MNIST. Containerized with Docker.",
-            github: "https://github.com/shakha-de/mnist-java-microservice",
-            live: null,
-            content: {
-                overview: "A high-performance RESTful microservice designed to serve an MNIST digit classification model. Built with Spring Boot for a robust backend and TensorFlow Java for efficient on-device inference.",
-                techStack: ["Java", "Spring Boot", "TensorFlow", "Docker", "JUnit", "Maven"],
-                challenges: "Ensuring efficient model loading and inference latency within a containerized environment.",
-                outcomes: ["99% accuracy on test data", "Fully containerized deployment", "Exposed via clean REST API"]
-            }
-        },
-        {
             title: "Simity — Notebook Similarity Checker",
             slug: "simity",
             description: "Plagiarism detection for Jupyter Notebooks using semantic embeddings. Extracts code & markdown, computes similarity, generates heatmaps and reports at scale.",
@@ -106,7 +102,23 @@ export const portfolioData = {
                 overview: "Simity is a tool for university teaching assistants to detect similarity in student submissions. It uses semantic embeddings to compare both code and markdown content in Jupyter notebooks.",
                 techStack: ["Python", "PyTorch", "Jupyter", "Pandas", "Sentence-Transformers"],
                 challenges: "Handling large datasets of notebooks and generating meaningful heatmaps for visualization.",
-                outcomes: ["High detection accuracy for semantic similarities", "Scalable batch processing", "Interactive Heatmap report generation and CLI"]
+                outcomes: ["High detection accuracy for semantic similarities", "Scalable batch processing", "Interactive Heatmap report generation and CLI"],
+                metrics: [
+                    { label: "Speed", value: "100 NBs/min" },
+                    { label: "Plagiarism Threshold", value: "> 0.85" },
+                    { label: "Core Model", value: "S-BERT (all-mpnet-base-v2)" },
+                    { label: "Similarity Metric", value: "Cosine Similarity" }
+                ],
+                diagram: simityDiagram,
+                semanticAnalysis: {
+                    model: "all-mpnet-base-v2",
+                    threshold: "> 0.85",
+                    minLength: "50 chars",
+                    similarityMetric: "Cosine Similarity",
+                    scaleMinLabel: "0.0 (Irrelevant)",
+                    scaleMaxLabel: "1.0 (Identical)",
+                    description: "Measures the angle between high-dimensional sentence vectors. Unlike keyword matching, it detects synonyms and structural rewording."
+                }
             }
         },
         {
@@ -119,20 +131,51 @@ export const portfolioData = {
                 overview: "Folia aims to tackle urban environmental challenges by empowering citizens to care for local trees. It focuses on mapping high-priority zones based on climatic data and tracking community impact.",
                 techStack: ["React.js", "Next.js", "Supabase", "Tailwind CSS", "Mapbox"],
                 challenges: "Integrating real-time climatic data with user-generated tree mapping.",
-                outcomes: ["Live mapping system", "Engagement metrics for community members", "Mobile-first responsive design"]
+                outcomes: ["Live mapping system", "Engagement metrics for community members", "Mobile-first responsive design"],
+                metrics: [
+                    { label: "Uptime", value: "99.9%" },
+                    { label: "Load Time", value: "<1.2s" },
+                    { label: "Zones", value: "5+ Cities" }
+                ],
+                diagram: foliaDiagram
+            }
+        },
+                {
+            title: "MNIST Digit Classifier Service",
+            slug: "mnist-classifier",
+            description: "RESTful microservice serving a pre-trained ML model via Spring Boot. TensorFlow Java for inference; 99% accuracy on MNIST. Containerized with Docker.",
+            github: "https://github.com/shakha-de/mnist-java-microservice",
+            live: null,
+            content: {
+                overview: "A high-performance RESTful microservice designed to serve an MNIST digit classification model. Built with Spring Boot for a robust backend and TensorFlow Java for efficient on-device inference.",
+                techStack: ["Java", "Spring Boot", "TensorFlow", "Docker", "JUnit", "Maven"],
+                challenges: "Ensuring efficient model loading and inference latency within a containerized environment.",
+                outcomes: ["99% accuracy on test data", "Fully containerized deployment", "Exposed via clean REST API"],
+                metrics: [
+                    { label: "Accuracy", value: "99.2%" },
+                    { label: "Inference", value: "<15ms" },
+                    { label: "Image size", value: "28x28px" }
+                ],
+                diagram: mnistDiagram
             }
         },
         {
             title: "git_stats",
             slug: "git-stats",
-            description: "Small Streamlit app that analyses `git log --numstat` output and visualises it as a dashboard. Users can upload a git log file and interactively explore commit statistics and contributions.",
+            description: "Small Streamlit app that analyses \`git log --numstat\` output and visualises it as a dashboard. Users can upload a git log file and interactively explore commit statistics and contributions.",
             github: "https://github.com/shakha-de/git_stats",
             live: "https://gitlogs.streamlit.app/",
             content: {
                 overview: "A data visualization tool for git repositories. It parses git logs to provide insights into contributor activity, file growth, and commit patterns over time.",
                 techStack: ["Python", "Streamlit", "Pandas", "Plotly", "Regex"],
                 challenges: "Parsing complex git log outputs consistently across different repository formats.",
-                outcomes: ["Real-time dashboard generation", "User-friendly file upload system", "Intuitive data visualizations"]
+                outcomes: ["Real-time dashboard generation", "User-friendly file upload system", "Intuitive data visualizations"],
+                metrics: [
+                    { label: "Analysis", value: "Instant" },
+                    { label: "Repo size", value: "Unlimited" },
+                    { label: "Format", value: "--numstat" }
+                ],
+                diagram: gitStatsDiagram
             }
         },
         {
@@ -145,7 +188,13 @@ export const portfolioData = {
                 overview: "AVP converts video frames into high-quality ASCII art in real-time. It's designed to run efficiently in the terminal while preserving as much detail as possible from the original source.",
                 techStack: ["Python", "OpenCV", "Curses", "Numpy"],
                 challenges: "Maintaining high frame rates while performing character mapping on the fly.",
-                outcomes: ["Smooth terminal video playback", "Configurable character sets", "Cross-terminal compatibility"]
+                outcomes: ["Smooth terminal video playback", "Configurable character sets", "Cross-terminal compatibility"],
+                metrics: [
+                    { label: "FPS", value: "30-60" },
+                    { label: "CPU", value: "Low" },
+                    { label: "Output", value: "Term-Art" }
+                ],
+                diagram: avpDiagram
             }
         },
         {
@@ -158,7 +207,13 @@ export const portfolioData = {
                 overview: "Sifr streamlines the grading process for educators. It allows for quick annotation of code submissions, feedback attachment using Markdown/LaTeX, and structured data export for LMS integration.",
                 techStack: ["Python", "Streamlit", "Docker", "LaTeX"],
                 challenges: "Bridging the gap between messy student code submissions and structured instructor feedback.",
-                outcomes: ["Reduced grading time by 40%", "Standardized feedback formats", "Easy Docker-based setup"]
+                outcomes: ["Reduced grading time by 40%", "Standardized feedback formats", "Easy Docker-based setup"],
+                metrics: [
+                    { label: "Setup", value: "Docker" },
+                    { label: "Format", value: "TeX/MD" },
+                    { label: "Efficiency", value: "+40%" }
+                ],
+                diagram: sifrDiagram
             }
         }
     ],

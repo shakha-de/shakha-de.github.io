@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PageTransition, FadeIn } from "../../components/Animations";
 import { ScrollProgress } from "../../components/ScrollProgress";
+import { Mermaid } from "../../components/Mermaid";
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
     const { projects } = portfolioData;
@@ -14,6 +15,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
     if (!project) {
         notFound();
     }
+
+    const semanticAnalysis = project.content.semanticAnalysis;
 
     return (
         <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
@@ -99,24 +102,94 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                         </section>
                                     </FadeIn>
                                 )}
-                            </div>
-                        </div>
 
-                        <aside className="space-y-10">
-                            <div>
-                                <h3 className="text-sm uppercase tracking-widest font-bold text-text-muted mb-6">Tech Stack</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {project.content.techStack.map((tech, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-4 py-2 rounded-xl bg-primary/10 text-primary text-sm font-bold"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
+                                {project.content.diagram && (
+                                    <FadeIn delay={0.3}>
+                                        <section>
+                                            <h2 className="text-2xl font-bold mb-6">Architecture</h2>
+                                            <div className="p-6 bg-border/5 rounded-2xl border border-border/50">
+                                                <Mermaid chart={project.content.diagram} />
+                                            </div>
+                                        </section>
+                                    </FadeIn>
+                                )}
+
+                                {semanticAnalysis && (
+                                    <FadeIn delay={0.4}>
+                                        <section className="mt-12">
+                                            <h2 className="text-2xl font-bold mb-6">Semantic Analysis & Thresholds</h2>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10">
+                                                    <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+                                                        <span className="material-symbols-outlined text-primary">psychology</span>
+                                                        {semanticAnalysis.similarityMetric}
+                                                    </h3>
+                                                    <p className="text-text-muted text-sm leading-relaxed">
+                                                        {semanticAnalysis.description}
+                                                    </p>
+                                                    <div className="mt-4 flex items-center justify-between text-xs font-mono bg-background/50 p-2 rounded">
+                                                        <span>{semanticAnalysis.scaleMinLabel}</span>
+                                                        <div className="h-1.5 w-24 bg-border rounded-full overflow-hidden">
+                                                            <div className="h-full bg-primary w-full"></div>
+                                                        </div>
+                                                        <span>{semanticAnalysis.scaleMaxLabel}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="p-6 rounded-2xl bg-secondary/5 border border-secondary/10">
+                                                    <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+                                                        <span className="material-symbols-outlined text-secondary">gavel</span>
+                                                        Evaluation Logic
+                                                    </h3>
+                                                    <ul className="space-y-3 text-sm text-text-muted">
+                                                        <li className="flex justify-between border-b border-border/50 pb-1">
+                                                            <span>Plagiarism Threshold</span>
+                                                            <span className="font-bold text-text-main">{semanticAnalysis.threshold}</span>
+                                                        </li>
+                                                        <li className="flex justify-between border-b border-border/50 pb-1">
+                                                            <span>Min Text Length</span>
+                                                            <span className="font-bold text-text-main">{semanticAnalysis.minLength}</span>
+                                                        </li>
+                                                        <li className="flex justify-between">
+                                                            <span>Language Model</span>
+                                                            <span className="font-bold text-text-main">{semanticAnalysis.model}</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </FadeIn>
+                                )}
                             </div>
-                        </aside>
+
+                            <aside className="space-y-10">
+                                {project.content.metrics && (
+                                    <div>
+                                        <h3 className="text-sm uppercase tracking-widest font-bold text-text-muted mb-6">Key Metrics</h3>
+                                        <div className="grid grid-cols-1 gap-4">
+                                            {project.content.metrics.map((metric, i) => (
+                                                <div key={i} className="p-4 rounded-xl bg-border/5 border border-border/50">
+                                                    <p className="text-sm text-text-muted mb-1">{metric.label}</p>
+                                                    <p className="text-xl font-bold text-primary">{metric.value}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                                <div>
+                                    <h3 className="text-sm uppercase tracking-widest font-bold text-text-muted mb-6">Tech Stack</h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.content.techStack.map((tech, i) => (
+                                            <span
+                                                key={i}
+                                                className="px-4 py-2 rounded-xl bg-primary/10 text-primary text-sm font-bold"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
                     </div>
                 </PageTransition>
             </main>

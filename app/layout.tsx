@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "./components/Analytics";
+import { portfolioData } from "./data/portfolio";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,12 +15,31 @@ const spaceMono = Space_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Shakhriyor Kadamboev | Engineering Reliable Systems",
-  description: "Computer Science student at MLU Halle focusing on backend development, microservices, and reliable architectures. Exploring the intersection of software and hardware.",
-  authors: [{ name: "Shakhriyor Kadamboev" }],
-  keywords: ["Backend Developer", "Java", "Spring Boot", "Microservices", "Reliable Systems", "Halle", "Germany"],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { personalInfo, hero, skills } = portfolioData;
+  const title = `${personalInfo.name} | ${personalInfo.title}`;
+  const keywords = [
+    "Backend Developer",
+    "Reliable Systems",
+    personalInfo.location,
+    ...skills.all,
+  ];
+
+  return {
+    metadataBase: new URL("https://shakha.online"),
+    title,
+    description: hero.subheadline,
+    authors: [{ name: personalInfo.name }],
+    keywords,
+    openGraph: {
+      title,
+      description: hero.subheadline,
+      type: "website",
+      url: "https://shakha.online",
+      siteName: personalInfo.name,
+    },
+  };
+}
 
 import { ThemeProvider } from "./components/ThemeProvider";
 

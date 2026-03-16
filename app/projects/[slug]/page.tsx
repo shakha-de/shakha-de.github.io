@@ -1,11 +1,36 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { portfolioData } from "../../data/portfolio";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PageTransition, FadeIn } from "../../components/Animations";
 import { ScrollProgress } from "../../components/ScrollProgress";
 import { Mermaid } from "../../components/Mermaid";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const project = portfolioData.projects.find((p) => p.slug === slug);
+
+    if (!project) {
+        return {
+            title: "Project Not Found",
+            description: "The requested project could not be found.",
+        };
+    }
+
+    return {
+        title: `${project.title} | Projects`,
+        description: project.description,
+        keywords: [project.title, ...project.content.techStack],
+        openGraph: {
+            title: project.title,
+            description: project.description,
+            type: "article",
+            url: `https://shakha.online/projects/${project.slug}`,
+        },
+    };
+}
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
     const { projects } = portfolioData;

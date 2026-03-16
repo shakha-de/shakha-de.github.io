@@ -14,8 +14,8 @@ export default function Home() {
         <Hero />
 
         {/* Featured Projects Snapshots */}
-        <section className="w-full px-4 md:px-10 lg:px-40 py-20 bg-surface border-y border-border">
-          <div className="max-w-[1440px] mx-auto w-full">
+        <section className="w-full px-4 md:px-10 lg:px-40 py-20  ">
+          <div className="max-w-360 mx-auto w-full">
             <div className="flex justify-between items-end mb-12">
               <div>
                 <h2 className="text-3xl font-bold mb-2">Featured Projects</h2>
@@ -28,11 +28,17 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {projects.slice(0, 2).map((project, i) => (
-                <div key={i} className="p-8 rounded-3xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow">
-                  <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-                  <p className="text-text-muted text-sm mb-6 line-clamp-2">{project.description}</p>
-                  <Link href="/projects" className="text-sm font-bold text-primary hover:underline">View Details</Link>
-                </div>
+                <Link
+                  key={i}
+                  href={`/projects/${project.slug}`}
+                  className="p-8 rounded-3xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full cursor-pointer"
+                >
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
+                  <p className="text-text-muted text-sm mb-6 line-clamp-2 grow">{project.description}</p>
+                  <div className="text-sm font-bold text-primary hover:underline flex items-center gap-1 mt-auto">
+                    View Details <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

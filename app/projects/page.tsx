@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Link from "next/link";
 import { portfolioData } from "../data/portfolio";
 
 export default function ProjectsPage() {
@@ -20,7 +21,11 @@ export default function ProjectsPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {projects.map((project, i) => (
-                            <div key={i} className="group bg-background rounded-3xl p-8 border border-border hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/5 flex flex-col h-full">
+                            <Link
+                                key={i}
+                                href={`/projects/${project.slug}`}
+                                className="group bg-background rounded-3xl p-8 border border-border hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/5 flex flex-col h-full cursor-pointer"
+                            >
                                 <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
                                     <span className="material-symbols-outlined text-3xl">terminal</span>
                                 </div>
@@ -28,29 +33,13 @@ export default function ProjectsPage() {
                                 <p className="text-text-muted leading-relaxed mb-8 grow">
                                     {project.description}
                                 </p>
-                                <div className="pt-6 border-t border-border flex flex-wrap gap-6">
-                                    <a
-                                        href={project.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-2 text-sm font-bold text-text-main hover:text-primary transition-colors"
-                                    >
-                                        Source Code
-                                        <span className="material-symbols-outlined text-lg">arrow_outward</span>
-                                    </a>
-                                    {project.live && (
-                                        <a
-                                            href={project.live}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-2 text-sm font-bold text-text-main hover:text-primary transition-colors"
-                                        >
-                                            Live Demo
-                                            <span className="material-symbols-outlined text-lg">arrow_outward</span>
-                                        </a>
-                                    )}
+                                <div className="pt-6 border-t border-border flex flex-wrap gap-6 mt-auto">
+                                    <div className="flex items-center gap-2 text-sm font-bold text-text-main group-hover:text-primary transition-colors">
+                                        View Case Study
+                                        <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 

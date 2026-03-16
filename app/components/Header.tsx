@@ -7,16 +7,19 @@ import { useTheme } from "next-themes";
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { theme, setTheme, resolvedTheme } = useTheme();
+    const { setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        const timeout = setTimeout(() => setMounted(true), 0);
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            clearTimeout(timeout);
+        };
     }, []);
 
     // Lock scroll when menu is open

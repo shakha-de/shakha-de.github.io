@@ -39,16 +39,16 @@ export const portfolioData = {
         {
             degree: "B.Sc. in Computer Science",
             institution: "Martin-Luther-University Halle-Wittenberg",
-            period: "2023 – Present",
+            period: "2023 – 2026",
             coursework: ["Data Structures & Algorithms", "OOP", "Design", "Computer Organization", "Data Science", "ML", "AI", "Image Processing"],
         },
     ],
     experience: [
         {
-            role: "Intern – Cloud-Native Application Processing System",
-            company: "Martin-Luther-University Halle-Wittenberg × ]init[ AG",
+            role: "Backend Software Developer Intern",
+            company: "]init[ AG",
             location: "Halle (Saale), Germany",
-            period: "Apr 2025 – Present",
+            period: "Apr 2025 – Mar 2026",
             description: "Built a secure, scalable backend using Spring Boot + Spring Security with role-based access control. Implemented CI/CD test automation (JUnit, Pact, Bruno, K6).",
         },
         {
@@ -85,39 +85,81 @@ export const portfolioData = {
     projects: [
         {
             title: "MNIST Digit Classifier Service",
+            slug: "mnist-classifier",
             description: "RESTful microservice serving a pre-trained ML model via Spring Boot. TensorFlow Java for inference; 99% accuracy on MNIST. Containerized with Docker.",
             github: "https://github.com/shakha-de/mnist-java-microservice",
             live: null,
+            content: {
+                overview: "A high-performance RESTful microservice designed to serve an MNIST digit classification model. Built with Spring Boot for a robust backend and TensorFlow Java for efficient on-device inference.",
+                techStack: ["Java", "Spring Boot", "TensorFlow", "Docker", "JUnit", "Maven"],
+                challenges: "Ensuring efficient model loading and inference latency within a containerized environment.",
+                outcomes: ["99% accuracy on test data", "Fully containerized deployment", "Exposed via clean REST API"]
+            }
         },
         {
             title: "Simity — Notebook Similarity Checker",
+            slug: "simity",
             description: "Plagiarism detection for Jupyter Notebooks using semantic embeddings. Extracts code & markdown, computes similarity, generates heatmaps and reports at scale.",
             github: "https://github.com/shakha-de/simity",
             live: null,
+            content: {
+                overview: "Simity is a tool for university teaching assistants to detect similarity in student submissions. It uses semantic embeddings to compare both code and markdown content in Jupyter notebooks.",
+                techStack: ["Python", "PyTorch", "Jupyter", "Pandas", "Sentence-Transformers"],
+                challenges: "Handling large datasets of notebooks and generating meaningful heatmaps for visualization.",
+                outcomes: ["High detection accuracy for semantic similarities", "Scalable batch processing", "Interactive Heatmap report generation and CLI"]
+            }
         },
         {
             title: "Folia — Urban Tree Stewardship (In Progress)",
+            slug: "folia",
             description: "Community app to protect urban trees in arid Central Asian cities. Priority zone mapping, impact tracking, and civic engagement features.",
             github: "https://github.com/shakha-de/folia",
             live: "https://folia-dev.vercel.app/",
+            content: {
+                overview: "Folia aims to tackle urban environmental challenges by empowering citizens to care for local trees. It focuses on mapping high-priority zones based on climatic data and tracking community impact.",
+                techStack: ["React.js", "Next.js", "Supabase", "Tailwind CSS", "Mapbox"],
+                challenges: "Integrating real-time climatic data with user-generated tree mapping.",
+                outcomes: ["Live mapping system", "Engagement metrics for community members", "Mobile-first responsive design"]
+            }
         },
         {
             title: "git_stats",
+            slug: "git-stats",
             description: "Small Streamlit app that analyses `git log --numstat` output and visualises it as a dashboard. Users can upload a git log file and interactively explore commit statistics and contributions.",
             github: "https://github.com/shakha-de/git_stats",
-            live: "https://gitlogs.streamlit.app/"
+            live: "https://gitlogs.streamlit.app/",
+            content: {
+                overview: "A data visualization tool for git repositories. It parses git logs to provide insights into contributor activity, file growth, and commit patterns over time.",
+                techStack: ["Python", "Streamlit", "Pandas", "Plotly", "Regex"],
+                challenges: "Parsing complex git log outputs consistently across different repository formats.",
+                outcomes: ["Real-time dashboard generation", "User-friendly file upload system", "Intuitive data visualizations"]
+            }
         },
         {
             title: "avp",
+            slug: "avp",
             description: "ASCII Video Player — a command-line tool that plays videos in the terminal as ASCII art by converting frames to text characters. Offers adjustable ASCII width and works across various terminal emulators.",
             github: "https://github.com/shakha-de/avp",
-            live: null
+            live: null,
+            content: {
+                overview: "AVP converts video frames into high-quality ASCII art in real-time. It's designed to run efficiently in the terminal while preserving as much detail as possible from the original source.",
+                techStack: ["Python", "OpenCV", "Curses", "Numpy"],
+                challenges: "Maintaining high frame rates while performing character mapping on the fly.",
+                outcomes: ["Smooth terminal video playback", "Configurable character sets", "Cross-terminal compatibility"]
+            }
         },
         {
             title: "sifr",
+            slug: "sifr",
             description: "Sifr is a grading assistant built with Streamlit that helps explore and annotate student submissions, attach feedback, and export results. It supports Markdown/LaTeX and comes with Docker and local environment setup options.",
             github: "https://github.com/shakha-de/sifr",
-            live: null
+            live: null,
+            content: {
+                overview: "Sifr streamlines the grading process for educators. It allows for quick annotation of code submissions, feedback attachment using Markdown/LaTeX, and structured data export for LMS integration.",
+                techStack: ["Python", "Streamlit", "Docker", "LaTeX"],
+                challenges: "Bridging the gap between messy student code submissions and structured instructor feedback.",
+                outcomes: ["Reduced grading time by 40%", "Standardized feedback formats", "Easy Docker-based setup"]
+            }
         }
     ],
     awards: [

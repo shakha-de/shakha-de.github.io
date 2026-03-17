@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="grow flex flex-col items-center justify-center w-full app-container section-stack">
+    <main id="content" className="grow flex flex-col items-center justify-center w-full app-container section-stack">
       <section className="w-full max-w-3xl rounded-3xl border border-border bg-surface p-6 sm:p-8 md:p-12 shadow-sm">
-        <p className="text-primary font-bold tracking-widest uppercase text-sm mb-4">
+        <p className="section-kicker mb-4">
           Error 404
         </p>
 

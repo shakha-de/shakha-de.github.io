@@ -18,15 +18,16 @@ export default function SkillsPage() {
     return (
         <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
-            <main className="grow flex flex-col items-center w-full app-container section-stack">
+            <main id="content" className="grow flex flex-col items-center w-full app-container section-stack">
                 <PageTransition>
                     <div className="w-full max-w-4xl">
+                        <span className="section-kicker">Technical Profile</span>
                         <h1 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-12">Technical Expertise</h1>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 lg:gap-10 mb-16 sm:mb-20">
                             {categories.map((cat, i) => (
                                 <FadeIn key={i} delay={i * 0.1}>
-                                    <div className="flex flex-col gap-5 sm:gap-6 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-background border border-border shadow-sm h-full">
+                                    <div className="surface-card surface-card-hover flex flex-col gap-5 sm:gap-6 p-6 sm:p-8 rounded-2xl sm:rounded-3xl h-full">
                                         <div className="flex items-center gap-4">
                                             <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                                                 <span className="material-symbols-outlined">{cat.icon}</span>
@@ -68,7 +69,7 @@ export default function SkillsPage() {
                             <div className="space-y-4">
                                 {awards.map((award, i) => (
                                     <FadeIn key={i} delay={0.5 + i * 0.1}>
-                                        <div className="flex items-start gap-4 p-5 sm:p-6 rounded-2xl bg-yellow-500/5 border border-yellow-500/20 text-text-main">
+                                        <div className="flex items-start gap-4 p-5 sm:p-6 rounded-2xl text-text-main border border-yellow-500/20 bg-yellow-500/5 shadow-sm">
                                             <span className="material-symbols-outlined text-yellow-500 mt-0.5">emoji_events</span>
                                             <p className="font-medium">{award}</p>
                                         </div>

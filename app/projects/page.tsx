@@ -10,10 +10,11 @@ export default function ProjectsPage() {
     return (
         <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
-            <main className="grow flex flex-col items-center w-full app-container section-stack">
+            <main id="content" className="grow flex flex-col items-center w-full app-container section-stack">
                 <PageTransition>
                     <div className="w-full max-w-5xl">
                         <header className="mb-12 sm:mb-16 lg:mb-20">
+                            <span className="section-kicker">Selected Work</span>
                             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Selected Works</h1>
                             <p className="text-text-muted text-base sm:text-lg max-w-2xl">
                                 A collection of projects focusing on microservices, machine learning, and community impact.
@@ -37,7 +38,7 @@ export default function ProjectsPage() {
                                 <FadeIn key={i} delay={i * 0.1}>
                                     <Link
                                         href={`/projects/${project.slug}`}
-                                        className="group bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/5 flex flex-col h-full cursor-pointer"
+                                        className="surface-card surface-card-hover group p-6 sm:p-8 rounded-2xl sm:rounded-3xl flex flex-col h-full cursor-pointer"
                                     >
                                         <div className="size-12 sm:size-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 sm:mb-6 text-primary group-hover:scale-110 transition-transform">
                                             <span className="material-symbols-outlined text-3xl">terminal</span>
@@ -57,7 +58,7 @@ export default function ProjectsPage() {
                             ))}
                         </div>
 
-                    <div className="mt-16 sm:mt-20 lg:mt-24 p-6 sm:p-8 lg:p-12 rounded-4xl bg-surface border border-border">
+                    <div className="surface-card mt-16 sm:mt-20 lg:mt-24 p-6 sm:p-8 lg:p-12 rounded-4xl">
                         <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Portfolio Narrative</h2>
                         <p className="text-text-muted text-base sm:text-lg leading-relaxed italic">
                             &quot;{portfolioData.narrative}&quot;

@@ -13,6 +13,7 @@ export default function Hero() {
 
                 <div className="flex-1 flex flex-col items-center md:items-start gap-6 text-center md:text-left">
                     <div className="flex flex-col gap-3 max-w-2xl">
+                        <span className="section-kicker">Portfolio Overview</span>
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight text-text-main">
                             {hero.headline.split(' ').slice(0, 1).join(' ')} <br />
                             <span className="text-primary">{hero.headline.split(' ').slice(1).join(' ')}</span>

@@ -12,7 +12,8 @@ export const ScrollProgress = () => {
 
     return (
         <motion.div
-            className="fixed top-0 left-0 right-0 h-1 bg-primary z-[60] origin-left"
+            aria-hidden="true"
+            className="fixed top-0 left-0 right-0 h-0.5 sm:h-1 bg-primary z-[60] origin-left shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_45%,transparent)]"
             style={{ scaleX }}
         />
     );

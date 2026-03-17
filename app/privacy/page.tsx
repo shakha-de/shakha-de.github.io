@@ -8,8 +8,9 @@ export default function PrivacyPage() {
     return (
         <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
-            <main className="grow flex flex-col items-center w-full app-container section-stack">
+            <main id="content" className="grow flex flex-col items-center w-full app-container section-stack">
                 <div className="w-full max-w-3xl">
+                    <span className="section-kicker">Legal</span>
                     <h1 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-12">Privacy Policy, <span className="text-text-muted">hopefully</span></h1>
 
                     <section className="max-w-none space-y-7 sm:space-y-8 text-text-muted leading-relaxed text-sm sm:text-base">

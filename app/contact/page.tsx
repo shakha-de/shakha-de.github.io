@@ -29,9 +29,10 @@ export default function ContactPage() {
     return (
         <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
-            <main className="grow flex flex-col items-center justify-center w-full app-container section-stack">
+            <main id="content" className="grow flex flex-col items-center justify-center w-full app-container section-stack">
                 <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                     <div>
+                        <span className="section-kicker">Get In Touch</span>
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-5 sm:mb-6">
                             Let&apos;s build something <span className="text-primary">Reliable</span> together.
                         </h1>
@@ -60,7 +61,7 @@ export default function ContactPage() {
                         </div>
                     </div>
 
-                    <div className="relative p-6 sm:p-8 lg:p-12 rounded-4xl sm:rounded-[2.5rem] bg-surface border border-border overflow-hidden">
+                    <div className="surface-card relative p-6 sm:p-8 lg:p-12 rounded-4xl overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full"></div>
                         <div className="relative z-10">
                             <h3 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Current Location</h3>

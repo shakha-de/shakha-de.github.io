@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
       <Header />
-      <main className="grow flex flex-col items-center w-full">
+      <main id="content" className="grow flex flex-col items-center w-full">
         <PageTransition>
           <Hero />
 
@@ -35,7 +35,7 @@ export default function Home() {
                   <FadeIn key={i} delay={i * 0.1}>
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full cursor-pointer"
+                      className="surface-card surface-card-hover p-6 sm:p-8 rounded-2xl sm:rounded-3xl group flex flex-col h-full cursor-pointer"
                     >
                       <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
                       <p className="text-text-muted text-sm sm:text-base mb-6 line-clamp-2 grow">{project.description}</p>

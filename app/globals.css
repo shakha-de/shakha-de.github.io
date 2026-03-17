@@ -52,6 +52,24 @@ body {
   color: var(--text-main);
 }
 
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--primary) 70%, white 30%);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @theme inline {
   --color-primary: var(--primary);
   --color-background: var(--background);
@@ -92,6 +110,31 @@ body {
 
 .section-stack {
   padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.surface-card {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 88%, var(--surface) 12%);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.surface-card-hover {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.surface-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.section-kicker {
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
 

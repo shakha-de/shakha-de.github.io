@@ -2,20 +2,20 @@
 
 import { useEffect, useRef } from "react";
 import mermaid from "mermaid";
-
-if (typeof window !== "undefined") {
-    mermaid.initialize({
-        startOnLoad: false,
-        theme: "dark",
-        securityLevel: "loose",
-        fontFamily: "var(--font-inter)",
-    });
-}
+import { useTheme } from "next-themes";
 
 export const Mermaid = ({ chart }: { chart: string }) => {
     const ref = useRef<HTMLDivElement>(null);
+    const { resolvedTheme } = useTheme();
 
     useEffect(() => {
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: resolvedTheme === "dark" ? "dark" : "default",
+            securityLevel: "loose",
+            fontFamily: "var(--font-inter)",
+        });
+
         const renderDiagram = async () => {
             if (ref.current) {
                 try {
@@ -37,12 +37,12 @@ export const Mermaid = ({ chart }: { chart: string }) => {
         };
 
         renderDiagram();
-    }, [chart]);
+    }, [chart, resolvedTheme]);
 
     return (
         <div 
             ref={ref} 
-            className="flex flex-col items-center justify-center p-8 bg-surface/30 rounded-3xl border border-border mt-8 overflow-auto min-h-[150px] w-full"
+            className="flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 bg-surface/30 rounded-3xl border border-border mt-8 overflow-auto min-h-[150px] w-full"
         >
             <pre className="text-xs opacity-30 animate-pulse">Rendering architecture...</pre>
         </div>

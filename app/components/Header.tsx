@@ -45,6 +45,13 @@ export default function Header() {
     };
 
     return (
+        <>
+        <a
+            href="#content"
+            className="sr-only focus:not-sr-only fixed left-4 top-4 z-[70] rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-lg shadow-primary/20"
+        >
+            Skip to content
+        </a>
         <header
             className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled || isMenuOpen
                 ? "bg-background/90 backdrop-blur-md border-b border-border py-3 shadow-sm"
@@ -140,5 +147,6 @@ export default function Header() {
                 </nav>
             </div>
         </header>
+        </>
     );
 }

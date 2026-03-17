@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "./components/Analytics";
+import { ThemeProvider } from "./components/ThemeProvider";
 import { portfolioData } from "./data/portfolio";
 
 const inter = Inter({
@@ -41,7 +42,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-import { ThemeProvider } from "./components/ThemeProvider";
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export default function RootLayout({
   children,

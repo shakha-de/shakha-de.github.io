@@ -9,32 +9,32 @@ export default function AboutPage() {
     return (
         <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
-            <main className="grow flex flex-col items-center w-full px-4 md:px-10 lg:px-40 py-20 max-w-[1440px] mx-auto">
+            <main className="grow flex flex-col items-center w-full app-container section-stack">
                 <PageTransition>
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-12 w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 w-full">
                         <div className="md:col-span-7 flex flex-col justify-center">
-                            <div className="flex flex-col gap-4 mb-10">
+                            <div className="flex flex-col gap-4 mb-8 md:mb-10">
                                 <span className="text-primary font-bold tracking-widest uppercase text-sm">Professional Narrative</span>
                                 <FadeIn>
-                                    <h1 className="text-5xl md:text-6xl font-black tracking-tight text-text-main leading-tight">
+                                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight text-text-main leading-tight">
                                         {about.headline}
                                     </h1>
                                 </FadeIn>
                             </div>
-                            <div className="prose prose-lg text-text-muted leading-relaxed mb-12">
+                            <div className="prose prose-lg max-w-none text-text-muted leading-relaxed mb-10 md:mb-12">
                                 {about.paragraphs.map((p, i) => (
                                     <FadeIn key={i} delay={0.1 + i * 0.1}>
-                                        <p className="mb-6 last:mb-0 text-lg md:text-xl">
+                                        <p className="mb-5 last:mb-0 text-base sm:text-lg md:text-xl">
                                             {p}
                                         </p>
                                     </FadeIn>
                                 ))}
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                                 {about.highlights?.map((item, i) => (
                                     <FadeIn key={i} delay={0.4 + i * 0.1}>
-                                        <div className="flex flex-col gap-3 p-6 rounded-2xl bg-background border border-border shadow-sm transition-all hover:border-primary/30 group">
+                                        <div className="flex flex-col gap-3 p-5 sm:p-6 rounded-2xl bg-background border border-border shadow-sm transition-all hover:border-primary/30 group h-full">
                                             <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">{item.icon}</span>
                                             <h4 className="font-bold text-text-main">{item.title}</h4>
                                             <p className="text-sm text-text-muted leading-snug">{item.description}</p>
@@ -44,9 +44,9 @@ export default function AboutPage() {
                             </div>
                         </div>
 
-                        <div className="md:col-span-5 flex flex-col gap-8">
+                        <div className="md:col-span-5 flex flex-col gap-6 md:gap-8">
                             <FadeIn delay={0.2}>
-                                <div className="w-full h-64 bg-surface rounded-2xl overflow-hidden relative border border-border group">
+                                <div className="w-full h-56 sm:h-64 bg-surface rounded-2xl overflow-hidden relative border border-border group">
                                     <iframe
                                         src="https://www.openstreetmap.org/export/embed.html?bbox=11.838455200195314%2C51.42858079624508%2C12.100067138671877%2C51.53696147429189&amp;layer=mapnik"
                                         width="100%"
@@ -65,12 +65,12 @@ export default function AboutPage() {
                                 </div>
                             </FadeIn>
 
-                            <div className="grid grid-cols-2 gap-6 mb-8">
+                            <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 md:mb-8">
                                 {about.stats.map((stat, i) => (
                                     <FadeIn key={i} delay={0.3 + i * 0.1}>
-                                        <div className="p-6 rounded-2xl bg-surface border border-border">
+                                        <div className="p-5 sm:p-6 rounded-2xl bg-surface border border-border">
                                             <p className="text-text-muted text-sm font-medium">{stat.label}</p>
-                                            <p className="text-4xl font-bold text-text-main mt-2 font-mono">
+                                            <p className="text-3xl sm:text-4xl font-bold text-text-main mt-2 font-mono">
                                                 {stat.value}
                                             </p>
                                         </div>
@@ -79,12 +79,12 @@ export default function AboutPage() {
                             </div>
 
                             <FadeIn delay={0.5}>
-                                <div className="p-8 rounded-3xl bg-primary shadow-xl shadow-primary/20 text-white">
-                                    <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                                <div className="p-6 sm:p-8 rounded-3xl bg-primary shadow-xl shadow-primary/20 text-white">
+                                    <h3 className="text-lg sm:text-xl font-bold mb-5 sm:mb-6 flex items-center gap-2">
                                         <span className="material-symbols-outlined">translate</span>
                                         Languages
                                     </h3>
-                                    <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+                                    <div className="grid grid-cols-2 gap-y-4 gap-x-6 sm:gap-x-8">
                                         {portfolioData.personalInfo.languages.map((lang, i) => (
                                             <div key={i} className="flex flex-col">
                                                 <span className="text-xs font-bold uppercase opacity-70 tracking-widest">{lang.language}</span>

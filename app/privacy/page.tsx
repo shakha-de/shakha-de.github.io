@@ -8,18 +8,18 @@ export default function PrivacyPage() {
     return (
         <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
             <Header />
-            <main className="grow flex flex-col items-center w-full px-4 md:px-10 lg:px-40 py-20 max-w-[1440px] mx-auto">
+            <main className="grow flex flex-col items-center w-full app-container section-stack">
                 <div className="w-full max-w-3xl">
-                    <h1 className="text-4xl font-bold mb-12">Privacy Policy, <span className="text-text-muted">hopefully</span></h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-12">Privacy Policy, <span className="text-text-muted">hopefully</span></h1>
 
-                    <section className="max-w-none space-y-8 text-text-muted leading-relaxed">
+                    <section className="max-w-none space-y-7 sm:space-y-8 text-text-muted leading-relaxed text-sm sm:text-base">
                         <div>
-                            <h2 className="text-xl font-bold text-text-main mb-4">1. An overview of data protection</h2>
+                            <h2 className="text-lg sm:text-xl font-bold text-text-main mb-4">1. An overview of data protection</h2>
                             <p>Generally, you can use our website without providing any personal information (Anyway i don&apos;t collect any data, this is static site). However, different rules may apply to certain services on our site, and these are explained separately below.</p>
                         </div>
 
                         <div>
-                            <h2 className="text-xl font-bold text-text-main mb-4">2. Responsible Party</h2>
+                            <h2 className="text-lg sm:text-xl font-bold text-text-main mb-4">2. Responsible Party</h2>
                             <p>
                                 {personalInfo.name}<br />
                                 Email: {personalInfo.email}
@@ -27,10 +27,10 @@ export default function PrivacyPage() {
                         </div>
 
                         <div>
-                            <h2 className="text-xl font-bold text-text-main mb-4">3. Data collection on our website</h2>
-                            <h3 className="text-lg font-bold text-text-main mt-4 mb-2">Server log files</h3>
+                            <h2 className="text-lg sm:text-xl font-bold text-text-main mb-4">3. Data collection on our website</h2>
+                            <h3 className="text-base sm:text-lg font-bold text-text-main mt-4 mb-2">Server log files</h3>
                             <p>The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are:</p>
-                            <ul className="list-disc list-inside ml-4">
+                            <ul className="list-disc list-inside ml-4 space-y-1">
                                 <li>Browser type and browser version</li>
                                 <li>Operating system used</li>
                                 <li>Referrer URL</li>
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
                         </div>
 
                         <div>
-                            <h2 className="text-xl font-bold text-text-main mb-4">4. Your Rights</h2>
+                            <h2 className="text-lg sm:text-xl font-bold text-text-main mb-4">4. Your Rights</h2>
                             <p>You have the right at any time to receive information free of charge about your stored personal data, its origin and recipient and the purpose of the data processing. You also have a right to correction, blocking or deletion of this data.</p>
                         </div>
 

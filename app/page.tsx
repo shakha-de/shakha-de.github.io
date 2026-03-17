@@ -16,29 +16,29 @@ export default function Home() {
           <Hero />
 
           {/* Featured Projects Snapshots */}
-          <section className="w-full px-4 md:px-10 lg:px-40 py-20  ">
-            <div className="max-w-360 mx-auto w-full">
-              <div className="flex justify-between items-end mb-12">
+          <section className="app-container section-stack w-full">
+            <div className="w-full">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-12">
                 <FadeIn>
                   <div>
-                    <h2 className="text-3xl font-bold mb-2">Featured Projects</h2>
-                    <p className="text-text-muted">A selection of my recent technical work.</p>
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-2">Featured Projects</h2>
+                    <p className="text-sm sm:text-base text-text-muted max-w-xl">A selection of my recent technical work.</p>
                   </div>
                 </FadeIn>
-                <Link href="/projects" className="text-primary font-bold hover:underline flex items-center gap-1 group">
+                <Link href="/projects" className="text-primary font-bold hover:underline flex items-center gap-1 group self-start sm:self-auto">
                   All Projects <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
                 {projects.slice(0, 2).map((project, i) => (
                   <FadeIn key={i} delay={i * 0.1}>
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="p-8 rounded-3xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full cursor-pointer"
+                      className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-background border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full cursor-pointer"
                     >
-                      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
-                      <p className="text-text-muted text-sm mb-6 line-clamp-2 grow">{project.description}</p>
+                      <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
+                      <p className="text-text-muted text-sm sm:text-base mb-6 line-clamp-2 grow">{project.description}</p>
                       <div className="text-sm font-bold text-primary hover:underline flex items-center gap-1 mt-auto">
                         View Details <span className="material-symbols-outlined text-sm">arrow_forward</span>
                       </div>

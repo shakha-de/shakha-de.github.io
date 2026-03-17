@@ -2,17 +2,17 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="grow flex flex-col items-center justify-center w-full px-4 md:px-10 lg:px-40 py-20 max-w-[1440px] mx-auto">
-      <section className="w-full max-w-3xl rounded-3xl border border-border bg-surface p-8 md:p-12 shadow-sm">
+    <main className="grow flex flex-col items-center justify-center w-full app-container section-stack">
+      <section className="w-full max-w-3xl rounded-3xl border border-border bg-surface p-6 sm:p-8 md:p-12 shadow-sm">
         <p className="text-primary font-bold tracking-widest uppercase text-sm mb-4">
           Error 404
         </p>
 
-        <h1 className="text-4xl md:text-6xl font-black tracking-tight text-text-main leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight text-text-main leading-tight">
           Nyaa... Page Not Found
         </h1>
 
-        <p className="mt-4 text-text-muted text-lg leading-relaxed">
+        <p className="mt-4 text-text-muted text-base sm:text-lg leading-relaxed">
           Your anime cats searched every rooftop in this universe, but this page
           vanished like a ninja.
         </p>

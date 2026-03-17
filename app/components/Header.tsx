@@ -24,11 +24,11 @@ export default function Header() {
 
     // Lock scroll when menu is open
     useEffect(() => {
-        if (isMenuOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "unset";
-        }
+        document.body.style.overflow = isMenuOpen ? "hidden" : "";
+
+        return () => {
+            document.body.style.overflow = "";
+        };
     }, [isMenuOpen]);
 
     const navLinks = [
@@ -51,7 +51,7 @@ export default function Header() {
                 : "bg-transparent py-5"
                 }`}
         >
-            <div className="max-w-[1440px] mx-auto px-4 md:px-10 flex items-center justify-between">
+            <div className="app-container flex items-center justify-between gap-3">
                 <Link
                     href="/"
                     className="flex items-center gap-2 group transition-all"
@@ -102,6 +102,8 @@ export default function Header() {
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="md:hidden flex items-center justify-center size-10 text-text-main hover:bg-primary/5 rounded-lg transition-colors"
                         aria-label="Toggle Menu"
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-navigation"
                     >
                         <span className="material-symbols-outlined text-[28px]">
                             {isMenuOpen ? "close" : "menu"}
@@ -112,25 +114,26 @@ export default function Header() {
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 top-[65px] h-[calc(100vh-65px)] w-full bg-background z-40 md:hidden transition-all duration-300 border-t border-border ${isMenuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-4"
+                id="mobile-navigation"
+                className={`fixed inset-x-0 top-full h-[calc(100dvh-100%)] w-full bg-background z-40 md:hidden transition-all duration-300 border-t border-border overflow-y-auto ${isMenuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-4"
                     }`}
             >
-                <nav className="flex flex-col p-6 gap-2">
+                <nav className="flex flex-col p-4 sm:p-6 gap-2">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
                             onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center justify-between p-4 text-lg font-bold text-text-main hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+                            className="group flex items-center justify-between p-4 text-base sm:text-lg font-bold text-text-main hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
                         >
                             {link.name}
-                            <span className="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                            <span className="material-symbols-outlined text-primary opacity-70 group-hover:opacity-100 transition-opacity">chevron_right</span>
                         </Link>
                     ))}
                     <Link
                         href="/contact"
                         onClick={() => setIsMenuOpen(false)}
-                        className="mt-4 flex items-center justify-center h-14 rounded-2xl bg-primary text-white text-lg font-black shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
+                        className="mt-4 flex items-center justify-center h-14 rounded-2xl bg-primary text-white text-base sm:text-lg font-black shadow-xl shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all"
                     >
                         Hire Me
                     </Link>

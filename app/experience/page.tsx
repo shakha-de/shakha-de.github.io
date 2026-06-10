@@ -17,34 +17,37 @@ export default function ExperiencePage() {
                             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-10 sm:mb-12 text-text-main">
                                 Professional Journey
                             </h1>
-                            <div className="relative border-l-2 border-border ml-3 md:ml-6 space-y-10 sm:space-y-12 pb-4">
+                            <div className="relative border-l-2 border-primary/20 ml-3 md:ml-6 space-y-8 pb-4">
                                 {experience.map((exp, i) => (
                                     <FadeIn key={i} delay={i * 0.1}>
-                                        <div className="relative pl-8 md:pl-12">
-                                            <div className="absolute -left-2 top-1.5 size-4 rounded-full bg-background border-2 border-primary timeline-node shadow-sm"></div>
-                                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                                                <h3 className="text-lg sm:text-xl font-bold text-text-main">
-                                                    {exp.role}
-                                                </h3>
-                                                <span className="text-sm font-mono text-primary font-medium bg-primary/5 px-2 py-1 rounded">
-                                                    {exp.period}
-                                                </span>
+                                        <div className="relative pl-8 md:pl-12 group">
+                                            <div className="absolute -left-[9px] top-6 size-4 rounded-full bg-background border-2 border-primary timeline-node shadow-md transition-all duration-300 group-hover:scale-125 group-hover:border-primary/80"></div>
+                                            
+                                            <div className="surface-card p-6 rounded-2xl border border-border group-hover:border-primary/20 transition-all duration-300">
+                                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
+                                                    <h3 className="text-lg sm:text-xl font-black text-text-main group-hover:text-primary transition-colors">
+                                                        {exp.role}
+                                                    </h3>
+                                                    <span className="text-xs font-mono text-primary font-bold bg-primary/10 border border-primary/20 px-2.5 py-1 rounded-lg self-start sm:self-auto shrink-0">
+                                                        {exp.period}
+                                                    </span>
+                                                </div>
+                                                <h4 className="text-xs sm:text-sm font-semibold text-text-muted mb-4 flex flex-wrap items-center gap-1.5">
+                                                    <span className="text-text-main font-bold">{exp.company}</span>
+                                                    {exp.location && (
+                                                        <>
+                                                            <span className="text-border">•</span>
+                                                            <span className="flex items-center gap-1">
+                                                                <span className="material-symbols-outlined text-[14px]">location_on</span>
+                                                                {exp.location}
+                                                            </span>
+                                                        </>
+                                                    )}
+                                                </h4>
+                                                <p className="text-sm text-text-muted leading-relaxed">
+                                                    {exp.description}
+                                                </p>
                                             </div>
-                                            <h4 className="text-sm sm:text-base font-medium text-text-muted mb-3 flex flex-wrap items-center gap-2">
-                                                {exp.company}
-                                                {exp.location && (
-                                                    <>
-                                                        <span className="text-border">•</span>
-                                                        <span className="flex items-center gap-1">
-                                                            <span className="material-symbols-outlined text-[14px]">location_on</span>
-                                                            {exp.location}
-                                                        </span>
-                                                    </>
-                                                )}
-                                            </h4>
-                                            <p className="text-sm sm:text-base text-text-muted leading-relaxed">
-                                                {exp.description}
-                                            </p>
                                         </div>
                                     </FadeIn>
                                 ))}
@@ -58,21 +61,21 @@ export default function ExperiencePage() {
                             <div className="space-y-6 sm:space-y-8">
                                 {education.map((edu, i) => (
                                     <FadeIn key={i} delay={0.2}>
-                                        <div className="surface-card p-6 sm:p-8 rounded-2xl">
-                                            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                                        <div className="surface-card p-6 sm:p-8 rounded-2xl border border-border">
+                                            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
                                                 <div>
-                                                    <h3 className="text-xl sm:text-2xl font-bold text-text-main">{edu.degree}</h3>
-                                                    <p className="text-base sm:text-lg text-primary font-medium">{edu.institution}</p>
+                                                    <h3 className="text-lg sm:text-xl font-black text-text-main">{edu.degree}</h3>
+                                                    <p className="text-sm sm:text-base text-primary font-bold mt-0.5">{edu.institution}</p>
                                                 </div>
-                                                <span className="text-sm font-mono text-text-muted bg-surface px-3 py-1 rounded-md self-start">
+                                                <span className="text-xs font-mono text-text-muted bg-accent border border-border px-3 py-1 rounded-lg self-start">
                                                     {edu.period}
                                                 </span>
                                             </div>
-                                            <div className="mt-4">
-                                                <h4 className="text-sm font-bold uppercase tracking-wider text-text-muted mb-2">Relevant Coursework</h4>
-                                                <div className="flex flex-wrap gap-2">
+                                            <div className="mt-4 pt-4 border-t border-border/60">
+                                                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-3">Relevant Coursework</h4>
+                                                <div className="flex flex-wrap gap-1.5">
                                                     {edu.coursework.map((course, j) => (
-                                                        <span key={j} className="text-sm bg-surface text-text-muted px-2 py-1 rounded border border-border">
+                                                        <span key={j} className="text-xs bg-accent/40 text-text-muted px-2.5 py-1 rounded-md border border-border/30">
                                                             {course}
                                                         </span>
                                                     ))}

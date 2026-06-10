@@ -52,95 +52,98 @@ export default function Header() {
         >
             Skip to content
         </a>
-        <header
-            className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled || isMenuOpen
-                ? "bg-background/90 backdrop-blur-md border-b border-border py-3 shadow-sm"
-                : "bg-transparent py-5"
-                }`}
-        >
-            <div className="app-container flex items-center justify-between gap-3">
-                <Link
-                    href="/"
-                    className="flex items-center gap-2 group transition-all"
-                    onClick={() => setIsMenuOpen(false)}
-                >
-                    <div className="size-10 bg-primary rounded-lg flex items-center justify-center text-white font-black text-xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
-                        S
-                    </div>
-                    <span className="text-xl font-bold tracking-tight text-text-main hidden sm:block">
-                        Kadamboev<span className="text-primary">.</span>
-                    </span>
-                </Link>
-
-                <nav className="hidden md:flex items-center gap-1">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="px-4 py-2 text-sm font-semibold text-text-muted hover:text-primary transition-colors rounded-md hover:bg-primary/5"
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                </nav>
-
-
-                <div className="flex items-center gap-2 md:gap-4">
-                    {mounted && (
-                        <button
-                            onClick={toggleTheme}
-                            className="flex items-center justify-center size-10 text-text-main hover:bg-primary/5 rounded-lg transition-colors border border-border md:border-none"
-                            aria-label="Toggle theme"
-                        >
-                            <span className="material-symbols-outlined text-[24px]">
-                                {resolvedTheme === "dark" ? "light_mode" : "dark_mode"}
-                            </span>
-                        </button>
-                    )}
-
+        <header className="sticky top-0 z-50 w-full py-4 transition-all duration-300">
+            <div className="app-container transition-all duration-300">
+                <div className={`flex items-center justify-between gap-3 px-5 py-3 transition-all duration-300 rounded-2xl ${
+                    scrolled || isMenuOpen
+                    ? "glass-panel bg-background/85 backdrop-blur-md shadow-lg border border-border"
+                    : "bg-transparent border border-transparent"
+                }`}>
                     <Link
-                        href="/contact"
-                        className="hidden sm:flex items-center justify-center h-10 px-5 rounded-lg bg-primary text-white text-sm font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+                        href="/"
+                        className="flex items-center gap-2 group transition-all"
+                        onClick={() => setIsMenuOpen(false)}
                     >
-                        Hire Me
+                        <div className="size-9 bg-primary rounded-lg flex items-center justify-center text-white font-black text-lg shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform">
+                            S
+                        </div>
+                        <span className="text-lg font-bold tracking-tight text-text-main hidden sm:block">
+                            Kadamboev<span className="text-primary">.</span>
+                        </span>
                     </Link>
 
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden flex items-center justify-center size-10 text-text-main hover:bg-primary/5 rounded-lg transition-colors"
-                        aria-label="Toggle Menu"
-                        aria-expanded={isMenuOpen}
-                        aria-controls="mobile-navigation"
-                    >
-                        <span className="material-symbols-outlined text-[28px]">
-                            {isMenuOpen ? "close" : "menu"}
-                        </span>
-                    </button>
+                    <nav className="hidden md:flex items-center gap-1">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className="px-3 py-1.5 text-xs font-semibold text-text-muted hover:text-primary transition-all rounded-lg hover:bg-primary/5"
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                    </nav>
+
+                    <div className="flex items-center gap-2 md:gap-3">
+                        {mounted && (
+                            <button
+                                onClick={toggleTheme}
+                                className="flex items-center justify-center size-9 text-text-main hover:bg-primary/5 rounded-lg transition-colors border border-border md:border-none"
+                                aria-label="Toggle theme"
+                            >
+                                <span className="material-symbols-outlined text-[20px]">
+                                    {resolvedTheme === "dark" ? "light_mode" : "dark_mode"}
+                                </span>
+                            </button>
+                        )}
+
+                        <Link
+                            href="/contact"
+                            className="hidden sm:flex items-center justify-center h-9 px-4 rounded-lg bg-primary text-white text-xs font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+                        >
+                            Hire Me
+                        </Link>
+
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="md:hidden flex items-center justify-center size-9 text-text-main hover:bg-primary/5 rounded-lg transition-colors"
+                            aria-label="Toggle Menu"
+                            aria-expanded={isMenuOpen}
+                            aria-controls="mobile-navigation"
+                        >
+                            <span className="material-symbols-outlined text-[24px]">
+                                {isMenuOpen ? "close" : "menu"}
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
             {/* Mobile Menu Overlay */}
             <div
                 id="mobile-navigation"
-                className={`fixed inset-x-0 top-full h-[calc(100dvh-100%)] w-full bg-background z-40 md:hidden transition-all duration-300 border-t border-border overflow-y-auto ${isMenuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-4"
-                    }`}
+                className={`fixed inset-x-4 top-[84px] max-h-[calc(100dvh-110px)] bg-background/95 backdrop-blur-lg z-40 md:hidden transition-all duration-300 border border-border rounded-2xl shadow-xl overflow-y-auto ${
+                    isMenuOpen 
+                    ? "opacity-100 visible translate-y-0" 
+                    : "opacity-0 invisible -translate-y-4 pointer-events-none"
+                }`}
             >
-                <nav className="flex flex-col p-4 sm:p-6 gap-2">
+                <nav className="flex flex-col p-4 gap-1.5">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
                             onClick={() => setIsMenuOpen(false)}
-                            className="group flex items-center justify-between p-4 text-base sm:text-lg font-bold text-text-main hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+                            className="group flex items-center justify-between p-3.5 text-base font-bold text-text-main hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
                         >
                             {link.name}
-                            <span className="material-symbols-outlined text-primary opacity-70 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                            <span className="material-symbols-outlined text-primary opacity-60 group-hover:opacity-100 transition-opacity">chevron_right</span>
                         </Link>
                     ))}
                     <Link
                         href="/contact"
                         onClick={() => setIsMenuOpen(false)}
-                        className="mt-4 flex items-center justify-center h-14 rounded-2xl bg-primary text-white text-base sm:text-lg font-black shadow-xl shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all"
+                        className="mt-3 flex items-center justify-center h-12 rounded-xl bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all"
                     >
                         Hire Me
                     </Link>

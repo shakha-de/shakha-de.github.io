@@ -93,12 +93,12 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                             )}
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
                             <div className="lg:col-span-2 space-y-10 sm:space-y-12">
                                 <FadeIn>
                                     <section>
-                                        <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Overview</h2>
-                                        <p className="text-text-muted leading-relaxed text-base sm:text-lg">
+                                        <h2 className="text-xl sm:text-2xl font-black mb-4 sm:mb-5 text-text-main">Overview</h2>
+                                        <p className="text-text-muted leading-relaxed text-sm sm:text-base">
                                             {project.content.overview}
                                         </p>
                                     </section>
@@ -107,8 +107,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                 {project.content.challenges && (
                                     <FadeIn delay={0.1}>
                                         <section>
-                                            <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Key Challenges</h2>
-                                            <p className="text-text-muted leading-relaxed text-base sm:text-lg">
+                                            <h2 className="text-xl sm:text-2xl font-black mb-4 sm:mb-5 text-text-main">Key Challenges</h2>
+                                            <p className="text-text-muted leading-relaxed text-sm sm:text-base">
                                                 {project.content.challenges}
                                             </p>
                                         </section>
@@ -118,12 +118,12 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                 {project.content.outcomes && (
                                     <FadeIn delay={0.2}>
                                         <section>
-                                            <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Outcomes & Achievements</h2>
-                                            <ul className="space-y-4">
+                                            <h2 className="text-xl sm:text-2xl font-black mb-4 sm:mb-5 text-text-main">Outcomes & Achievements</h2>
+                                            <ul className="space-y-3">
                                                 {project.content.outcomes.map((outcome, i) => (
-                                                    <li key={i} className="flex gap-3 text-text-muted text-base sm:text-lg">
-                                                        <span className="text-primary font-bold">•</span>
-                                                        {outcome}
+                                                    <li key={i} className="flex gap-2.5 text-text-muted text-sm sm:text-base items-start">
+                                                        <span className="material-symbols-outlined text-primary text-[18px] mt-0.5 select-none">check_circle</span>
+                                                        <span>{outcome}</span>
                                                     </li>
                                                 ))}
                                             </ul>
@@ -134,8 +134,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                 {project.content.diagram && (
                                     <FadeIn delay={0.3}>
                                         <section>
-                                            <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Architecture</h2>
-                                            <div className="p-4 sm:p-6 bg-border/5 rounded-2xl border border-border/50 overflow-x-auto">
+                                            <h2 className="text-xl sm:text-2xl font-black mb-4 sm:mb-5 text-text-main">Architecture</h2>
+                                            <div className="p-4 sm:p-6 bg-surface/30 backdrop-blur-xs rounded-2xl border border-border overflow-x-auto shadow-sm">
                                                 <Mermaid chart={project.content.diagram} />
                                             </div>
                                         </section>
@@ -145,17 +145,17 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                 {semanticAnalysis && (
                                     <FadeIn delay={0.4}>
                                         <section className="mt-12">
-                                            <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Semantic Analysis & Thresholds</h2>
+                                            <h2 className="text-xl sm:text-2xl font-black mb-5 text-text-main">Semantic Analysis & Thresholds</h2>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                                                 <div className="p-5 sm:p-6 rounded-2xl bg-primary/5 border border-primary/10">
-                                                    <h3 className="text-base sm:text-lg font-bold mb-3 flex items-center gap-2">
+                                                    <h3 className="text-base font-bold mb-3 flex items-center gap-2 text-text-main">
                                                         <span className="material-symbols-outlined text-primary">psychology</span>
                                                         {semanticAnalysis.similarityMetric}
                                                     </h3>
-                                                    <p className="text-text-muted text-sm leading-relaxed">
+                                                    <p className="text-text-muted text-xs sm:text-sm leading-relaxed">
                                                         {semanticAnalysis.description}
                                                     </p>
-                                                    <div className="mt-4 flex items-center justify-between gap-2 text-xs font-mono bg-background/50 p-2 rounded">
+                                                    <div className="mt-4 flex items-center justify-between gap-2 text-[10px] font-mono bg-background/50 p-2 rounded border border-border/40">
                                                         <span>{semanticAnalysis.scaleMinLabel}</span>
                                                         <div className="h-1.5 w-20 sm:w-24 bg-border rounded-full overflow-hidden shrink-0">
                                                             <div className="h-full bg-primary w-full"></div>
@@ -164,11 +164,11 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                                     </div>
                                                 </div>
                                                 <div className="p-5 sm:p-6 rounded-2xl bg-primary/5 border border-primary/10">
-                                                    <h3 className="text-base sm:text-lg font-bold mb-3 flex items-center gap-2">
+                                                    <h3 className="text-base font-bold mb-3 flex items-center gap-2 text-text-main">
                                                         <span className="material-symbols-outlined text-primary">gavel</span>
                                                         Evaluation Logic
                                                     </h3>
-                                                    <ul className="space-y-3 text-sm text-text-muted">
+                                                    <ul className="space-y-3 text-xs sm:text-sm text-text-muted">
                                                         <li className="flex justify-between border-b border-border/50 pb-1">
                                                             <span>Plagiarism Threshold</span>
                                                             <span className="font-bold text-text-main">{semanticAnalysis.threshold}</span>
@@ -189,27 +189,28 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                 )}
                             </div>
 
-                            <aside className="space-y-8 sm:space-y-10">
+                            <aside className="space-y-8 sm:space-y-10 lg:pl-4">
                                 {project.content.metrics && (
                                     <div>
-                                        <h3 className="text-sm uppercase tracking-widest font-bold text-text-muted mb-6">Key Metrics</h3>
-                                        <div className="grid grid-cols-1 gap-4">
+                                        <h3 className="text-xs uppercase tracking-widest font-mono font-bold text-text-muted mb-4">Key Metrics</h3>
+                                        <div className="grid grid-cols-1 gap-3">
                                             {project.content.metrics.map((metric, i) => (
-                                                <div key={i} className="p-4 rounded-xl bg-border/5 border border-border/50">
-                                                    <p className="text-sm text-text-muted mb-1">{metric.label}</p>
-                                                    <p className="text-xl font-bold text-primary">{metric.value}</p>
+                                                <div key={i} className="p-4 rounded-xl bg-surface/40 backdrop-blur-xs border border-border relative overflow-hidden group hover:border-primary/20 transition-all duration-300">
+                                                    <div className="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-full blur-xl"></div>
+                                                    <p className="text-xs text-text-muted mb-1 font-medium">{metric.label}</p>
+                                                    <p className="text-lg font-black text-primary font-mono">{metric.value}</p>
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
                                 )}
                                 <div>
-                                    <h3 className="text-sm uppercase tracking-widest font-bold text-text-muted mb-6">Tech Stack</h3>
-                                    <div className="flex flex-wrap gap-2">
+                                    <h3 className="text-xs uppercase tracking-widest font-mono font-bold text-text-muted mb-4">Tech Stack</h3>
+                                    <div className="flex flex-wrap gap-1.5">
                                         {project.content.techStack.map((tech, i) => (
                                             <span
                                                 key={i}
-                                                className="px-4 py-2 rounded-xl bg-primary/10 text-primary text-sm font-bold"
+                                                className="px-3.5 py-1.5 rounded-lg bg-primary/5 border border-primary/25 text-primary text-xs font-mono font-bold"
                                             >
                                                 {tech}
                                             </span>

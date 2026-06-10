@@ -34,10 +34,10 @@ export default function AboutPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                                 {about.highlights?.map((item, i) => (
                                     <FadeIn key={i} delay={0.4 + i * 0.1}>
-                                        <div className="surface-card surface-card-hover flex flex-col gap-3 p-5 sm:p-6 rounded-2xl group h-full">
-                                            <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">{item.icon}</span>
-                                            <h4 className="font-bold text-text-main">{item.title}</h4>
-                                            <p className="text-sm text-text-muted leading-snug">{item.description}</p>
+                                        <div className="surface-card surface-card-hover flex flex-col gap-3 p-5 sm:p-6 rounded-2xl group h-full border border-border">
+                                            <span className="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">{item.icon}</span>
+                                            <h4 className="font-bold text-text-main text-sm sm:text-base">{item.title}</h4>
+                                            <p className="text-xs sm:text-sm text-text-muted leading-relaxed">{item.description}</p>
                                         </div>
                                     </FadeIn>
                                 ))}
@@ -46,17 +46,17 @@ export default function AboutPage() {
 
                         <div className="md:col-span-5 flex flex-col gap-6 md:gap-8">
                             <FadeIn delay={0.2}>
-                                <div className="surface-card w-full h-56 sm:h-64 overflow-hidden relative group">
+                                <div className="surface-card w-full h-56 sm:h-64 overflow-hidden relative group border border-border">
                                     <iframe
                                         src="https://www.openstreetmap.org/export/embed.html?bbox=11.838455200195314%2C51.42858079624508%2C12.100067138671877%2C51.53696147429189&amp;layer=mapnik"
                                         width="100%"
                                         height="100%"
                                         style={{ border: 0 }}
-                                        className="grayscale opacity-60 group-hover:grayscale-0 transition-all duration-500"
+                                        className="grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-85 transition-all duration-700"
                                     ></iframe>
-                                    <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md pointer-events-none">
-                                        <div className="flex items-center gap-2 text-sm font-bold text-text-main">
-                                            <span className="material-symbols-outlined text-[18px] text-primary">
+                                    <div className="absolute bottom-4 left-4 bg-background/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-border shadow-md pointer-events-none">
+                                        <div className="flex items-center gap-1.5 text-xs font-bold text-text-main">
+                                            <span className="material-symbols-outlined text-[16px] text-primary">
                                                 location_on
                                             </span>
                                             Halle (Saale), Germany
@@ -68,9 +68,9 @@ export default function AboutPage() {
                             <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 md:mb-8">
                                 {about.stats.map((stat, i) => (
                                     <FadeIn key={i} delay={0.3 + i * 0.1}>
-                                        <div className="surface-card p-5 sm:p-6 rounded-2xl">
-                                            <p className="text-text-muted text-sm font-medium">{stat.label}</p>
-                                            <p className="text-3xl sm:text-4xl font-bold text-text-main mt-2 font-mono">
+                                        <div className="surface-card p-5 sm:p-6 rounded-2xl border border-border">
+                                            <p className="text-text-muted text-xs font-mono font-bold uppercase tracking-wider">{stat.label}</p>
+                                            <p className="text-2xl sm:text-3xl font-black text-primary mt-1 font-mono">
                                                 {stat.value}
                                             </p>
                                         </div>
@@ -79,16 +79,17 @@ export default function AboutPage() {
                             </div>
 
                             <FadeIn delay={0.5}>
-                                <div className="p-6 sm:p-8 rounded-3xl bg-primary text-white shadow-xl shadow-primary/20">
-                                    <h3 className="text-lg sm:text-xl font-bold mb-5 sm:mb-6 flex items-center gap-2">
-                                        <span className="material-symbols-outlined">translate</span>
+                                <div className="p-6 sm:p-8 rounded-2xl border border-primary/20 bg-primary/5 text-text-main shadow-xl shadow-primary/5 relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
+                                    <h3 className="text-base sm:text-lg font-black mb-5 flex items-center gap-2 text-primary">
+                                        <span className="material-symbols-outlined text-[20px]">translate</span>
                                         Languages
                                     </h3>
-                                    <div className="grid grid-cols-2 gap-y-4 gap-x-6 sm:gap-x-8">
+                                    <div className="grid grid-cols-2 gap-y-4 gap-x-6 relative z-10">
                                         {portfolioData.personalInfo.languages.map((lang, i) => (
                                             <div key={i} className="flex flex-col">
-                                                <span className="text-xs font-bold uppercase opacity-70 tracking-widest">{lang.language}</span>
-                                                <span className="text-lg font-black">{lang.proficiency}</span>
+                                                <span className="text-[10px] font-mono font-bold uppercase text-text-muted tracking-wider">{lang.language}</span>
+                                                <span className="text-base font-extrabold text-text-main">{lang.proficiency}</span>
                                             </div>
                                         ))}
                                     </div>

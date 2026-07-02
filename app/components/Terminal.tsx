@@ -115,7 +115,7 @@ export default function Terminal() {
     return (
         <div 
             onClick={handleTerminalClick}
-            className="w-full max-w-[680px] border border-[var(--border-navy)] bg-[var(--surface)] shadow-2xl font-mono text-[13px] text-[var(--light-blue)] flex flex-col h-[280px] select-none cursor-text transition-all mt-4"
+            className="w-full max-w-[680px] border border-[var(--border-navy)] bg-[var(--surface)] shadow-2xl terminal-mono text-[var(--text-muted)] flex flex-col h-[360px] select-none cursor-text transition-all mt-4"
         >
             {/* Terminal Title Bar */}
             <div className="flex justify-between items-center bg-[var(--border-navy)]/30 px-4 py-2 border-b border-[var(--border-navy)] text-xs text-[var(--gray)]">
@@ -136,7 +136,7 @@ export default function Terminal() {
                 {history.map((line, idx) => (
                     <div 
                         key={idx} 
-                        className={line.isInput ? "text-[var(--text-main)]" : "text-[var(--light-blue)]"}
+                        className={line.isInput ? "text-[var(--text-main)]" : "text-[var(--text-muted)]"}
                     >
                         {line.text}
                     </div>
@@ -151,7 +151,7 @@ export default function Terminal() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        className="grow bg-transparent border-none outline-none font-mono text-[13px] text-[var(--text-main)] p-0"
+                        className="grow bg-transparent border-none outline-none terminal-mono text-[var(--text-main)] p-0"
                         autoCapitalize="off"
                         autoComplete="off"
                         spellCheck="false"

@@ -273,6 +273,21 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
+/* ---------- TERMINAL MONO ---------- */
+.terminal-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+}
+@media (prefers-color-scheme: light) {
+  .terminal-mono {
+    font-weight: bold;
+  }
+}
+:root[data-theme="light"] .terminal-mono {
+  font-weight: bold;
+}
+
 /* ---------- LOG LINE (terminal decoration) ---------- */
 .log-line {
   font-family: var(--font-mono);

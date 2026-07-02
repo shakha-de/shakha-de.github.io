@@ -7,7 +7,7 @@ export default function PrivacyPage() {
     const { personalInfo } = portfolioData;
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+        <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
             <Header />
             <main id="content" className="grow flex flex-col items-center w-full">
                 <section className="app-container section-stack w-full max-w-3xl">
@@ -19,10 +19,10 @@ export default function PrivacyPage() {
                             </h1>
                         </FadeIn>
 
-                        <div className="space-y-8 text-[#c9ccd1] text-[15px] leading-relaxed">
+                        <div className="space-y-8 text-[var(--text-muted)] text-[15px] leading-relaxed">
                             <FadeIn delay={0.2}>
                                 <div>
-                                    <h2 className="text-lg font-semibold text-[var(--off-white)] mb-4">
+                                    <h2 className="text-lg font-semibold text-[var(--text-main)] mb-4">
                                         1. An overview of data protection
                                     </h2>
                                     <p>
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
 
                             <FadeIn delay={0.3}>
                                 <div>
-                                    <h2 className="text-lg font-semibold text-[var(--off-white)] mb-4">
+                                    <h2 className="text-lg font-semibold text-[var(--text-main)] mb-4">
                                         2. Responsible Party
                                     </h2>
                                     <p className="font-mono text-sm text-[var(--light-blue)]">
@@ -45,16 +45,16 @@ export default function PrivacyPage() {
 
                             <FadeIn delay={0.4}>
                                 <div>
-                                    <h2 className="text-lg font-semibold text-[var(--off-white)] mb-4">
+                                    <h2 className="text-lg font-semibold text-[var(--text-main)] mb-4">
                                         3. Data collection on our website
                                     </h2>
-                                    <h3 className="text-base font-bold text-[var(--off-white)] mt-4 mb-2">
+                                    <h3 className="text-base font-bold text-[var(--text-main)] mt-4 mb-2">
                                         Server log files
                                     </h3>
                                     <p className="mb-4">
                                         The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are:
                                     </p>
-                                    <ul className="list-none space-y-1 text-sm text-[var(--gray)] font-mono pl-4">
+                                    <ul className="list-none space-y-1 text-sm text-[var(--text-muted)] font-mono pl-4">
                                         <li>[x] Browser type and browser version</li>
                                         <li>[x] Operating system used</li>
                                         <li>[x] Referrer URL</li>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
 
                             <FadeIn delay={0.5}>
                                 <div>
-                                    <h2 className="text-lg font-semibold text-[var(--off-white)] mb-4">
+                                    <h2 className="text-lg font-semibold text-[var(--text-main)] mb-4">
                                         4. Your Rights
                                     </h2>
                                     <p>

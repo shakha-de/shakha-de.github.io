@@ -16,7 +16,7 @@ export default function ExperiencePage() {
     };
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+        <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
             <Header />
             <main id="content" className="grow flex flex-col items-center w-full">
                 <PageTransition>
@@ -37,7 +37,7 @@ export default function ExperiencePage() {
                                                 {getPeriodStr(exp.company, exp.period)}
                                             </div>
                                             <div>
-                                                <div className="text-[19px] font-semibold text-[var(--off-white)] mb-1">
+                                                <div className="text-[19px] font-semibold text-[var(--text-main)] mb-1">
                                                     {exp.role}
                                                 </div>
                                                 <div className="font-mono text-[13px] text-[var(--mid-light-blue)] mb-2.5">
@@ -62,7 +62,7 @@ export default function ExperiencePage() {
 
                             <div className="edu mt-16">
                                 <FadeIn>
-                                    <h3 className="font-mono text-xs tracking-[0.12em] uppercase text-[var(--gray)] mb-6">
+                                    <h3 className="font-heading text-2xl tracking-[0.02em] uppercase text-[var(--text-main)] mb-6">
                                         {"// Education"}
                                     </h3>
                                 </FadeIn>
@@ -74,7 +74,7 @@ export default function ExperiencePage() {
                                                     [2023 — 2026]
                                                 </div>
                                                 <div>
-                                                    <div className="text-[19px] font-semibold text-[var(--off-white)] mb-1">
+                                                    <div className="text-[19px] font-semibold text-[var(--text-main)] mb-1">
                                                         {edu.degree}
                                                     </div>
                                                     <div className="font-mono text-[13px] text-[var(--mid-light-blue)] mb-2.5">

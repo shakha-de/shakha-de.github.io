@@ -8,7 +8,7 @@ export default function AboutPage() {
     const { about } = portfolioData;
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+        <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
             <Header />
             <main id="content" className="grow flex flex-col items-center w-full">
                 <PageTransition>
@@ -91,7 +91,7 @@ export default function AboutPage() {
                                             <div className="k font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--gray)] mb-2">
                                                 {stat.label}
                                             </div>
-                                            <div className="v font-mono text-[22px] text-[var(--off-white)]">
+                                            <div className="v font-mono text-[22px] text-[var(--text-main)]">
                                                 {stat.value}
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@ export default function AboutPage() {
                                         <div className="k font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--gray)] mb-2">
                                             Location
                                         </div>
-                                        <div className="v font-mono text-[22px] text-[var(--off-white)]">
+                                        <div className="v font-mono text-[22px] text-[var(--text-main)]">
                                             Halle (Saale), DE
                                         </div>
                                     </div>

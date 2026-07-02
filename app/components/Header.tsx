@@ -5,6 +5,42 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [theme, setTheme] = useState("dark");
+    const [mounted, setMounted] = useState(false);
+
+    // Initial theme setup
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMounted(true);
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme) {
+            setTheme(storedTheme);
+            document.documentElement.setAttribute("data-theme", storedTheme);
+        } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+            setTheme("light");
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+    }, []);
+
+    // Sync theme toggle with other components (like terminal command)
+    useEffect(() => {
+        const handleThemeChange = (e: Event) => {
+            const customEvent = e as CustomEvent;
+            if (customEvent.detail) {
+                setTheme(customEvent.detail);
+            }
+        };
+        window.addEventListener("theme-change", handleThemeChange);
+        return () => window.removeEventListener("theme-change", handleThemeChange);
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = theme === "dark" ? "light" : "dark";
+        setTheme(newTheme);
+        localStorage.setItem("theme", newTheme);
+        document.documentElement.setAttribute("data-theme", newTheme);
+        window.dispatchEvent(new CustomEvent("theme-change", { detail: newTheme }));
+    };
 
     // Lock scroll when menu is open
     useEffect(() => {
@@ -31,7 +67,7 @@ export default function Header() {
             >
                 Skip to content
             </a>
-            <header className="fixed top-0 left-0 right-0 z-100 bg-[rgba(0,0,0,0.82)] backdrop-blur-[10px] border-b border-[var(--border)]">
+            <header className="fixed top-0 left-0 right-0 z-100 bg-[var(--header-bg)] backdrop-blur-[10px] border-b border-[var(--border)]">
                 <div className="max-w-[1280px] mx-auto px-8 py-3.5 flex items-center justify-between gap-6">
                     <Link
                         href="/"
@@ -63,6 +99,15 @@ export default function Header() {
                     </nav>
 
                     <div className="flex items-center gap-4">
+                        {mounted && (
+                            <button
+                                onClick={toggleTheme}
+                                className="font-mono text-[12.5px] uppercase text-[var(--gray)] hover:text-[var(--mid-light-blue)] cursor-pointer"
+                                aria-label="Toggle Theme"
+                            >
+                                {theme === "dark" ? "☼ Light" : "☾ Dark"}
+                            </button>
+                        )}
                         <Link
                             href="/contact"
                             className="hidden sm:inline-block font-mono text-[12.5px] uppercase tracking-[0.06em] border border-[var(--nous-blue)] text-[var(--off-white)] px-3.5 py-2 transition-all hover:bg-[var(--nous-blue)]"
@@ -86,7 +131,7 @@ export default function Header() {
                 {isMenuOpen && (
                     <div
                         id="mobile-navigation"
-                        className="absolute top-full left-0 right-0 bg-black border-b border-[var(--border)] z-40 md:hidden flex flex-col p-8 gap-4 font-mono text-[12.5px] uppercase tracking-[0.04em]"
+                        className="absolute top-full left-0 right-0 bg-[var(--background)] border-b border-[var(--border)] z-40 md:hidden flex flex-col p-8 gap-4 font-mono text-[12.5px] uppercase tracking-[0.04em]"
                     >
                         <nav className="flex flex-col gap-4">
                             {navLinks.map((link) => (

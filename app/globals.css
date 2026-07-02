@@ -20,6 +20,8 @@
   --black: #000000;
   --off-white: #fbfcfe;
   --gray: #707171;
+  --seed-color: #4a4d4f;
+  --skill-tag-hover: var(--off-white);
   --gray-dim: #3a3d3f;
   --nous-blue: #0071a9;
   --nous-blue-rgb: 0, 113, 169;
@@ -37,6 +39,7 @@
   --border-navy: #1c3a4e;
   --surface: #0a0a0a;
   --accent: var(--nous-blue);
+  --header-bg: rgba(0, 0, 0, 0.82);
 
   --radius: 0px;
   --font-heading: 'PP Mondwest', 'Space Grotesk', system-ui, sans-serif;
@@ -45,9 +48,69 @@
   --font-serif: Times, 'Times New Roman', serif;
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--off-white);
+    --text-main: var(--black);
+    --text-muted: #5a5d61;
+    --border: #e2e8f0;
+    --border-navy: #cbd5e1;
+    --surface: #ffffff;
+    --header-bg: rgba(251, 252, 254, 0.82);
+    --deep-navy: #eef4f8;
+    --light-blue: var(--med-blue);
+    --mid-light-blue: var(--dark-blue);
+    --gray: #374151;
+    --seed-color: #576375;
+    --skill-tag-hover: var(--nous-blue);
+    --gray-dim: #cbd5e1;
+  }
+  .log-line, .status-row {
+    font-weight: 500;
+  }
+}
+
+:root[data-theme="light"] {
+  --background: var(--off-white);
+  --text-main: var(--black);
+  --text-muted: #5a5d61;
+  --border: #e2e8f0;
+  --border-navy: #cbd5e1;
+  --surface: #ffffff;
+  --header-bg: rgba(251, 252, 254, 0.82);
+  --deep-navy: #eef4f8;
+  --light-blue: var(--med-blue);
+  --mid-light-blue: var(--dark-blue);
+  --gray: #374151;
+  --seed-color: #576375;
+  --skill-tag-hover: var(--nous-blue);
+  --gray-dim: #cbd5e1;
+}
+
+:root[data-theme="light"] .log-line,
+:root[data-theme="light"] .status-row {
+  font-weight: 500;
+}
+
+:root[data-theme="dark"] {
+  --background: var(--black);
+  --text-main: var(--off-white);
+  --text-muted: #c9ccd1;
+  --border: #141618;
+  --border-navy: #1c3a4e;
+  --surface: #0a0a0a;
+  --header-bg: rgba(0, 0, 0, 0.82);
+  --light-blue: #bcd7e5;
+  --mid-light-blue: #83b2ce;
+  --gray: #707171;
+  --seed-color: #4a4d4f;
+  --skill-tag-hover: var(--off-white);
+  --gray-dim: #3a3d3f;
+}
+
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light dark;
   overflow-x: hidden;
   max-width: 100%;
 }
@@ -193,7 +256,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .body-text {
   max-width: 680px;
-  color: #c9ccd1;
+  color: var(--text-muted);
   margin-bottom: 18px;
 }
 
@@ -228,7 +291,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .log-line .seed {
-  color: #4a4d4f;
+  color: var(--seed-color);
 }
 
 .log-line .seed::before {
@@ -336,14 +399,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono);
   font-size: 12.5px;
   color: var(--light-blue);
-  border: 1px solid #1f3a4a;
+  border: 1px solid var(--border-navy);
   padding: 5px 10px;
   transition: all 0.15s;
 }
 
 .skill-tag:hover {
   border-color: var(--nous-blue);
-  color: var(--off-white);
+  color: var(--skill-tag-hover);
 }
 
 /* ---------- EXPERIENCE ITEM ---------- */

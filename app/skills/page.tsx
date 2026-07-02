@@ -16,7 +16,7 @@ export default function SkillsPage() {
     ];
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+        <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
             <Header />
             <main id="content" className="grow flex flex-col items-center w-full">
                 <PageTransition>
@@ -37,7 +37,7 @@ export default function SkillsPage() {
                                                 <span className="sg-icon font-mono text-[var(--nous-blue)] text-[13px]">
                                                     {cat.icon}
                                                 </span>
-                                                <span className="sg-title font-mono text-xs tracking-[0.12em] uppercase text-[var(--off-white)]">
+                                                <span className="sg-title font-mono text-xs tracking-[0.12em] uppercase text-[var(--text-main)]">
                                                     {cat.name}
                                                 </span>
                                             </div>
@@ -69,7 +69,7 @@ export default function SkillsPage() {
                                                 <span className="h-trophy font-mono text-[var(--nous-blue)]">
                                                     ◇
                                                 </span>
-                                                <span className="h-text text-[#c9ccd1] text-[15px]">
+                                                <span className="h-text text-[var(--text-muted)] text-[15px]">
                                                     {award}
                                                 </span>
                                             </div>

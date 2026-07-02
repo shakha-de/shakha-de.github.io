@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 
 export default function NotFound() {
     return (
-        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+        <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
             <Header />
             <main id="content" className="grow flex flex-col items-center justify-center w-full app-container section-stack">
                 <section className="w-full max-w-3xl text-left">
@@ -16,7 +16,7 @@ export default function NotFound() {
                         Page Not Found
                     </h1>
 
-                    <p className="body-text text-base sm:text-lg leading-relaxed text-[#c9ccd1] mb-10 max-w-xl">
+                    <p className="body-text text-base sm:text-lg leading-relaxed text-[var(--text-muted)] mb-10 max-w-xl">
                         The page you are looking for does not exist or has been moved.
                     </p>
 

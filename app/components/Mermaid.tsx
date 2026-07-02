@@ -7,9 +7,12 @@ export const Mermaid = ({ chart }: { chart: string }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const isLight = document.documentElement.getAttribute("data-theme") === "light" ||
+            (!document.documentElement.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: light)").matches);
+
         mermaid.initialize({
             startOnLoad: false,
-            theme: "dark",
+            theme: isLight ? "default" : "dark",
             securityLevel: "loose",
             fontFamily: "var(--font-mono)",
         });

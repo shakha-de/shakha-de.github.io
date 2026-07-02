@@ -18,7 +18,7 @@ export default function ProjectsPage() {
         : projects.filter(p => p.content.techStack.includes(selectedTech));
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+        <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
             <Header />
             <main id="content" className="grow flex flex-col items-center w-full">
                 <PageTransition>
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                                                     {indexStr}
                                                 </div>
                                                 <div>
-                                                    <div className="proj-title text-[22px] font-semibold tracking-tight mb-2 text-[var(--off-white)] transition-colors">
+                                                    <div className="proj-title text-[22px] font-semibold tracking-tight mb-2 text-[var(--text-main)] transition-colors">
                                                         {project.title.replace(" (In Progress)", "")}
                                                         {project.title.includes("(In Progress)") && (
                                                             <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--nous-blue)] ml-2.5 vertical-align-[3px]">

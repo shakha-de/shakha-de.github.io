@@ -9,7 +9,7 @@ export default function Home() {
     const { projects, personalInfo } = portfolioData;
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+        <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
             <Header />
             <main id="content" className="grow flex flex-col items-center w-full">
                 <PageTransition>
@@ -18,7 +18,7 @@ export default function Home() {
                     <div className="divider w-full" />
 
                     {/* Featured Projects Section */}
-                    <section className="w-full bg-[var(--black)] border-y border-[var(--border-navy)]">
+                    <section className="w-full bg-[var(--background)] border-y border-[var(--border-navy)]">
                         <div className="app-container section-stack">
                             <FadeIn delay={0.1}>
                                 <div className="eyebrow">Selected Work</div>
@@ -48,7 +48,7 @@ export default function Home() {
                                                     {indexStr}
                                                 </div>
                                                 <div>
-                                                    <div className="proj-title text-[22px] font-semibold tracking-tight mb-2 text-[var(--off-white)] transition-colors">
+                                                    <div className="proj-title text-[22px] font-semibold tracking-tight mb-2 text-[var(--text-main)] transition-colors">
                                                         {project.title.replace(" (In Progress)", "")}
                                                         {project.title.includes("(In Progress)") && (
                                                             <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--nous-blue)] ml-2.5 vertical-align-[3px]">

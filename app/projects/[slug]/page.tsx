@@ -47,7 +47,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
     const semanticAnalysis = project.content.semanticAnalysis;
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+        <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
             <ScrollProgress />
             <Header />
             <main id="content" className="grow flex flex-col items-center w-full">
@@ -97,10 +97,10 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                 <div className="lg:col-span-2 space-y-10 sm:space-y-12">
                                     <FadeIn>
                                         <section>
-                                            <h2 className="text-[22px] font-semibold text-[var(--off-white)] mb-4">
+                                            <h2 className="text-[22px] font-semibold text-[var(--text-main)] mb-4">
                                                 Overview
                                             </h2>
-                                            <p className="text-[#c9ccd1] text-[15px] leading-relaxed">
+                                            <p className="text-[var(--text-muted)] text-[15px] leading-relaxed">
                                                 {project.content.overview}
                                             </p>
                                         </section>
@@ -109,10 +109,10 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                     {project.content.challenges && (
                                         <FadeIn delay={0.1}>
                                             <section>
-                                                <h2 className="text-[22px] font-semibold text-[var(--off-white)] mb-4">
+                                                <h2 className="text-[22px] font-semibold text-[var(--text-main)] mb-4">
                                                     Key Challenges
                                                 </h2>
-                                                <p className="text-[#c9ccd1] text-[15px] leading-relaxed">
+                                                <p className="text-[var(--text-muted)] text-[15px] leading-relaxed">
                                                     {project.content.challenges}
                                                 </p>
                                             </section>
@@ -122,14 +122,14 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                     {project.content.outcomes && (
                                         <FadeIn delay={0.2}>
                                             <section>
-                                                <h2 className="text-[22px] font-semibold text-[var(--off-white)] mb-4">
+                                                <h2 className="text-[22px] font-semibold text-[var(--text-main)] mb-4">
                                                     Outcomes & Achievements
                                                 </h2>
                                                 <ul className="space-y-3">
                                                     {project.content.outcomes.map((outcome, i) => (
                                                         <li
                                                             key={i}
-                                                            className="flex gap-2.5 text-[#c9ccd1] text-[15px] items-start"
+                                                            className="flex gap-2.5 text-[var(--text-muted)] text-[15px] items-start"
                                                         >
                                                             <span className="text-[var(--nous-blue)] font-bold">›</span>
                                                             <span>{outcome}</span>
@@ -143,7 +143,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                     {project.content.diagram && (
                                         <FadeIn delay={0.3}>
                                             <section>
-                                                <h2 className="text-[22px] font-semibold text-[var(--off-white)] mb-4">
+                                                <h2 className="text-[22px] font-semibold text-[var(--text-main)] mb-4">
                                                     Architecture
                                                 </h2>
                                                 <div className="p-6 bg-transparent border border-[var(--border)] overflow-x-auto max-w-full">
@@ -156,12 +156,12 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                     {semanticAnalysis && (
                                         <FadeIn delay={0.4}>
                                             <section className="mt-12">
-                                                <h2 className="text-[22px] font-semibold text-[var(--off-white)] mb-5">
+                                                <h2 className="text-[22px] font-semibold text-[var(--text-main)] mb-5">
                                                     Semantic Analysis & Thresholds
                                                 </h2>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                     <div className="p-5 border border-[var(--border-navy)] bg-[var(--deep-navy)]">
-                                                        <h3 className="text-base font-bold mb-3 flex items-center gap-2 text-[var(--off-white)]">
+                                                        <h3 className="text-base font-bold mb-3 flex items-center gap-2 text-[var(--text-main)]">
                                                             <span className="text-[var(--nous-blue)] font-bold">◉</span>
                                                             {semanticAnalysis.similarityMetric}
                                                         </h3>
@@ -177,22 +177,22 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                                         </div>
                                                     </div>
                                                     <div className="p-5 border border-[var(--border-navy)] bg-[var(--deep-navy)]">
-                                                        <h3 className="text-base font-bold mb-3 flex items-center gap-2 text-[var(--off-white)]">
+                                                        <h3 className="text-base font-bold mb-3 flex items-center gap-2 text-[var(--text-main)]">
                                                             <span className="text-[var(--nous-blue)] font-bold">◉</span>
                                                             Evaluation Logic
                                                         </h3>
                                                         <ul className="space-y-3 text-xs sm:text-sm text-[var(--light-blue)]">
                                                             <li className="flex justify-between border-b border-[var(--border)] pb-1">
                                                                 <span>Plagiarism Threshold</span>
-                                                                <span className="font-bold text-[var(--off-white)]">{semanticAnalysis.threshold}</span>
+                                                                <span className="font-bold text-[var(--text-main)]">{semanticAnalysis.threshold}</span>
                                                             </li>
                                                             <li className="flex justify-between border-b border-[var(--border)] pb-1">
                                                                 <span>Min Text Length</span>
-                                                                <span className="font-bold text-[var(--off-white)]">{semanticAnalysis.minLength}</span>
+                                                                <span className="font-bold text-[var(--text-main)]">{semanticAnalysis.minLength}</span>
                                                             </li>
                                                             <li className="flex justify-between">
                                                                 <span>Language Model</span>
-                                                                <span className="font-bold text-[var(--off-white)]">{semanticAnalysis.model}</span>
+                                                                <span className="font-bold text-[var(--text-main)]">{semanticAnalysis.model}</span>
                                                             </li>
                                                         </ul>
                                                     </div>

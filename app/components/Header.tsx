@@ -2,30 +2,13 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 
 export default function Header() {
-    const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { setTheme, resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        const timeout = setTimeout(() => setMounted(true), 0);
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-            clearTimeout(timeout);
-        };
-    }, []);
 
     // Lock scroll when menu is open
     useEffect(() => {
         document.body.style.overflow = isMenuOpen ? "hidden" : "";
-
         return () => {
             document.body.style.overflow = "";
         };
@@ -40,116 +23,93 @@ export default function Header() {
         { name: "Contact", href: "/contact" },
     ];
 
-    const toggleTheme = () => {
-        setTheme(resolvedTheme === "dark" ? "light" : "dark");
-    };
-
     return (
         <>
-        <a
-            href="#content"
-            className="sr-only focus:not-sr-only fixed left-4 top-4 z-[70] rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-lg shadow-primary/20"
-        >
-            Skip to content
-        </a>
-        <header className="sticky top-0 z-50 w-full py-4 transition-all duration-300">
-            <div className="app-container relative transition-all duration-300">
-                <div className={`flex items-center justify-between gap-3 px-5 py-3 transition-all duration-300 rounded-2xl ${
-                    scrolled || isMenuOpen
-                    ? "glass-panel bg-background/85 backdrop-blur-md shadow-lg border border-border"
-                    : "bg-transparent border border-transparent"
-                }`}>
+            <a
+                href="#content"
+                className="sr-only focus:not-sr-only fixed left-4 top-4 z-[70] bg-[var(--nous-blue)] px-4 py-2 text-sm font-bold text-white shadow-lg"
+            >
+                Skip to content
+            </a>
+            <header className="fixed top-0 left-0 right-0 z-100 bg-[rgba(0,0,0,0.82)] backdrop-blur-[10px] border-b border-[var(--border)]">
+                <div className="max-w-[1280px] mx-auto px-8 py-3.5 flex items-center justify-between gap-6">
                     <Link
                         href="/"
-                        className="flex items-center gap-2 group transition-all"
+                        className="flex items-center gap-2.5 font-bold tracking-tight text-[var(--off-white)]"
                         onClick={() => setIsMenuOpen(false)}
                     >
-                        <div className="size-9 bg-primary rounded-lg flex items-center justify-center text-white font-black text-lg shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform">
-                            S
-                        </div>
-                        <span className="text-lg font-bold tracking-tight text-text-main hidden sm:block">
-                            Kadamboev<span className="text-primary">.</span>
-                        </span>
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+                            <circle cx="13" cy="13" r="4.2" fill="#0071a9"/>
+                            <g stroke="#0071a9" strokeWidth="1.4" strokeLinecap="round">
+                                <line x1="13" y1="2" x2="13" y2="6"/><line x1="13" y1="20" x2="13" y2="24"/>
+                                <line x1="2" y1="13" x2="6" y2="13"/><line x1="20" y1="13" x2="24" y2="13"/>
+                                <line x1="5.2" y1="5.2" x2="8" y2="8"/><line x1="18" y1="18" x2="20.8" y2="20.8"/>
+                                <line x1="20.8" y1="5.2" x2="18" y2="8"/><line x1="8" y1="18" x2="5.2" y2="20.8"/>
+                            </g>
+                        </svg>
+                        <span>SKadamboev.</span>
                     </Link>
 
-                    <nav className="hidden md:flex items-center gap-1">
+                    <nav className="hidden md:flex items-center gap-7 font-mono text-[12.5px] uppercase tracking-[0.04em] text-[var(--gray)]">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="px-3 py-1.5 text-xs font-semibold text-text-muted hover:text-primary transition-all rounded-lg hover:bg-primary/5"
+                                className="transition-colors hover:text-[var(--mid-light-blue)]"
                             >
                                 {link.name}
                             </Link>
                         ))}
                     </nav>
 
-                    <div className="flex items-center gap-2 md:gap-3">
-                        {mounted && (
-                            <button
-                                onClick={toggleTheme}
-                                className="flex items-center justify-center size-9 text-text-main hover:bg-primary/5 rounded-lg transition-colors border border-border md:border-none"
-                                aria-label="Toggle theme"
-                            >
-                                <span className="material-symbols-outlined text-[20px]">
-                                    {resolvedTheme === "dark" ? "light_mode" : "dark_mode"}
-                                </span>
-                            </button>
-                        )}
-
+                    <div className="flex items-center gap-4">
                         <Link
                             href="/contact"
-                            className="hidden sm:flex items-center justify-center h-9 px-4 rounded-lg bg-primary text-white text-xs font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+                            className="hidden sm:inline-block font-mono text-[12.5px] uppercase tracking-[0.06em] border border-[var(--nous-blue)] text-[var(--off-white)] px-3.5 py-2 transition-all hover:bg-[var(--nous-blue)]"
                         >
                             Hire Me
                         </Link>
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="md:hidden flex items-center justify-center size-9 text-text-main hover:bg-primary/5 rounded-lg transition-colors"
+                            className="md:hidden border border-[#222] text-[var(--off-white)] font-mono text-xs px-2.5 py-1.5 cursor-pointer uppercase"
                             aria-label="Toggle Menu"
                             aria-expanded={isMenuOpen}
                             aria-controls="mobile-navigation"
                         >
-                            <span className="material-symbols-outlined text-[24px]">
-                                {isMenuOpen ? "close" : "menu"}
-                            </span>
+                            {isMenuOpen ? "close" : "menu"}
                         </button>
                     </div>
                 </div>
 
                 {/* Mobile Menu Overlay */}
-                <div
-                    id="mobile-navigation"
-                    className={`absolute inset-x-0 top-full mt-2 max-h-[calc(100dvh-110px)] bg-background/95 backdrop-blur-lg z-40 md:hidden transition-all duration-300 border border-border rounded-2xl shadow-xl overflow-y-auto ${
-                        isMenuOpen 
-                        ? "opacity-100 visible translate-y-0" 
-                        : "opacity-0 invisible -translate-y-4 pointer-events-none"
-                    }`}
-                >
-                    <nav className="flex flex-col p-3 gap-1">
-                        {navLinks.map((link) => (
+                {isMenuOpen && (
+                    <div
+                        id="mobile-navigation"
+                        className="absolute top-full left-0 right-0 bg-black border-b border-[var(--border)] z-40 md:hidden flex flex-col p-8 gap-4 font-mono text-[12.5px] uppercase tracking-[0.04em]"
+                    >
+                        <nav className="flex flex-col gap-4">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="text-[var(--gray)] hover:text-[var(--mid-light-blue)]"
+                                >
+                                    → {link.name}
+                                </Link>
+                            ))}
                             <Link
-                                key={link.name}
-                                href={link.href}
+                                href="/contact"
                                 onClick={() => setIsMenuOpen(false)}
-                                className="group flex items-center justify-between py-2.5 px-4 text-sm font-semibold text-text-main hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+                                className="border border-[var(--nous-blue)] text-[var(--off-white)] py-2 text-center hover:bg-[var(--nous-blue)] mt-2"
                             >
-                                {link.name}
-                                <span className="material-symbols-outlined text-primary opacity-60 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                                Hire Me
                             </Link>
-                        ))}
-                        <Link
-                            href="/contact"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="mt-2 flex items-center justify-center h-10 rounded-xl bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all"
-                        >
-                            Hire Me
-                        </Link>
-                    </nav>
-                </div>
-            </div>
-        </header>
+                        </nav>
+                    </div>
+                )}
+            </header>
         </>
     );
 }

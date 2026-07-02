@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKadamboev. — Engineering Reliable Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#000000;
+    --off-white:#fbfcfe;
+    --gray:#707171;
+    --gray-dim:#3a3d3f;
+    --nous-blue:#0071a9;
+    --deep-navy:#122132;
+    --dark-blue:#0d405b;
+    --med-blue:#246182;
+    --blue:#508fb5;
+    --mid-light-blue:#83b2ce;
+    --light-blue:#bcd7e5;
+    --font-display:'PP Mondwest','Space Grotesk',system-ui,sans-serif;
+    --font-mono:'Courier Prime','Courier New',monospace;
+    --font-serif:Times,'Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black);
+    color:var(--off-white);
+    font-family:var(--font-display);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--nous-blue);color:var(--off-white)}
+
+  /* ---------- NAV ---------- */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #111;
+  }
+  .nav-inner{
+    max-width:1280px;margin:0 auto;
+    padding:14px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+  .brand svg{display:block}
+  .nav-links{display:flex;gap:28px;align-items:center;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--gray)}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--mid-light-blue)}
+  .hire{
+    font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+    border:1px solid var(--nous-blue);color:var(--off-white);
+    padding:8px 14px;transition:all .2s;
+  }
+  .hire:hover{background:var(--nous-blue)}
+  .menu-btn{display:none;background:none;border:1px solid #222;color:var(--off-white);padding:6px 10px;font-family:var(--font-mono);font-size:12px;cursor:pointer}
+
+  /* ---------- LAYOUT ---------- */
+  section{padding:120px 32px;max-width:1280px;margin:0 auto}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--nous-blue);margin-bottom:28px}
+  h1{font-size:clamp(40px,7vw,96px);font-weight:700;line-height:1.02;letter-spacing:-.02em;margin-bottom:24px}
+  h2{font-size:clamp(32px,4.5vw,56px);font-weight:700;line-height:1.05;letter-spacing:-.015em;margin-bottom:20px}
+  h3{font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+  .lede{font-size:20px;color:var(--light-blue);max-width:680px;margin-bottom:14px;line-height:1.5}
+  p.body{max-width:680px;color:#c9ccd1;margin-bottom:18px}
+  .serif{font-family:var(--font-serif);font-style:italic}
+
+  .log{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:var(--gray);margin:64px 0 0;display:flex;gap:28px;flex-wrap:wrap}
+  .log span::before{content:"› ";color:var(--nous-blue)}
+  .log .seed{color:#4a4d4f}
+  .log .seed::before{content:"";}
+
+  .divider{height:1px;background:#141618;max-width:1280px;margin:0 auto}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:140px}
+  .hero .mark-row{display:flex;align-items:center;gap:16px;margin-bottom:48px}
+  .hero h1 .accent{color:var(--nous-blue)}
+  .cursor{display:inline-block;width:14px;height:0.9em;background:var(--nous-blue);margin-left:6px;vertical-align:-2px;animation:blink 1.05s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:36px}
+  .btn{
+    font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    padding:14px 22px;border:1px solid var(--gray-dim);transition:all .2s;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn:hover{border-color:var(--nous-blue);color:var(--mid-light-blue)}
+  .btn.primary{border-color:var(--nous-blue)}
+  .btn.primary:hover{background:var(--nous-blue);color:var(--off-white)}
+  .status-row{
+    margin-top:56px;display:flex;align-items:center;gap:12px;
+    font-family:var(--font-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:#3fb950;box-shadow:0 0 0 0 rgba(63,185,80,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,185,80,.5)}70%{box-shadow:0 0 0 10px rgba(63,185,80,0)}100%{box-shadow:0 0 0 0 rgba(63,185,80,0)}}
+
+  /* ---------- MISSION ---------- */
+  .mission{background:var(--black)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:64px;max-width:980px}
+  .pillar .p-key{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--nous-blue);margin-bottom:14px}
+  .pillar h3{margin-bottom:8px}
+  .pillar p{color:var(--gray);font-size:15px}
+  .meta-grid{display:grid;grid-template-columns:repeat(3,auto);gap:64px;margin-top:64px;font-family:var(--font-mono)}
+  .meta-grid .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+  .meta-grid .v{font-size:22px;color:var(--off-white)}
+
+  /* ---------- PROJECTS ---------- */
+  .projects{background:var(--deep-navy)}
+  .proj-list{margin-top:48px;border-top:1px solid #1c3a4e}
+  .proj{
+    display:grid;grid-template-columns:60px 1fr 220px 40px;gap:32px;align-items:start;
+    padding:32px 0;border-bottom:1px solid #1c3a4e;transition:background .2s;cursor:pointer;
+  }
+  .proj:hover{background:rgba(0,113,169,.06)}
+  .proj:hover .p-title{color:var(--mid-light-blue)}
+  .proj:hover .p-arrow{color:var(--nous-blue);transform:translateX(6px)}
+  .p-idx{font-family:var(--font-mono);font-size:13px;color:var(--gray);padding-top:4px}
+  .p-title{font-size:22px;font-weight:600;letter-spacing:-.01em;transition:color .2s;margin-bottom:8px}
+  .p-desc{color:var(--light-blue);font-size:15px;max-width:560px;line-height:1.5}
+  .p-tags{display:flex;flex-direction:column;gap:6px;font-family:var(--font-mono);font-size:12px;color:var(--gray);padding-top:6px}
+  .p-tags span::before{content:"// ";color:var(--dark-blue)}
+  .p-arrow{font-family:var(--font-mono);color:var(--gray);transition:all .2s;text-align:right;padding-top:4px}
+  .p-status{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--nous-blue);margin-left:10px;vertical-align:3px}
+
+  /* ---------- SKILLS ---------- */
+  .skills{background:var(--black)}
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px 80px;margin-top:48px}
+  .skill-group .sg-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .sg-icon{font-family:var(--font-mono);color:var(--nous-blue);font-size:13px}
+  .sg-title{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--off-white)}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-family:var(--font-mono);font-size:12.5px;color:var(--light-blue);border:1px solid #1f3a4a;padding:5px 10px;transition:all .15s}
+  .tag:hover{border-color:var(--nous-blue);color:var(--off-white)}
+  .honors{margin-top:72px;border-top:1px solid #141618;padding-top:48px}
+  .h-item{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid #141618}
+  .h-trophy{font-family:var(--font-mono);color:var(--nous-blue)}
+  .h-text{color:#c9ccd1;font-size:15px}
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp{background:var(--deep-navy)}
+  .exp-list{margin-top:48px}
+  .exp-item{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:32px 0;border-bottom:1px solid #1c3a4e}
+  .exp-ts{font-family:var(--font-mono);font-size:12.5px;color:var(--gray);letter-spacing:.04em;padding-top:6px}
+  .exp-role{font-size:19px;font-weight:600;margin-bottom:4px}
+  .exp-org{font-family:var(--font-mono);font-size:13px;color:var(--mid-light-blue);margin-bottom:10px}
+  .exp-org .loc{color:var(--gray)}
+  .exp-desc{color:var(--light-blue);font-size:15px;max-width:620px;line-height:1.55}
+  .exp-note{font-family:var(--font-mono);font-size:12px;color:var(--nous-blue);margin-top:8px}
+  .edu{margin-top:64px}
+  .edu h3{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:24px}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--black);text-align:left}
+  .contact h2{max-width:880px}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:56px;max-width:1080px}
+  .contact-channels{display:flex;flex-direction:column;gap:20px}
+  .channel{display:flex;align-items:center;gap:16px;font-family:var(--font-mono);font-size:14px;padding:16px 0;border-bottom:1px solid #141618;transition:color .2s}
+  .channel:hover{color:var(--mid-light-blue)}
+  .channel .ck{color:var(--nous-blue);width:18px}
+  .channel .cv{color:var(--off-white)}
+  .langs{font-family:var(--font-mono);font-size:13px;color:var(--gray);line-height:2.1}
+  .langs strong{color:var(--off-white);font-weight:400}
+
+  /* ---------- FOOTER / NODES ---------- */
+  footer{background:var(--dark-blue);padding:80px 32px 48px}
+  .foot-inner{max-width:1280px;margin:0 auto}
+  .foot-brand{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+  .foot-brand .wb{font-size:22px;font-weight:700;letter-spacing:.02em}
+  .foot-tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--light-blue);margin-bottom:48px}
+  .foot-nodes-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid-light-blue);margin-bottom:20px}
+  .foot-nodes{display:flex;flex-wrap:wrap;gap:14px 32px;font-family:var(--font-mono);font-size:14px;margin-bottom:64px}
+  .foot-nodes a{transition:color .2s}
+  .foot-nodes a:hover{color:var(--off-white)}
+  .foot-nodes a::before{content:"→ ";color:var(--nous-blue)}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--font-mono);font-size:11.5px;color:var(--mid-light-blue);border-top:1px solid #13405a;padding-top:24px}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#000;padding:20px 32px;gap:18px;border-bottom:1px solid #111}
+    .menu-btn{display:block}
+    section{padding:80px 24px}
+    .pillars{grid-template-columns:1fr;gap:32px}
+    .meta-grid{grid-template-columns:1fr;gap:28px}
+    .proj{grid-template-columns:40px 1fr;gap:16px}
+    .p-tags{grid-column:2;margin-top:8px;flex-direction:row;flex-wrap:wrap}
+    .p-arrow{display:none}
+    .skill-grid{grid-template-columns:1fr;gap:36px}
+    .exp-item{grid-template-columns:1fr;gap:8px}
+    .contact-grid{grid-template-columns:1fr;gap:40px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="top">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <!-- SK + node mark -->
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="4.2" fill="#0071a9"/>
+        <g stroke="#0071a9" stroke-width="1.4" stroke-linecap="round">
+          <line x1="13" y1="2" x2="13" y2="6"/>
+          <line x1="13" y1="20" x2="13" y2="24"/>
+          <line x1="2" y1="13" x2="6" y2="13"/>
+          <line x1="20" y1="13" x2="24" y2="13"/>
+          <line x1="5.2" y1="5.2" x2="8" y2="8"/>
+          <line x1="18" y1="18" x2="20.8" y2="20.8"/>
+          <line x1="20.8" y1="5.2" x2="18" y2="8"/>
+          <line x1="8" y1="18" x2="5.2" y2="20.8"/>
+        </g>
+      </svg>
+      <span>SKadamboev.</span>
+    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="#hero">Home</a>
+      <a href="#mission">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="hire">Hire Me</a>
+    <button class="menu-btn" id="menubtn">menu</button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div id="hero"></div>
+  <div class="mark-row reveal">
+    <svg width="40" height="40" viewBox="0 0 26 26" fill="none">
+      <circle cx="13" cy="13" r="4.2" fill="#0071a9"/>
+      <g stroke="#0071a9" stroke-width="1.4" stroke-linecap="round">
+        <line x1="13" y1="2" x2="13" y2="6"/><line x1="13" y1="20" x2="13" y2="24"/>
+        <line x1="2" y1="13" x2="6" y2="13"/><line x1="20" y1="13" x2="24" y2="13"/>
+        <line x1="5.2" y1="5.2" x2="8" y2="8"/><line x1="18" y1="18" x2="20.8" y2="20.8"/>
+        <line x1="20.8" y1="5.2" x2="18" y2="8"/><line x1="8" y1="18" x2="5.2" y2="20.8"/>
+      </g>
+    </svg>
+    <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)">Portfolio Overview</span>
+  </div>
+
+  <h1 class="reveal">Engineering<br>Reliable <span class="accent">Systems</span><span class="cursor"></span></h1>
+  <p class="lede reveal">CS Student at MLU Halle · Backend Developer. Building scalable microservices and embedded solutions close to production.</p>
+
+  <div class="hero-ctas reveal">
+    <a href="#projects" class="btn primary">⟨⟩ View Projects</a>
+    <a href="https://linkedin.com/in/shakhade" target="_blank" rel="noopener" class="btn">↗ LinkedIn</a>
+  </div>
+
+  <div class="status-row reveal">
+    <span class="dot"></span> System Status: Available For Hire · Halle (Saale), DE
+  </div>
+
+  <div class="log reveal">
+    <span>OUTPUT 96</span>
+    <span class="seed">SEED: 3573860127</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ MISSION / ABOUT ============ -->
+<section class="mission" id="mission">
+  <div class="eyebrow reveal">Commitment to Development</div>
+  <h2 class="reveal">Engineering with<br>precision &amp; purpose.</h2>
+  <p class="body reveal">I'm a computer science student based in Halle (Saale), Germany, focused on backend development, microservices, and cloud-native systems. I work close to production — <span class="serif">designing APIs, containerizing services, and reasoning about performance, reliability, and clean architecture.</span></p>
+  <p class="body reveal">Beyond university I explore system design and infrastructure-as-code, with a particular interest in the automotive and embedded domains. Outside software, I build DIY electronics and motor-based projects, which keeps me connected to how software interacts with real hardware. I value clear communication, ownership, and long-term maintainability.</p>
+
+  <div class="pillars">
+    <div class="pillar reveal">
+      <div class="p-key">// 01 — Efficiency</div>
+      <h3>Minimalist architectures</h3>
+      <p>High-performance backend designs that do only what's needed, and nothing more.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="p-key">// 02 — Reliability</div>
+      <h3>Secure by default</h3>
+      <p>Role-based access, robust automation, and services that survive production load.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="p-key">// 03 — Data-Driven</div>
+      <h3>Intelligent pipelines</h3>
+      <p>Predictive modeling and data pipelines that turn raw signals into decisions.</p>
+    </div>
+  </div>
+
+  <div class="meta-grid reveal">
+    <div><div class="k">Location</div><div class="v">Halle (Saale), DE</div></div>
+    <div><div class="k">Coding Exp.</div><div class="v">3+ Yrs</div></div>
+    <div><div class="k">Projects</div><div class="v">5+</div></div>
+  </div>
+
+  <div class="log reveal">
+    <span>OUTPUT 288</span>
+    <span class="seed">SEED: 2226809351</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ PROJECTS ============ -->
+<section class="projects" id="projects">
+  <div class="eyebrow reveal">Selected Work</div>
+  <h2 class="reveal">Selected works.</h2>
+  <p class="lede reveal" style="color:var(--mid-light-blue)">A collection of projects focusing on microservices, machine learning, and community impact. More on GitHub.</p>
+
+  <div class="proj-list reveal">
+    <a class="proj" href="#">
+      <div class="p-idx">01</div>
+      <div>
+        <div class="p-title">Simity — Notebook Similarity Checker</div>
+        <div class="p-desc">Plagiarism detection for Jupyter Notebooks using semantic embeddings. Extracts code &amp; markdown, computes similarity, generates heatmaps and reports at scale.</div>
+      </div>
+      <div class="p-tags"><span>Python</span><span>PyTorch</span><span>Jupyter</span></div>
+      <div class="p-arrow">→</div>
+    </a>
+
+    <a class="proj" href="#">
+      <div class="p-idx">02</div>
+      <div>
+        <div class="p-title">Folia — Urban Tree Stewardship <span class="p-status">In Progress</span></div>
+        <div class="p-desc">Community app to protect urban trees in arid Central Asian cities. Priority zone mapping, impact tracking, and civic engagement features.</div>
+      </div>
+      <div class="p-tags"><span>React.js</span><span>Next.js</span><span>Supabase</span></div>
+      <div class="p-arrow">→</div>
+    </a>
+
+    <a class="proj" href="#">
+      <div class="p-idx">03</div>
+      <div>
+        <div class="p-title">MNIST Digit Classifier Service</div>
+        <div class="p-desc">RESTful microservice serving a pre-trained ML model via Spring Boot. TensorFlow Java for inference; 99% accuracy on MNIST. Containerized with Docker.</div>
+      </div>
+      <div class="p-tags"><span>Java</span><span>Spring Boot</span><span>TensorFlow</span></div>
+      <div class="p-arrow">→</div>
+    </a>
+
+    <a class="proj" href="#">
+      <div class="p-idx">04</div>
+      <div>
+        <div class="p-title">git_stats</div>
+        <div class="p-desc">Small Streamlit app that analyses <code style="font-family:var(--font-mono);color:var(--mid-light-blue)">git log --numstat</code> output and visualises it as a dashboard. Upload a git log and interactively explore commit statistics and contributions.</div>
+      </div>
+      <div class="p-tags"><span>Python</span><span>Streamlit</span><span>Pandas</span></div>
+      <div class="p-arrow">→</div>
+    </a>
+
+    <a class="proj" href="#">
+      <div class="p-idx">05</div>
+      <div>
+        <div class="p-title">avp — ASCII Video Player</div>
+        <div class="p-desc">Command-line tool that plays videos in the terminal as ASCII art by converting frames to text characters. Adjustable ASCII width; works across terminal emulators.</div>
+      </div>
+      <div class="p-tags"><span>Python</span><span>OpenCV</span><span>Curses</span></div>
+      <div class="p-arrow">→</div>
+    </a>
+
+    <a class="proj" href="#">
+      <div class="p-idx">06</div>
+      <div>
+        <div class="p-title">sifr — Grading Assistant</div>
+        <div class="p-desc">Grading assistant built with Streamlit to explore and annotate student submissions, attach feedback, and export results. Supports Markdown/LaTeX; ships with Docker and local setup.</div>
+      </div>
+      <div class="p-tags"><span>Python</span><span>Streamlit</span><span>Docker</span></div>
+      <div class="p-arrow">→</div>
+    </a>
+  </div>
+
+  <div class="log reveal">
+    <span>OUTPUT 317</span>
+    <span class="seed">SEED: 3396188657</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ SKILLS ============ -->
+<section class="skills" id="skills">
+  <div class="eyebrow reveal">Technical Profile</div>
+  <h2 class="reveal">Technical expertise.</h2>
+
+  <div class="skill-grid">
+    <div class="skill-group reveal">
+      <div class="sg-head"><span class="sg-icon">⌬</span><span class="sg-title">Backend</span></div>
+      <div class="tag-row"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Spring Security</span><span class="tag">JPA/Hibernate</span><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">SQLite</span></div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="sg-head"><span class="sg-icon">☁</span><span class="sg-title">Infrastructure</span></div>
+      <div class="tag-row"><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">Linux</span><span class="tag">Bash</span></div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="sg-head"><span class="sg-icon">⟨⟩</span><span class="sg-title">Tools</span></div>
+      <div class="tag-row"><span class="tag">Git</span><span class="tag">VS Code</span><span class="tag">IntelliJ</span><span class="tag">Jupyter</span><span class="tag">Bruno</span><span class="tag">K6</span><span class="tag">Postman</span></div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="sg-head"><span class="sg-icon">▢</span><span class="sg-title">Frontend</span></div>
+      <div class="tag-row"><span class="tag">React.js</span><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Streamlit</span></div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="sg-head"><span class="sg-icon">∿</span><span class="sg-title">Data Science</span></div>
+      <div class="tag-row"><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Hugging Face</span></div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="sg-head"><span class="sg-icon">⌗</span><span class="sg-title">Systems</span></div>
+      <div class="tag-row"><span class="tag">Python</span><span class="tag">C</span></div>
+    </div>
+  </div>
+
+  <div class="honors reveal">
+    <div class="eyebrow" style="margin-bottom:24px">Honors &amp; Recognition</div>
+    <div class="h-item"><span class="h-trophy">◇</span><span class="h-text">1st Place — Software Engineering course project reviews (out of 130 students).</span></div>
+    <div class="h-item"><span class="h-trophy">◇</span><span class="h-text">Golden Medal — top 1% academic performance and exemplary conduct in school.</span></div>
+  </div>
+
+  <div class="log reveal">
+    <span>OUTPUT 404</span>
+    <span class="seed">SEED: 4119827043</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="exp" id="experience">
+  <div class="eyebrow reveal">Career Timeline</div>
+  <h2 class="reveal">Professional journey.</h2>
+
+  <div class="exp-list reveal">
+    <div class="exp-item">
+      <div class="exp-ts">[2025.04 — 2026.03]</div>
+      <div>
+        <div class="exp-role">Backend Software Developer Intern</div>
+        <div class="exp-org">]init[ AG <span class="loc">· Halle (Saale), DE</span></div>
+        <div class="exp-desc">Built a secure, scalable backend using Spring Boot + Spring Security with role-based access control. Implemented CI/CD test automation across JUnit, Pact, Bruno, and K6.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-ts">[2025.10 — 2026.02]</div>
+      <div>
+        <div class="exp-role">Student Teaching Assistant — Data Science</div>
+        <div class="exp-org">Martin-Luther-University Halle-Wittenberg <span class="loc">· Halle (Saale), DE</span></div>
+        <div class="exp-desc">Graded assignments for 100+ students using Python and Jupyter Notebooks; integrated with Stud.IP LMS. Automated repetitive grading tasks and refined assignment instructions to reduce confusion.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-ts">[2025.11.21]</div>
+      <div>
+        <div class="exp-role">Porsche Talent Day — Digitalisierung &amp; KI, Participant</div>
+        <div class="exp-org">Porsche AG <span class="loc">· Zuffenhausen, DE</span></div>
+        <div class="exp-desc">Selected participant for the exclusive talent networking event. Engaged in workshops focused on automotive software innovation.</div>
+        <div class="exp-note">// Won the coding challenge.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-ts">[2023.03 — 2023.06]</div>
+      <div>
+        <div class="exp-role">Student Assistant — Data Analysis</div>
+        <div class="exp-org">Innovative Water and Environmental Solutions (IWES) UG <span class="loc">· Berlin, DE</span></div>
+        <div class="exp-desc">Developed predictive models in Python for flood/drought forecasting using climatic datasets. Automated data preprocessing pipelines, reducing manual workload by 30%; collaborated on visualizations with Pandas, Matplotlib, and Seaborn.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="edu reveal">
+    <h3>// Education</h3>
+    <div class="exp-item" style="border-bottom:none;padding-top:0">
+      <div class="exp-ts">[2023 — 2026]</div>
+      <div>
+        <div class="exp-role">B.Sc. in Computer Science</div>
+        <div class="exp-org">Martin-Luther-University Halle-Wittenberg</div>
+        <div class="exp-desc">Relevant coursework: Data Structures &amp; Algorithms · OOP · Design · Computer Organization · Data Science · ML · AI · Image Processing.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="log reveal">
+    <span>OUTPUT 512</span>
+    <span class="seed">SEED: 4830177295</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="eyebrow reveal">Get In Touch</div>
+  <h2 class="reveal">Let's build something<br>reliable together.</h2>
+  <p class="body reveal">Currently open to new opportunities and collaborations. Studying at Martin Luther University Halle-Wittenberg and open to relocation for the right opportunity — especially in the automotive sector.</p>
+
+  <div class="contact-grid">
+    <div class="contact-channels reveal">
+      <a class="channel" href="mailto:kadamboev.sh@gmail.com"><span class="ck">✉</span><span class="cv">kadamboev.sh@gmail.com</span></a>
+      <a class="channel" href="https://linkedin.com/in/shakhade" target="_blank" rel="noopener"><span class="ck">↗</span><span class="cv">linkedin.com/in/shakhade</span></a>
+      <a class="channel" href="https://github.com/shakha-de" target="_blank" rel="noopener"><span class="ck">⟨⟩</span><span class="cv">github.com/shakha-de</span></a>
+      <div class="channel" style="cursor:default"><span class="ck">◉</span><span class="cv">Halle (Saale), Germany</span></div>
+    </div>
+    <div class="reveal">
+      <div class="sg-title" style="margin-bottom:18px">// Languages</div>
+      <div class="langs">
+        <strong>Russian</strong> — Native<br>
+        <strong>Uzbek</strong> — Native<br>
+        <strong>German</strong> — C2<br>
+        <strong>English</strong> — C1<br>
+        <strong>Turkish</strong> — A2
+      </div>
+    </div>
+  </div>
+
+  <div class="log reveal">
+    <span>OUTPUT 640</span>
+    <span class="seed">SEED: 5566120988</span>
+  </div>
+</section>
+
+<!-- ============ FOOTER / NODES ============ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <svg width="30" height="30" viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="13" r="4.2" fill="#0071a9"/>
+        <g stroke="#0071a9" stroke-width="1.4" stroke-linecap="round">
+          <line x1="13" y1="2" x2="13" y2="6"/><line x1="13" y1="20" x2="13" y2="24"/>
+          <line x1="2" y1="13" x2="6" y2="13"/><line x1="20" y1="13" x2="24" y2="13"/>
+          <line x1="5.2" y1="5.2" x2="8" y2="8"/><line x1="18" y1="18" x2="20.8" y2="20.8"/>
+          <line x1="20.8" y1="5.2" x2="18" y2="8"/><line x1="8" y1="18" x2="5.2" y2="20.8"/>
+        </g>
+      </svg>
+      <span class="wb">SKadamboev.</span>
+    </div>
+    <div class="foot-tag">The Backend Engineer</div>
+
+    <div class="foot-nodes-label">Nodes</div>
+    <div class="foot-nodes">
+      <a href="https://github.com/shakha-de" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/shakhade" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:kadamboev.sh@gmail.com">Email</a>
+      <a href="#top">Halle (Saale), DE</a>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Shakhriyor Kadamboev. All rights reserved.</span>
+      <span>Built in the spirit of open systems · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const mb=document.getElementById('menubtn'),nl=document.getElementById('navlinks');
+  mb.addEventListener('click',()=>nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+
+  // Scroll reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

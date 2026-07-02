@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { portfolioData } from "../data/portfolio";
+import { FadeIn } from "./Animations";
 
 export default function Hero() {
     const { hero, personalInfo } = portfolioData;
@@ -7,68 +8,55 @@ export default function Hero() {
     return (
         <section
             id="home"
-            className="app-container section-stack w-full"
+            className="app-container section-stack w-full min-h-screen flex flex-col justify-center pt-[140px]"
         >
-            <div className="flex flex-col-reverse md:flex-row items-center gap-10 lg:gap-16">
+            <div className="flex flex-col gap-6 text-left">
 
-                <div className="flex-1 flex flex-col items-center md:items-start gap-6 text-center md:text-left">
-                    <div className="flex flex-col gap-3 max-w-2xl">
-                        <span className="section-kicker">Portfolio Overview</span>
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight text-text-main">
-                            {hero.headline.split(' ').slice(0, 1).join(' ')} <br />
-                            <span className="text-gradient font-extrabold">{hero.headline.split(' ').slice(1).join(' ')}</span>
-                        </h1>
-                        <p className="text-sm sm:text-base md:text-lg text-text-muted font-normal max-w-lg mx-auto md:mx-0 mt-1">
-                            {hero.subheadline}
-                        </p>
-                    </div>
-                    <div className="flex w-full flex-col sm:flex-row gap-3 sm:gap-4 mt-2 max-w-lg">
+                <FadeIn delay={0.2}>
+                    <h1 className="font-heading text-[clamp(40px,7vw,96px)] font-bold leading-[1.02] mb-6">
+                        Engineering<br />
+                        Reliable <span className="text-[var(--nous-blue)]">Systems</span><span className="cursor-blink" />
+                    </h1>
+                </FadeIn>
+
+                <FadeIn delay={0.3}>
+                    <p className="lede">
+                        {hero.subheadline}
+                    </p>
+                </FadeIn>
+
+                <FadeIn delay={0.4}>
+                    <div className="flex gap-4 flex-wrap mt-9">
                         <Link
                             href="/projects"
-                            className="flex w-full sm:w-auto items-center justify-center h-11 px-5 rounded-xl bg-primary text-white text-sm font-bold transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/20 active:translate-y-0"
+                            className="btn-nous primary"
                         >
-                            <span className="material-symbols-outlined text-[18px] mr-1.5">
-                                code
-                            </span>
-                            View Projects
+                            ⟨⟩ View Projects
                         </Link>
                         <a
                             href={personalInfo.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex w-full sm:w-auto items-center justify-center h-11 px-5 rounded-xl border border-border bg-surface/40 backdrop-blur-sm text-text-main text-sm font-bold transition-all hover:-translate-y-0.5 hover:bg-surface active:translate-y-0"
+                            className="btn-nous"
                         >
-                            <span className="material-symbols-outlined text-[18px] mr-1.5">
-                                link
-                            </span>
-                            LinkedIn
+                            ↗ LinkedIn
                         </a>
                     </div>
-                </div>
+                </FadeIn>
 
-                <div className="flex-1 w-full flex justify-center md:justify-end relative overflow-hidden py-4 px-4">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-radial from-primary/10 to-transparent rounded-full blur-3xl -z-10"></div>
-                    
-                    <div className="absolute -top-4 -left-4 w-24 h-24 text-primary/10 hidden sm:block -z-10">
-                        <svg width="100%" height="100%" fill="currentColor">
-                            <pattern id="dot-pattern" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                                <circle cx="2" cy="2" r="2" />
-                            </pattern>
-                            <rect width="100%" height="100%" fill="url(#dot-pattern)" />
-                        </svg>
+                <FadeIn delay={0.5}>
+                    <div className="status-row mt-14 flex items-center gap-3 font-mono text-[12.5px] uppercase tracking-[0.08em] text-[var(--gray)]">
+                        <span className="status-dot"></span>
+                        System Status: Available For Hire · Halle (Saale), DE
                     </div>
+                </FadeIn>
 
-                    <div className="relative group p-1.5 rounded-3xl border border-border bg-surface/30 backdrop-blur-md shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:-rotate-1 rotate-2">
-                        <div className="relative w-52 h-52 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-[1.25rem] overflow-hidden bg-surface">
-                            <div
-                                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                                style={{ backgroundImage: 'url("/me.jpg")' }}
-                            >
-                            </div>
-                        </div>
-                        <div className="absolute inset-0 border border-primary/20 rounded-3xl pointer-events-none group-hover:border-primary/40 transition-colors"></div>
+                <FadeIn delay={0.6}>
+                    <div className="log-line">
+                        <span>OUTPUT 96</span>
+                        <span className="seed">SEED: 3573860127</span>
                     </div>
-                </div>
+                </FadeIn>
             </div>
         </section>
     );

@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Space_Mono } from "next/font/google";
+import { Space_Grotesk, Courier_Prime } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "./components/Analytics";
-import { ThemeProvider } from "./components/ThemeProvider";
 import { portfolioData } from "./data/portfolio";
 
-const inter = Inter({
-  variable: "--font-inter",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
   subsets: ["latin"],
 });
 
-const spaceMono = Space_Mono({
-  variable: "--font-space-mono",
+const courierPrime = Courier_Prime({
+  variable: "--font-mono",
   weight: ["400", "700"],
   subsets: ["latin"],
 });
@@ -54,21 +53,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="en">
       <body
-        className={`${inter.variable} ${spaceMono.variable} antialiased bg-background text-text-main transition-colors duration-300`}
+        className={`${spaceGrotesk.variable} ${courierPrime.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        {children}
         <Analytics />
       </body>
     </html>

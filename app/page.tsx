@@ -6,63 +6,96 @@ import { portfolioData } from "./data/portfolio";
 import { PageTransition, FadeIn } from "./components/Animations";
 
 export default function Home() {
-  const { projects } = portfolioData;
+    const { projects, personalInfo } = portfolioData;
 
-  return (
-    <div className="relative flex flex-col min-h-screen overflow-x-clip bg-background text-text-main transition-colors duration-300">
-      <Header />
-      <main id="content" className="grow flex flex-col items-center w-full">
-        <PageTransition>
-          <Hero />
+    return (
+        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+            <Header />
+            <main id="content" className="grow flex flex-col items-center w-full">
+                <PageTransition>
+                    <Hero />
 
-          {/* Featured Projects Snapshots */}
-          <section className="app-container section-stack w-full">
-            <div className="w-full">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-12">
-                <FadeIn>
-                  <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-2">Featured Projects</h2>
-                    <p className="text-sm sm:text-base text-text-muted max-w-xl">A selection of my recent technical work.</p>
-                  </div>
-                </FadeIn>
-                <Link href="/projects" className="text-primary font-bold hover:underline flex items-center gap-1 group self-start sm:self-auto">
-                  All Projects <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
-                </Link>
-              </div>
+                    <div className="divider w-full" />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                {projects.slice(0, 2).map((project, i) => (
-                  <FadeIn key={i} delay={i * 0.1}>
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="surface-card surface-card-hover p-6 sm:p-8 rounded-2xl group flex flex-col h-full cursor-pointer border border-border"
-                    >
-                      <span className="text-xs font-mono text-primary bg-primary/10 px-2.5 py-1 rounded-md self-start mb-4 font-bold">
-                        Case Study
-                      </span>
-                      <h3 className="text-lg sm:text-xl font-black mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
-                      <p className="text-text-muted text-sm sm:text-base mb-6 line-clamp-2 grow">{project.description}</p>
-                      
-                      <div className="flex flex-wrap gap-1.5 mb-6">
-                        {project.content.techStack.slice(0, 3).map((tech) => (
-                          <span key={tech} className="text-[11px] font-mono bg-accent text-text-muted px-2 py-0.5 rounded border border-border/40">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                    {/* Featured Projects Section */}
+                    <section className="w-full bg-[var(--black)] border-y border-[var(--border-navy)]">
+                        <div className="app-container section-stack">
+                            <FadeIn delay={0.1}>
+                                <div className="eyebrow">Selected Work</div>
+                                <h2 className="text-[clamp(32px,4.5vw,56px)] font-bold leading-[1.05] tracking-tight mb-5">
+                                    Selected works.
+                                </h2>
+                                <p className="lede">
+                                    A selection of my recent technical work. Find more on my{" "}
+                                    <a
+                                        href={personalInfo.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[var(--nous-blue)] hover:underline font-bold"
+                                    >
+                                        GitHub
+                                    </a>.
+                                </p>
+                            </FadeIn>
 
-                      <div className="text-xs font-bold text-primary flex items-center gap-1 mt-auto group-hover:underline">
-                        View Details <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
-                      </div>
-                    </Link>
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
-          </section>
-        </PageTransition>
-      </main>
-      <Footer />
-    </div>
-  );
+                            <div className="proj-list mt-12 border-t border-[var(--border-navy)]">
+                                {projects.slice(0, 3).map((project, i) => {
+                                    const indexStr = String(i + 1).padStart(2, "0");
+                                    return (
+                                        <FadeIn key={project.slug} delay={i * 0.1}>
+                                            <Link href={`/projects/${project.slug}`} className="proj-row">
+                                                <div className="font-mono text-[13px] text-[var(--gray)] pt-1">
+                                                    {indexStr}
+                                                </div>
+                                                <div>
+                                                    <div className="proj-title text-[22px] font-semibold tracking-tight mb-2 text-[var(--off-white)] transition-colors">
+                                                        {project.title.replace(" (In Progress)", "")}
+                                                        {project.title.includes("(In Progress)") && (
+                                                            <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--nous-blue)] ml-2.5 vertical-align-[3px]">
+                                                                In Progress
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <div className="text-[var(--light-blue)] text-[15px] max-w-[560px] leading-relaxed">
+                                                        {project.description}
+                                                    </div>
+                                                </div>
+                                                <div className="hidden md:flex flex-col gap-1.5 font-mono text-xs text-[var(--gray)] pt-1.5">
+                                                    {project.content.techStack.slice(0, 3).map((tech) => (
+                                                        <span key={tech}>{"// "}{tech}</span>
+                                                    ))}
+                                                </div>
+                                                <div className="hidden md:block proj-arrow font-mono text-[var(--gray)] transition-all text-right pt-1">
+                                                    →
+                                                </div>
+                                            </Link>
+                                        </FadeIn>
+                                    );
+                                })}
+                            </div>
+
+                            <FadeIn delay={0.4}>
+                                <div className="mt-10">
+                                    <Link
+                                        href="/projects"
+                                        className="font-mono text-sm text-[var(--nous-blue)] hover:text-[var(--mid-light-blue)]"
+                                    >
+                                        View All Projects →
+                                    </Link>
+                                </div>
+                            </FadeIn>
+
+                            <FadeIn delay={0.5}>
+                                <div className="log-line">
+                                    <span>OUTPUT 317</span>
+                                    <span className="seed">SEED: 3396188657</span>
+                                </div>
+                            </FadeIn>
+                        </div>
+                    </section>
+                </PageTransition>
+            </main>
+            <Footer />
+        </div>
+    );
 }

@@ -1,33 +1,49 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, ReactNode } from "react";
 
-export const PageTransition = ({ children }: { children: React.ReactNode }) => {
-    const shouldReduceMotion = useReducedMotion();
+// IntersectionObserver-based reveal animation
+// Replaces framer-motion with CSS .reveal/.reveal.in classes
+
+function useReveal(ref: React.RefObject<HTMLElement | null>, delay: number = 0) {
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (delay > 0) {
+                            setTimeout(() => {
+                                entry.target.classList.add("in");
+                            }, delay * 1000);
+                        } else {
+                            entry.target.classList.add("in");
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [ref, delay]);
+}
+
+export function FadeIn({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+    const ref = useRef<HTMLDivElement>(null);
+    useReveal(ref, delay);
 
     return (
-    <motion.div
-        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5, ease: "easeOut" }}
-    >
-        {children}
-    </motion.div>
+        <div ref={ref} className="reveal">
+            {children}
+        </div>
     );
-};
+}
 
-export const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
-    const shouldReduceMotion = useReducedMotion();
-
-    return (
-    <motion.div
-        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5, delay, ease: "easeOut" }}
-        className={className}
-    >
-        {children}
-    </motion.div>
-    );
-};
+export function PageTransition({ children }: { children: ReactNode }) {
+    return <div>{children}</div>;
+}

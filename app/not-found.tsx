@@ -1,57 +1,42 @@
 import Link from "next/link";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function NotFound() {
-  return (
-    <main id="content" className="grow flex flex-col items-center justify-center w-full app-container section-stack">
-      <section className="w-full max-w-3xl rounded-3xl border border-border bg-surface p-6 sm:p-8 md:p-12 shadow-sm">
-        <p className="section-kicker mb-4">
-          Error 404
-        </p>
+    return (
+        <div className="relative flex flex-col min-h-screen bg-[var(--black)] text-[var(--off-white)]">
+            <Header />
+            <main id="content" className="grow flex flex-col items-center justify-center w-full app-container section-stack">
+                <section className="w-full max-w-3xl text-left">
+                    <p className="eyebrow mb-4">
+                        Error 404
+                    </p>
 
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight text-text-main leading-tight">
-          Nyaa... Page Not Found
-        </h1>
+                    <h1 className="text-[clamp(40px,7vw,96px)] font-bold leading-[1.02] tracking-tight mb-6">
+                        Page Not Found
+                    </h1>
 
-        <p className="mt-4 text-text-muted text-base sm:text-lg leading-relaxed">
-          Your anime cats searched every rooftop in this universe, but this page
-          vanished like a ninja.
-        </p>
+                    <p className="body-text text-base sm:text-lg leading-relaxed text-[#c9ccd1] mb-10 max-w-xl">
+                        The page you are looking for does not exist or has been moved.
+                    </p>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="rounded-2xl border border-border bg-background p-5 text-center">
-            <p className="text-5xl">🐾</p>
-            <p className="mt-2 text-sm font-bold text-text-main">Scout Cat</p>
-            <p className="text-xs text-text-muted">Tracking missing pages</p>
-          </div>
-          <div className="rounded-2xl border border-border bg-background p-5 text-center">
-            <p className="text-5xl">🐱</p>
-            <p className="mt-2 text-sm font-bold text-text-main">Hero Cat</p>
-            <p className="text-xs text-text-muted">Ready to guide you back</p>
-          </div>
-          <div className="rounded-2xl border border-border bg-background p-5 text-center">
-            <p className="text-5xl">🌙</p>
-            <p className="mt-2 text-sm font-bold text-text-main">Night Cat</p>
-            <p className="text-xs text-text-muted">Guarding your next route</p>
-          </div>
+                    <div className="flex flex-wrap gap-4">
+                        <Link
+                            href="/"
+                            className="btn-nous primary"
+                        >
+                            Take Me Home
+                        </Link>
+                        <Link
+                            href="/projects"
+                            className="btn-nous"
+                        >
+                            Browse Projects
+                        </Link>
+                    </div>
+                </section>
+            </main>
+            <Footer />
         </div>
-
-        <div className="mt-10 flex flex-wrap gap-4">
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center h-11 px-6 rounded-lg bg-primary text-white text-sm font-bold transition-all hover:bg-primary/90"
-          >
-            Take Me Home
-          </Link>
-          <Link
-            href="/projects"
-            className="inline-flex items-center justify-center h-11 px-6 rounded-lg border border-border text-text-main text-sm font-bold hover:text-primary hover:border-primary/40 transition-colors"
-          >
-            Browse Projects
-          </Link>
-        </div>
-
-        <p className="mt-6 text-xs text-text-muted">にゃー (Nyaa) = meow</p>
-      </section>
-    </main>
-  );
+    );
 }

@@ -93,6 +93,25 @@ export const portfolioData = {
     },
     projects: [
         {
+            title: "Text2SQL LLM — Bachelor Thesis (In Progress)",
+            slug: "text2sql-llm",
+            description: "Training a Large Language Model for text-to-SQL tasks for my bachelor thesis.",
+            github: null,
+            live: null,
+            content: {
+                overview: "For my bachelor thesis, I am training and fine-tuning an LLM to accurately translate natural language queries into executable SQL commands.",
+                techStack: ["Python", "PyTorch", "Hugging Face", "LLMs", "Unsloth", "Axolotl", "SLURM", "Pyxis"],
+                challenges: "Curating high-quality training datasets and optimizing the model for complex SQL schemas.",
+                outcomes: ["Fine-tuned LLM model", "Evaluation benchmark results", "Bachelor Thesis"],
+                metrics: [
+                    { label: "Status", value: "Research Phase" },
+                    { label: "Task", value: "Text2SQL" },
+                    { label: "Framework", value: "Unsloth, PyTorch" }
+                ],
+                diagram: null
+            }
+        },
+        {
             title: "Simity — Notebook Similarity Checker",
             slug: "simity",
             description: "Plagiarism detection for Jupyter Notebooks using semantic embeddings. Extracts code & markdown, computes similarity, generates heatmaps and reports at scale.",

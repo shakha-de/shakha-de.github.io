@@ -53,7 +53,7 @@ export default function Header() {
             Skip to content
         </a>
         <header className="sticky top-0 z-50 w-full py-4 transition-all duration-300">
-            <div className="app-container transition-all duration-300">
+            <div className="app-container relative transition-all duration-300">
                 <div className={`flex items-center justify-between gap-3 px-5 py-3 transition-all duration-300 rounded-2xl ${
                     scrolled || isMenuOpen
                     ? "glass-panel bg-background/85 backdrop-blur-md shadow-lg border border-border"
@@ -117,37 +117,37 @@ export default function Header() {
                         </button>
                     </div>
                 </div>
-            </div>
 
-            {/* Mobile Menu Overlay */}
-            <div
-                id="mobile-navigation"
-                className={`fixed inset-x-4 top-[84px] max-h-[calc(100dvh-110px)] bg-background/95 backdrop-blur-lg z-40 md:hidden transition-all duration-300 border border-border rounded-2xl shadow-xl overflow-y-auto ${
-                    isMenuOpen 
-                    ? "opacity-100 visible translate-y-0" 
-                    : "opacity-0 invisible -translate-y-4 pointer-events-none"
-                }`}
-            >
-                <nav className="flex flex-col p-4 gap-1.5">
-                    {navLinks.map((link) => (
+                {/* Mobile Menu Overlay */}
+                <div
+                    id="mobile-navigation"
+                    className={`absolute inset-x-0 top-full mt-2 max-h-[calc(100dvh-110px)] bg-background/95 backdrop-blur-lg z-40 md:hidden transition-all duration-300 border border-border rounded-2xl shadow-xl overflow-y-auto ${
+                        isMenuOpen 
+                        ? "opacity-100 visible translate-y-0" 
+                        : "opacity-0 invisible -translate-y-4 pointer-events-none"
+                    }`}
+                >
+                    <nav className="flex flex-col p-3 gap-1">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="group flex items-center justify-between py-2.5 px-4 text-sm font-semibold text-text-main hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+                            >
+                                {link.name}
+                                <span className="material-symbols-outlined text-primary opacity-60 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                            </Link>
+                        ))}
                         <Link
-                            key={link.name}
-                            href={link.href}
+                            href="/contact"
                             onClick={() => setIsMenuOpen(false)}
-                            className="group flex items-center justify-between p-3.5 text-base font-bold text-text-main hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+                            className="mt-2 flex items-center justify-center h-10 rounded-xl bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all"
                         >
-                            {link.name}
-                            <span className="material-symbols-outlined text-primary opacity-60 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                            Hire Me
                         </Link>
-                    ))}
-                    <Link
-                        href="/contact"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="mt-3 flex items-center justify-center h-12 rounded-xl bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all"
-                    >
-                        Hire Me
-                    </Link>
-                </nav>
+                    </nav>
+                </div>
             </div>
         </header>
         </>

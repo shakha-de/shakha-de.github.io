@@ -47,7 +47,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
     const semanticAnalysis = project.content.semanticAnalysis;
 
     return (
-        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
+        <div className="relative flex flex-col min-h-screen overflow-x-clip bg-background text-text-main transition-colors duration-300">
             <ScrollProgress />
             <Header />
             <main className="grow flex flex-col items-center w-full app-container section-stack">

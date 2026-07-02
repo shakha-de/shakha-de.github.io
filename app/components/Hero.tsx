@@ -46,7 +46,7 @@ export default function Hero() {
                     </div>
                 </div>
 
-                <div className="flex-1 w-full flex justify-center md:justify-end relative">
+                <div className="flex-1 w-full flex justify-center md:justify-end relative overflow-hidden py-4 px-4">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-radial from-primary/10 to-transparent rounded-full blur-3xl -z-10"></div>
                     
                     <div className="absolute -top-4 -left-4 w-24 h-24 text-primary/10 hidden sm:block -z-10">

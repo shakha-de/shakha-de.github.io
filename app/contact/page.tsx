@@ -27,7 +27,7 @@ export default function ContactPage() {
     ];
 
     return (
-        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
+        <div className="relative flex flex-col min-h-screen overflow-x-clip bg-background text-text-main transition-colors duration-300">
             <Header />
             <main id="content" className="grow flex flex-col items-center justify-center w-full app-container section-stack">
                 <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">

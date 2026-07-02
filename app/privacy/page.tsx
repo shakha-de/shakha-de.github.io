@@ -6,7 +6,7 @@ export default function PrivacyPage() {
     const { personalInfo } = portfolioData;
 
     return (
-        <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-background text-text-main transition-colors duration-300">
+        <div className="relative flex flex-col min-h-screen overflow-x-clip bg-background text-text-main transition-colors duration-300">
             <Header />
             <main id="content" className="grow flex flex-col items-center w-full app-container section-stack">
                 <div className="w-full max-w-3xl">

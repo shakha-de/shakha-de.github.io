@@ -42,7 +42,7 @@ export const Mermaid = ({ chart }: { chart: string }) => {
     return (
         <div 
             ref={ref} 
-            className="flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 bg-surface/30 rounded-3xl border border-border mt-8 overflow-auto min-h-[150px] w-full"
+            className="flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 bg-surface/30 rounded-3xl border border-border mt-8 overflow-x-auto min-h-[150px] w-full max-w-full [&_svg]:max-w-full [&_svg]:h-auto"
         >
             <pre className="text-xs opacity-30 animate-pulse">Rendering architecture...</pre>
         </div>

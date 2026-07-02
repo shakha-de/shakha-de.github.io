@@ -38,6 +38,7 @@
 html {
   scroll-behavior: smooth;
   color-scheme: light;
+  overflow-x: clip;
 }
 
 .dark html {
@@ -55,7 +56,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Ensure the page wrapper sits transparently on top of the body background grid */
@@ -81,7 +82,7 @@ body::before {
 /* Ambient Drift Lights */
 body::after {
   content: "";
-  position: absolute;
+  position: fixed;
   top: -15%;
   left: 25%;
   width: clamp(350px, 45vw, 750px);

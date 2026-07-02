@@ -1,4 +1,5 @@
 import { portfolioData } from "../data/portfolio";
+import packageInfo from "../../package.json";
 
 export default function Footer() {
     const { personalInfo } = portfolioData;
@@ -55,7 +56,7 @@ export default function Footer() {
 
                 <div className="flex justify-between flex-wrap gap-3 font-mono text-[10.5px] text-[#83b2ce] border-t border-[#1c3a4e] pt-4">
                     <span>© {new Date().getFullYear()} Shakhriyor Kadamboev. All rights reserved.</span>
-                    <span>Built in the spirit of open systems · v1.0</span>
+                    <span>Built in the spirit of open systems · v{packageInfo.version}-{process.env.NEXT_PUBLIC_COMMIT_HASH}</span>
                 </div>
             </div>
         </footer>

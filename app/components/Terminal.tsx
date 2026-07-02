@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { portfolioData } from "../data/portfolio";
+import packageInfo from "../../package.json";
 
 interface Line {
     text: string;
@@ -10,7 +11,7 @@ interface Line {
 
 export default function Terminal() {
     const [history, setHistory] = useState<Line[]>([
-        { text: "shakha.online [Version 1.0.0]" },
+        { text: `shakha.online [Version ${packageInfo.version}-${process.env.NEXT_PUBLIC_COMMIT_HASH}]` },
         { text: "(c) 2026 Shakhriyor Kadamboev. Open system console." },
         { text: "" },
         { text: "Type 'help' to see available commands." },

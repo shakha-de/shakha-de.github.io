@@ -23,13 +23,18 @@ export default function AboutPage() {
 
                             <div className="flex flex-col md:flex-row gap-12 mb-16 items-start">
                                 <FadeIn delay={0.2}>
-                                    <Image
-                                        src="/me.jpg"
-                                        alt="Shakhriyor Kadamboev"
-                                        width={400}
-                                        height={400}
-                                        className="w-full max-w-[320px] grayscale hover:grayscale-0 transition-all duration-500 border border-[var(--border-navy)] object-cover"
-                                    />
+                                    <div className="flex flex-col w-full max-w-[320px]">
+                                        <Image
+                                            src="/me.jpg"
+                                            alt="Shakhriyor Kadamboev"
+                                            width={400}
+                                            height={400}
+                                            className="w-full grayscale hover:grayscale-0 transition-all duration-500 border border-[var(--border-navy)] object-cover"
+                                        />
+                                        <p className="font-mono text-[13px] text-[var(--gray)] mt-3 leading-relaxed">
+                                            btw, you can call me Shakh (like in chess) — /ʃɑːx/
+                                        </p>
+                                    </div>
                                 </FadeIn>
                                 <div className="flex-1">
                                 {about.paragraphs.map((p, i) => {

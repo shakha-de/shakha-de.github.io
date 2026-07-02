@@ -71,7 +71,7 @@ export default function Header() {
                 <div className="max-w-[1280px] mx-auto px-8 py-3.5 flex items-center justify-between gap-6">
                     <Link
                         href="/"
-                        className="flex items-center gap-2.5 font-bold tracking-tight text-[var(--off-white)]"
+                        className="flex items-center gap-2.5 font-bold tracking-tight text-[var(--text-main)]"
                         onClick={() => setIsMenuOpen(false)}
                     >
                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
@@ -110,14 +110,14 @@ export default function Header() {
                         )}
                         <Link
                             href="/contact"
-                            className="hidden sm:inline-block font-mono text-[12.5px] uppercase tracking-[0.06em] border border-[var(--nous-blue)] text-[var(--off-white)] px-3.5 py-2 transition-all hover:bg-[var(--nous-blue)]"
+                            className="hidden sm:inline-block font-mono text-[12.5px] uppercase tracking-[0.06em] border border-[var(--nous-blue)] text-[var(--text-main)] hover:text-white px-3.5 py-2 transition-all hover:bg-[var(--nous-blue)]"
                         >
                             Hire Me
                         </Link>
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="md:hidden border border-[#222] text-[var(--off-white)] font-mono text-xs px-2.5 py-1.5 cursor-pointer uppercase"
+                            className="md:hidden border border-[var(--border-navy)] text-[var(--text-main)] font-mono text-xs px-2.5 py-1.5 cursor-pointer uppercase"
                             aria-label="Toggle Menu"
                             aria-expanded={isMenuOpen}
                             aria-controls="mobile-navigation"
@@ -147,7 +147,7 @@ export default function Header() {
                             <Link
                                 href="/contact"
                                 onClick={() => setIsMenuOpen(false)}
-                                className="border border-[var(--nous-blue)] text-[var(--off-white)] py-2 text-center hover:bg-[var(--nous-blue)] mt-2"
+                                className="border border-[var(--nous-blue)] text-[var(--text-main)] hover:text-white py-2 text-center hover:bg-[var(--nous-blue)] mt-2 transition-all"
                             >
                                 Hire Me
                             </Link>

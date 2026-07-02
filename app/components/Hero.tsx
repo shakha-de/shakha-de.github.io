@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { portfolioData } from "../data/portfolio";
 import { FadeIn } from "./Animations";
+import Terminal from "./Terminal";
 
 export default function Hero() {
     const { hero, personalInfo } = portfolioData;
@@ -45,13 +46,17 @@ export default function Hero() {
                 </FadeIn>
 
                 <FadeIn delay={0.5}>
+                    <Terminal />
+                </FadeIn>
+
+                <FadeIn delay={0.6}>
                     <div className="status-row mt-14 flex items-center gap-3 font-mono text-[12.5px] uppercase tracking-[0.08em] text-[var(--gray)]">
                         <span className="status-dot"></span>
                         System Status: Available For Hire · Halle (Saale), DE
                     </div>
                 </FadeIn>
 
-                <FadeIn delay={0.6}>
+                <FadeIn delay={0.7}>
                     <div className="log-line">
                         <span>OUTPUT 96</span>
                         <span className="seed">SEED: 3573860127</span>

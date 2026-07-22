@@ -22,7 +22,7 @@ export default function Header() {
         }
     }, []);
 
-    // Sync theme toggle with other components (like terminal command)
+    // Sync theme toggle across components
     useEffect(() => {
         const handleThemeChange = (e: Event) => {
             const customEvent = e as CustomEvent;

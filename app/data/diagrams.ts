@@ -142,3 +142,35 @@ export const sifrDiagram = `graph TD
     Dashboard --> FeedbackPDF[Feedback PDFs]
     FeedbackPDF --> FS
 `;
+
+export const text2sqlDiagram = `graph TD
+    subgraph Data["1. Data & Synthetic Reasoning"]
+        A[SPIDER & BIRD Datasets] --> B[Filtering & Complexity Classifier]
+        B --> C[Teacher GLM-5.1: CoT Reasoning]
+        C --> D[SQLite Validation via sqlglot]
+    end
+
+    subgraph SFT["2. SFT Baseline & Cold-Start"]
+        D --> E[LoRA / QLoRA & FFT Training]
+        E --> F[Base Policy: Qwen3.5-9B / 0.8B]
+    end
+
+    subgraph GRPO["3. GRPO Reinforcement Learning"]
+        F --> G[Policy Rollouts: Group Generations]
+        G --> H[SQLite Execution Sandbox]
+        H --> I[Gen 4 Strict Binary Reward Engine]
+        I --> J[Relative Advantage & Policy Update]
+        J --> F
+    end
+
+    subgraph Evaluation["4. Benchmark Evaluation"]
+        F --> K[In-Distribution: BIRD & SPIDER Dev]
+        F --> L[OOD: Spider-DK, EHRSQL, Spider-Realistic]
+        F --> M[Official BIRD Test: 59.59% EX - 0.8B SOTA]
+    end
+
+    style Data fill:#122132,stroke:#0071a9,stroke-width:1.5px,color:#fbfcfe
+    style SFT fill:#122132,stroke:#0071a9,stroke-width:1.5px,color:#fbfcfe
+    style GRPO fill:#122132,stroke:#508fb5,stroke-width:1.5px,color:#fbfcfe
+    style Evaluation fill:#122132,stroke:#83b2ce,stroke-width:1.5px,color:#fbfcfe`;
+

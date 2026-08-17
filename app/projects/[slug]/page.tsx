@@ -45,6 +45,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
     }
 
     const semanticAnalysis = project.content.semanticAnalysis;
+    const sections = (project.content as { sections?: { title: string; description?: string; items?: string[] }[] }).sections;
 
     return (
         <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
@@ -144,10 +145,53 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                         <FadeIn delay={0.3}>
                                             <section>
                                                 <h2 className="text-[22px] font-semibold text-[var(--text-main)] mb-4">
-                                                    Architecture
+                                                    Architecture & Pipeline
                                                 </h2>
                                                 <div className="p-6 bg-transparent border border-[var(--border)] overflow-x-auto max-w-full">
                                                     <Mermaid chart={project.content.diagram} />
+                                                </div>
+                                            </section>
+                                        </FadeIn>
+                                    )}
+
+                                    {sections && (
+                                        <FadeIn delay={0.35}>
+                                            <section className="space-y-6">
+                                                <h2 className="text-[22px] font-semibold text-[var(--text-main)] mb-4">
+                                                    Methodology & Key Findings
+                                                </h2>
+                                                <div className="space-y-5">
+                                                    {sections.map((sec, idx) => (
+                                                        <div
+                                                            key={idx}
+                                                            className="p-5 sm:p-6 border border-[var(--border-navy)] bg-[var(--deep-navy)]/60"
+                                                        >
+                                                            <h3 className="text-base sm:text-lg font-bold text-[var(--text-main)] mb-2.5 flex items-baseline gap-2.5">
+                                                                <span className="text-[var(--nous-blue)] font-mono text-xs sm:text-sm font-bold shrink-0">
+                                                                    0{idx + 1}.
+                                                                </span>
+                                                                <span>{sec.title.replace(/^\d+\.\s*/, '')}</span>
+                                                            </h3>
+                                                            {sec.description && (
+                                                                <p className="text-[var(--text-muted)] text-[14px] sm:text-[15px] leading-relaxed mb-3">
+                                                                    {sec.description}
+                                                                </p>
+                                                            )}
+                                                            {sec.items && sec.items.length > 0 && (
+                                                                <ul className="space-y-2 mt-3 pt-3 border-t border-[var(--border-navy)]/60">
+                                                                    {sec.items.map((item, itemIdx) => (
+                                                                        <li
+                                                                            key={itemIdx}
+                                                                            className="flex gap-2.5 text-[var(--light-blue)] text-xs sm:text-sm items-start leading-relaxed"
+                                                                        >
+                                                                            <span className="text-[var(--nous-blue)] font-bold">›</span>
+                                                                            <span>{item}</span>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            )}
+                                                        </div>
+                                                    ))}
                                                 </div>
                                             </section>
                                         </FadeIn>

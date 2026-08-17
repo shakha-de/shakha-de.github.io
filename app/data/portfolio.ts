@@ -1,10 +1,11 @@
-import { 
-    mnistDiagram, 
-    simityDiagram, 
-    foliaDiagram, 
-    gitStatsDiagram, 
-    avpDiagram, 
-    sifrDiagram 
+import {
+    mnistDiagram,
+    simityDiagram,
+    foliaDiagram,
+    gitStatsDiagram,
+    avpDiagram,
+    sifrDiagram,
+    text2sqlDiagram
 } from "./diagrams";
 
 export const portfolioData = {
@@ -93,22 +94,75 @@ export const portfolioData = {
     },
     projects: [
         {
-            title: "Text2SQL LLM — Bachelor Thesis (In Progress)",
+            title: "Text2SQL LLM — Reinforcement Learning via GRPO",
             slug: "text2sql-llm",
-            description: "Training a Large Language Model for text-to-SQL tasks for my bachelor thesis.",
+            description: "Reinforcement Learning framework for Text-to-SQL using GRPO with execution feedback. Achieved 59.59% EX on the official BIRD test benchmark with a compact 0.8B model, yielding ~9–10x higher parameter efficiency.",
             github: null,
-            live: null,
+            live: "https://bird-bench.github.io/#:~:text=Jul%2017%2C%202026,59.59",
             content: {
-                overview: "For my bachelor thesis, I am training and fine-tuning an LLM to accurately translate natural language queries into executable SQL commands.",
-                techStack: ["Python", "PyTorch", "Hugging Face", "LLMs", "Unsloth", "Axolotl", "SLURM", "Pyxis"],
-                challenges: "Curating high-quality training datasets and optimizing the model for complex SQL schemas.",
-                outcomes: ["Fine-tuned LLM model", "Evaluation benchmark results", "Bachelor Thesis"],
-                metrics: [
-                    { label: "Status", value: "Research Phase" },
-                    { label: "Task", value: "Text2SQL" },
-                    { label: "Framework", value: "Unsloth, PyTorch" }
+                overview: "For my bachelor thesis, I designed and evaluated an end-to-end Reinforcement Learning framework using Group Relative Policy Optimization (GRPO) to train compact Large Language Models directly on real database execution feedback rather than standard token imitation. By moving beyond the limitations of Supervised Fine-Tuning (SFT)—such as schema copy-bias, hallucinations, and syntax errors on unseen databases—this approach achieved competitive state-of-the-art results on BIRD and SPIDER benchmarks with extreme parameter efficiency.",
+                techStack: ["Python", "PyTorch", "GRPO", "Hugging Face", "Qwen", "Unsloth", "Axolotl", "SQLite", "sqlglot", "SLURM", "Typst"],
+                challenges: "Overcoming SFT token-imitation limitations (copy-bias and execution failures on unseen schemas), systematically identifying and eliminating reward hacking across 18 reward architectures, and maximizing sub-billion model performance without massive computational resources.",
+                outcomes: [
+                    "59.59% Execution Accuracy on the official BIRD Test Set using Qwen3.5-0.8B (FFT + GRPO + Majority Voting)",
+                    "~9–10x higher parameter efficiency (accuracy per parameter) compared to 9B-parameter models",
+                    "+5.61 percentage point improvement over SFT baselines on BIRD Dev and consistent gains on SPIDER Dev",
+                    "Demonstrated strong Out-of-Distribution (OOD) generalization: Spider-DK (+4.67 PP), EHRSQL (+5.55 PP), and Spider-Realistic",
+                    "Systematic iteration across 18 reward architectures over 4 generations, proving the superiority of Gen 4 strict binary database feedback over noisy lexical n-grams",
+                    "Official submission and verified ranking on the BIRD Benchmark Leaderboard",
                 ],
-                diagram: null
+                metrics: [
+                    { label: "BIRD Test Set (0.8B)", value: "59.59% EX" },
+                    { label: "BIRD Dev Gain (GRPO)", value: "+5.61 PP" },
+                    { label: "OOD Gain (EHRSQL)", value: "+5.55 PP" },
+                    { label: "Parameter Efficiency", value: "~10x vs 9B" },
+                    { label: "Reward Architectures", value: "18 (4 Gens)" },
+                    { label: "Status", value: "Defense Ready" }
+                ],
+                sections: [
+                    {
+                        title: "1. Problem Statement & Motivation (introduction.typ)",
+                        description: "Supervised Fine-Tuning (SFT) trains language models on pure token imitation rather than database executability. When presented with unseen database schemas, SFT models suffer from copy-bias, hallucinations, and syntactic/semantic execution failures. The goal of this thesis was to conceptualize and evaluate a Reinforcement Learning framework with GRPO (Group Relative Policy Optimization) to train models directly via actual database execution feedback."
+                    },
+                    {
+                        title: "2. Data & Training Pipeline (data_engineering.typ, sft_training.typ)",
+                        description: "Constructed an end-to-end data curation, synthetic reasoning, and training pipeline:",
+                        items: [
+                            "Curation & Classification: Aggressive filtering and rule-based complexity classification of training data from SPIDER and BIRD.",
+                            "Synthetic Reasoning: Generated high-quality Chain-of-Thought (CoT) reasoning traces using the teacher model GLM-5.1, validated against SQLite schemas with sqlglot.",
+                            "SFT Baselines: Established cold-start baseline policies via Supervised Fine-Tuning using LoRA/QLoRA and Full Fine-Tuning (FFT) across Qwen architectures (Qwen3.5-9B, Qwen3.5-0.8B)."
+                        ]
+                    },
+                    {
+                        title: "3. Reward Function Design for GRPO (grpo_reward_design.typ)",
+                        description: "Systematically developed and evaluated 18 reward architectures across 4 iterative generations:",
+                        items: [
+                            "Gen 1 (Naive Multi-Rewards): Combined format, syntax, execution, and n-gram rewards — revealed reward hacking where models maximized soft token overlap without producing executable SQL.",
+                            "Gen 2 (Gated Composite Rewards): Introduced strict gating mechanisms (e.g., awarding schema/column bonuses only upon valid query execution).",
+                            "Gen 3 (Partial vs. Complete Execution): Calibrated result-set overlap and schema-matching incentives.",
+                            "Gen 4 (Minimalist & Strict – v4_strict_no_partial): Eliminated noisy lexical n-grams entirely, focusing strictly on binary database execution feedback."
+                        ]
+                    },
+                    {
+                        title: "4. Empirical Results & Benchmarks (evaluation.typ)",
+                        description: "Comprehensive empirical validation across in-distribution and out-of-distribution benchmarks:",
+                        items: [
+                            "In-Distribution Improvements: GRPO outperforms SFT baselines on BIRD Dev by up to +5.61 percentage points and demonstrates consistent gains on SPIDER Dev.",
+                            "Out-of-Distribution (OOD) Generalization: Significant performance gains on unseen domains: Spider-DK (+4.67 PP), EHRSQL (clinical domain, +5.55 PP), and Spider-Realistic.",
+                            "Sub-Billion Scaling: The compact Qwen3.5-0.8B model achieved 59.59% Execution Accuracy on the official BIRD Test Set using FFT + GRPO + Majority Voting.",
+                            "Parameter Efficiency: Yields ~9–10x higher parameter efficiency (accuracy per parameter) compared to 9B parameter models.",
+                            "Official Submission: Verified entry on the official BIRD Benchmark Leaderboard."
+                        ]
+                    },
+                    {
+                        title: "5. Completed Artifacts & Conclusion (conclusion.typ)",
+                        description: "Final deliverables and research synthesis:",
+                        items: [
+                            "Answered all 4 core research questions, thoroughly evaluated limitations (SQLite runtime focus, hardware scaling), and defined future research directions (Self-Correction RL, Multi-Dialect SQL, Agentic SQL)."
+                        ]
+                    }
+                ],
+                diagram: text2sqlDiagram
             }
         },
         {
@@ -159,7 +213,7 @@ export const portfolioData = {
                 diagram: foliaDiagram
             }
         },
-                {
+        {
             title: "MNIST Digit Classifier Service",
             slug: "mnist-classifier",
             description: "RESTful microservice serving a pre-trained ML model via Spring Boot. TensorFlow Java for inference; 99% accuracy on MNIST. Containerized with Docker.",

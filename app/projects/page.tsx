@@ -90,7 +90,7 @@ export default function ProjectsPage() {
                                                 </div>
                                                 <div className="hidden md:flex flex-col gap-1.5 font-mono text-xs text-[var(--gray)] pt-1.5">
                                                     {project.content.techStack.slice(0, 3).map((tech) => (
-                                                        <span key={tech}>{"// "}{tech}</span>
+                                                        <span key={tech}>{tech}</span>
                                                     ))}
                                                 </div>
                                                 <div className="hidden md:block proj-arrow font-mono text-[var(--gray)] transition-all text-right pt-1">
@@ -101,13 +101,6 @@ export default function ProjectsPage() {
                                     );
                                 })}
                             </div>
-
-                            <FadeIn delay={0.4}>
-                                <div className="log-line">
-                                    <span>OUTPUT 317</span>
-                                    <span className="seed">SEED: 3396188657</span>
-                                </div>
-                            </FadeIn>
                         </div>
                     </section>
                 </PageTransition>

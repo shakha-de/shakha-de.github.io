@@ -7,12 +7,12 @@ export default function SkillsPage() {
     const { skills, awards } = portfolioData;
 
     const categories = [
-        { name: "Backend", icon: "⌬", items: skills.backend },
-        { name: "Infrastructure", icon: "☁", items: skills.infrastructure },
-        { name: "Tools", icon: "⟨⟩", items: skills.tools },
-        { name: "Frontend", icon: "▢", items: skills.frontend },
-        { name: "Data Science", icon: "∿", items: skills.data_science },
-        { name: "Systems", icon: "⌗", items: skills.systems },
+        { name: "Backend", items: skills.backend },
+        { name: "Infrastructure", items: skills.infrastructure },
+        { name: "Tools", items: skills.tools },
+        { name: "Frontend", items: skills.frontend },
+        { name: "Data Science", items: skills.data_science },
+        { name: "Systems", items: skills.systems },
     ];
 
     return (
@@ -33,9 +33,9 @@ export default function SkillsPage() {
                                 {categories.map((cat, i) => (
                                     <FadeIn key={i} delay={i * 0.08}>
                                         <div className="skill-group">
-                                            <div className="sg-head flex items-center gap-2.5 mb-[18px]">
-                                                <span className="sg-icon font-mono text-[var(--nous-blue)] text-[13px]">
-                                                    {cat.icon}
+                                            <div className="sg-head flex items-center gap-2 mb-[18px]">
+                                                <span className="font-mono text-xs text-[var(--nous-blue)] font-bold">
+                                                    0{i + 1}.
                                                 </span>
                                                 <span className="sg-title font-mono text-xs tracking-[0.12em] uppercase text-[var(--text-main)]">
                                                     {cat.name}
@@ -65,9 +65,9 @@ export default function SkillsPage() {
                                 <div className="space-y-0">
                                     {awards.map((award, i) => (
                                         <FadeIn key={i} delay={0.3 + i * 0.1}>
-                                            <div className="h-item flex gap-5 py-[18px] border-b border-[var(--border)] items-start">
-                                                <span className="h-trophy font-mono text-[var(--nous-blue)]">
-                                                    ◇
+                                            <div className="h-item flex gap-4 py-[18px] border-b border-[var(--border)] items-start">
+                                                <span className="font-mono text-[var(--nous-blue)] font-bold text-sm select-none">
+                                                    ›
                                                 </span>
                                                 <span className="h-text text-[var(--text-muted)] text-[15px]">
                                                     {award}
@@ -77,13 +77,6 @@ export default function SkillsPage() {
                                     ))}
                                 </div>
                             </div>
-
-                            <FadeIn delay={0.6}>
-                                <div className="log-line">
-                                    <span>OUTPUT 404</span>
-                                    <span className="seed">SEED: 4119827043</span>
-                                </div>
-                            </FadeIn>
                         </div>
                     </section>
                 </PageTransition>

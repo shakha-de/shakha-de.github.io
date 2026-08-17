@@ -60,7 +60,7 @@ export default function ContactPage() {
                             <FadeIn delay={0.3}>
                                 <div>
                                     <div className="sg-title font-mono text-xs tracking-[0.12em] uppercase text-[var(--text-main)] mb-[18px]">
-                                        {"// Languages"}
+                                        Languages
                                     </div>
                                     <div className="langs font-mono text-[13px] text-[var(--text-muted)] leading-[2.1]">
                                         {personalInfo.languages.map((lang, idx) => (
@@ -73,13 +73,6 @@ export default function ContactPage() {
                                 </div>
                             </FadeIn>
                         </div>
-
-                        <FadeIn delay={0.4}>
-                            <div className="log-line">
-                                <span>OUTPUT 640</span>
-                                <span className="seed">SEED: 5566120988</span>
-                            </div>
-                        </FadeIn>
                     </div>
                 </section>
             </main>

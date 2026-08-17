@@ -29,7 +29,7 @@ export default function AboutPage() {
                                             alt="Shakhriyor Kadamboev"
                                             width={400}
                                             height={400}
-                                            className="w-full grayscale hover:grayscale-0 transition-all duration-500 border border-[var(--border-navy)] object-cover"
+                                            className="w-full transition-all duration-500 border border-[var(--border-navy)] object-cover shadow-sm"
                                         />
                                         <p className="font-mono text-[13px] text-[var(--gray)] mt-3 leading-relaxed">
                                             btw, you can call me Shakh (like in chess) — /ʃɑːx/
@@ -74,7 +74,7 @@ export default function AboutPage() {
                                     <FadeIn key={i} delay={0.4 + i * 0.1}>
                                         <div className="flex flex-col">
                                             <div className="pillar-key">
-                                                {"// 0"}{i + 1}{" — "}{item.title}
+                                                {"0"}{i + 1}{" — "}{item.title}
                                             </div>
                                             <h3 className="text-[20px] font-semibold tracking-tight mb-2">
                                                 {item.title === "Efficiency" && "Minimalist architectures"}
@@ -113,13 +113,6 @@ export default function AboutPage() {
                                     </div>
                                 </FadeIn>
                             </div>
-
-                            <FadeIn delay={0.8}>
-                                <div className="log-line">
-                                    <span>OUTPUT 288</span>
-                                    <span className="seed">SEED: 2226809351</span>
-                                </div>
-                            </FadeIn>
                         </div>
                     </section>
                 </PageTransition>

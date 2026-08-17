@@ -286,13 +286,6 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                                     </div>
                                 </aside>
                             </div>
-
-                            <FadeIn delay={0.5}>
-                                <div className="log-line">
-                                    <span>OUTPUT 512</span>
-                                    <span className="seed">SEED: 4830177295</span>
-                                </div>
-                            </FadeIn>
                         </div>
                     </section>
                 </PageTransition>

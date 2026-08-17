@@ -51,7 +51,7 @@ export default function ExperiencePage() {
                                                 </div>
                                                 {exp.company.includes("Porsche") && (
                                                     <div className="font-mono text-xs text-[var(--nous-blue)] mt-2">
-                                                        {"// Won the coding challenge."}
+                                                        Award: Won the coding challenge.
                                                     </div>
                                                 )}
                                             </div>
@@ -63,7 +63,7 @@ export default function ExperiencePage() {
                             <div className="edu mt-16">
                                 <FadeIn>
                                     <h3 className="font-heading text-2xl tracking-[0.02em] uppercase text-[var(--text-main)] mb-6">
-                                        {"// Education"}
+                                        Education
                                     </h3>
                                 </FadeIn>
                                 <div className="space-y-0">
@@ -89,13 +89,6 @@ export default function ExperiencePage() {
                                     ))}
                                 </div>
                             </div>
-
-                            <FadeIn delay={0.4}>
-                                <div className="log-line">
-                                    <span>OUTPUT 512</span>
-                                    <span className="seed">SEED: 4830177295</span>
-                                </div>
-                            </FadeIn>
                         </div>
                     </section>
                 </PageTransition>

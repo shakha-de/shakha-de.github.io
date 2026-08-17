@@ -44,16 +44,12 @@ export default function Hero() {
                 </FadeIn>
             </div>
 
-            {/* Bottom Status & Log Bar */}
+            {/* Bottom Status Bar */}
             <FadeIn delay={0.6}>
-                <div className="mt-16 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full">
-                    <div className="log-line !mt-0">
-                        <span>OUTPUT 96</span>
-                        <span className="seed">SEED: 3573860127</span>
-                    </div>
+                <div className="mt-16 pt-8 border-t border-[var(--border)] flex justify-between items-center gap-4 w-full">
                     <div className="status-row flex items-center gap-3 font-mono text-[12.5px] uppercase tracking-[0.08em] text-[var(--gray)]">
                         <span className="status-dot"></span>
-                        System Status: Available For Hire · Halle (Saale), DE
+                        Available For Hire · Halle (Saale), DE
                     </div>
                 </div>
             </FadeIn>

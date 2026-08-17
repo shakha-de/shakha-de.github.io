@@ -130,7 +130,7 @@ export default function AboutPage() {
                                     <div className="md:col-span-7 p-3 border border-[var(--border-navy)] bg-[var(--deep-navy)]/30">
                                         <div className="relative aspect-[16/10] w-full overflow-hidden border border-[var(--border-navy)]">
                                             <Image
-                                                src="/uzbekistan-khiva-panorama.png"
+                                                src="/uzbekistan-khiva-panorama.webp"
                                                 alt="Ichan Kala fortress and ancient city skyline in Khiva, Uzbekistan"
                                                 fill
                                                 sizes="(max-width: 768px) 100vw, 560px"
@@ -146,7 +146,7 @@ export default function AboutPage() {
                                     <div className="md:col-span-5 p-3 border border-[var(--border-navy)] bg-[var(--deep-navy)]/30">
                                         <div className="relative aspect-[3/4] w-full overflow-hidden border border-[var(--border-navy)]">
                                             <Image
-                                                src="/uzbekistan-carved-columns.png"
+                                                src="/uzbekistan-carved-columns.webp"
                                                 alt="Carved wooden columns and majolica arches in Uzbekistan"
                                                 fill
                                                 sizes="(max-width: 768px) 100vw, 400px"

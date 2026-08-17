@@ -52,7 +52,7 @@ export default function Hero() {
                         <div className="p-3 border border-[var(--border-navy)] bg-[var(--deep-navy)]/30 backdrop-blur-sm max-w-[320px]">
                             <div className="relative aspect-[3/4] w-[290px] overflow-hidden border border-[var(--border-navy)]">
                                 <Image
-                                    src="/uzbekistan-kalta-minor.png"
+                                    src="/uzbekistan-kalta-minor.webp"
                                     alt="Kalta Minor Minaret, Khiva, Uzbekistan"
                                     fill
                                     sizes="290px"

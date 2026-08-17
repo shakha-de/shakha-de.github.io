@@ -82,7 +82,7 @@ export default function ContactPage() {
                                     <div className="p-3 border border-[var(--border-navy)] bg-[var(--deep-navy)]/30 backdrop-blur-sm max-w-[320px] w-full">
                                         <div className="relative aspect-[3/4] w-full overflow-hidden border border-[var(--border-navy)]">
                                             <Image
-                                                src="/uzbekistan-minaret-arch.png"
+                                                src="/uzbekistan-minaret-arch.webp"
                                                 alt="Ancient Minaret framed under historical archway in Uzbekistan"
                                                 fill
                                                 sizes="(max-width: 768px) 100vw, 320px"

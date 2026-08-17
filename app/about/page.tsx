@@ -113,6 +113,53 @@ export default function AboutPage() {
                                     </div>
                                 </FadeIn>
                             </div>
+
+                            {/* Roots & Visual Atmosphere */}
+                            <div className="divider w-full my-16" />
+
+                            <FadeIn delay={0.3}>
+                                <div className="eyebrow">Roots & Heritage</div>
+                                <h2 className="text-[clamp(26px,3.5vw,40px)] font-bold tracking-tight mb-4">
+                                    Ancient geometry, enduring systems.
+                                </h2>
+                                <p className="body-text text-base sm:text-lg leading-relaxed text-[var(--text-muted)] max-w-[720px] mb-10">
+                                    Growing up surrounded by the centuries-old architectural precision, intricate carved woodcraft, and modular tilework of Silk Road architecture in Uzbekistan (Khiva & Bukhara) inspired a lifelong appreciation for structural durability and clean craftsmanship.
+                                </p>
+
+                                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-[980px]">
+                                    <div className="md:col-span-7 p-3 border border-[var(--border-navy)] bg-[var(--deep-navy)]/30">
+                                        <div className="relative aspect-[16/10] w-full overflow-hidden border border-[var(--border-navy)]">
+                                            <Image
+                                                src="/uzbekistan-khiva-panorama.png"
+                                                alt="Ichan Kala fortress and ancient city skyline in Khiva, Uzbekistan"
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, 560px"
+                                                className="object-cover hover:scale-105 transition-transform duration-700"
+                                            />
+                                        </div>
+                                        <div className="mt-3 flex items-center justify-between text-[11px] font-mono text-[var(--gray)]">
+                                            <span>[FIG. 02] ICHAN KALA SKYLINE</span>
+                                            <span>41.378° N, 60.364° E</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="md:col-span-5 p-3 border border-[var(--border-navy)] bg-[var(--deep-navy)]/30">
+                                        <div className="relative aspect-[3/4] w-full overflow-hidden border border-[var(--border-navy)]">
+                                            <Image
+                                                src="/uzbekistan-carved-columns.png"
+                                                alt="Carved wooden columns and majolica arches in Uzbekistan"
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, 400px"
+                                                className="object-cover hover:scale-105 transition-transform duration-700"
+                                            />
+                                        </div>
+                                        <div className="mt-3 flex items-center justify-between text-[11px] font-mono text-[var(--gray)]">
+                                            <span>[FIG. 03] CARVED AIVAN COLUMNS</span>
+                                            <span>SILK ROAD HERITAGE</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </FadeIn>
                         </div>
                     </section>
                 </PageTransition>

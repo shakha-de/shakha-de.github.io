@@ -10,14 +10,20 @@ function useReveal(ref: React.RefObject<HTMLElement | null>, delay: number = 0) 
         const el = ref.current;
         if (!el) return;
 
+        if (typeof IntersectionObserver === "undefined") {
+            el.classList.add("in");
+            return;
+        }
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        if (delay > 0) {
+                        const timeout = Math.min(delay * 300, 150);
+                        if (timeout > 0) {
                             setTimeout(() => {
                                 entry.target.classList.add("in");
-                            }, delay * 1000);
+                            }, timeout);
                         } else {
                             entry.target.classList.add("in");
                         }
@@ -25,7 +31,7 @@ function useReveal(ref: React.RefObject<HTMLElement | null>, delay: number = 0) 
                     }
                 });
             },
-            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+            { threshold: 0, rootMargin: "0px 0px 100px 0px" }
         );
 
         observer.observe(el);

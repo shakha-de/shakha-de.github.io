@@ -2,11 +2,25 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import CommandPalette from "./CommandPalette";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isCmdOpen, setIsCmdOpen] = useState(false);
     const [theme, setTheme] = useState("dark");
     const [mounted, setMounted] = useState(false);
+
+    // Global Cmd+K / Ctrl+K listener
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+                e.preventDefault();
+                setIsCmdOpen(prev => !prev);
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, []);
 
     // Initial theme setup
     useEffect(() => {
@@ -98,7 +112,17 @@ export default function Header() {
                         ))}
                     </nav>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                        <button
+                            onClick={() => setIsCmdOpen(true)}
+                            className="flex items-center gap-1.5 font-mono text-[11.5px] uppercase tracking-wider text-[var(--gray)] border border-[var(--border-navy)] bg-[var(--surface)] hover:border-[var(--nous-blue)] hover:text-[var(--text-main)] px-2.5 py-1 transition-all cursor-pointer"
+                            title="Open Command Palette (Cmd + K / Ctrl + K)"
+                            aria-label="Open Command Palette"
+                        >
+                            <span className="text-[var(--nous-blue)] font-bold">⌘</span>
+                            <span>K</span>
+                        </button>
+
                         {mounted && (
                             <button
                                 onClick={toggleTheme}
@@ -155,6 +179,10 @@ export default function Header() {
                     </div>
                 )}
             </header>
+            <CommandPalette
+                isOpen={isCmdOpen}
+                onClose={() => setIsCmdOpen(false)}
+            />
         </>
     );
 }

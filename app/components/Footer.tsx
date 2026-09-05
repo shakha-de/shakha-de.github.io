@@ -1,8 +1,20 @@
+"use client";
+
 import { portfolioData } from "../data/portfolio";
 import packageInfo from "../../package.json";
+import { triggerToast } from "./Toast";
 
 export default function Footer() {
     const { personalInfo } = portfolioData;
+
+    const handleCopyEmail = () => {
+        try {
+            navigator.clipboard.writeText(personalInfo.email);
+            triggerToast(`Copied ${personalInfo.email} to clipboard.`, "STDOUT");
+        } catch {
+            // fallback
+        }
+    };
 
     return (
         <footer className="bg-[var(--surface)] py-10 px-8 mt-12 border-t border-[var(--border)]">
@@ -45,7 +57,9 @@ export default function Footer() {
                     </a>
                     <a
                         href={`mailto:${personalInfo.email}`}
+                        onClick={handleCopyEmail}
                         className="transition-colors hover:text-[var(--text-main)]"
+                        title="Click to email (also copies to clipboard)"
                     >
                         <span className="text-[var(--nous-blue)]">→ </span>Email
                     </a>

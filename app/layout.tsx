@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Courier_Prime } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "./components/Analytics";
+import ToastContainer from "./components/Toast";
 import { portfolioData } from "./data/portfolio";
 
 const spaceGrotesk = Space_Grotesk({
@@ -59,6 +60,7 @@ export default function RootLayout({
       >
         {children}
         <Analytics />
+        <ToastContainer />
       </body>
     </html>
   );

@@ -1,11 +1,25 @@
+"use client";
+
 import Header from "../components/Header";
 import Image from "next/image";
 import Footer from "../components/Footer";
 import { portfolioData } from "../data/portfolio";
 import { FadeIn } from "../components/Animations";
+import { triggerToast } from "../components/Toast";
+import { useState } from "react";
 
 export default function ContactPage() {
     const { personalInfo } = portfolioData;
+    const [copied, setCopied] = useState(false);
+
+    const handleCopyEmail = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navigator.clipboard.writeText(personalInfo.email);
+        setCopied(true);
+        triggerToast(`Copied ${personalInfo.email} to clipboard.`, "STDOUT");
+        setTimeout(() => setCopied(false), 2000);
+    };
 
     return (
         <div className="relative flex flex-col min-h-screen bg-[var(--background)] text-[var(--text-main)]">
@@ -27,13 +41,22 @@ export default function ContactPage() {
                             <div className="md:col-span-7 flex flex-col gap-12">
                                 <FadeIn delay={0.2}>
                                     <div className="contact-channels flex flex-col gap-4">
-                                        <a
-                                            className="channel-link"
-                                            href={`mailto:${personalInfo.email}`}
-                                        >
-                                            <span className="text-[var(--nous-blue)] w-[18px]">✉</span>
-                                            <span className="text-[var(--text-main)]">{personalInfo.email}</span>
-                                        </a>
+                                        <div className="channel-link justify-between">
+                                            <a
+                                                className="flex items-center gap-4 text-[var(--text-main)] hover:text-[var(--mid-light-blue)] transition-colors grow"
+                                                href={`mailto:${personalInfo.email}`}
+                                            >
+                                                <span className="text-[var(--nous-blue)] w-[18px]">✉</span>
+                                                <span>{personalInfo.email}</span>
+                                            </a>
+                                            <button
+                                                onClick={handleCopyEmail}
+                                                className="font-mono text-[11px] uppercase tracking-wider text-[var(--gray)] hover:text-[var(--text-main)] hover:border-[var(--nous-blue)] border border-[var(--border-navy)] bg-[var(--surface)] px-2.5 py-1 transition-all cursor-pointer shrink-0"
+                                                title="Copy email to clipboard"
+                                            >
+                                                {copied ? "[COPIED!]" : "[COPY]"}
+                                            </button>
+                                        </div>
                                         <a
                                             className="channel-link"
                                             href={personalInfo.linkedin}

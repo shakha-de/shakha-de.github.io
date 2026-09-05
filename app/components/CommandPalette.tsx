@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { portfolioData } from "../data/portfolio";
+import { triggerToast } from "./Toast";
 
 interface CommandItem {
     id: string;
@@ -32,10 +33,11 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
         try {
             await navigator.clipboard.writeText(personalInfo.email);
             setCopySuccess(true);
+            triggerToast(`Copied ${personalInfo.email} to clipboard.`, "STDOUT");
             setTimeout(() => {
                 setCopySuccess(false);
                 onClose();
-            }, 1000);
+            }, 600);
         } catch {
             // fallback
             onClose();

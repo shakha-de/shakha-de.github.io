@@ -33,7 +33,7 @@ export default function ContactPage() {
                                 Let&apos;s build something<br />reliable together.
                             </h1>
                             <p className="body-text text-base sm:text-lg md:text-xl leading-relaxed max-w-[680px] text-[var(--text-muted)] mb-12">
-                                Currently open to new opportunities and collaborations. Studying at Martin Luther University Halle-Wittenberg and open to relocation for the right opportunity.
+                                B.Sc. Computer Science graduate from Martin Luther University Halle-Wittenberg and current AI &amp; Cloud Engineer Intern at Porsche AG in Stuttgart. Open to engineering opportunities and technical collaborations.
                             </p>
                         </FadeIn>
 
@@ -77,7 +77,7 @@ export default function ContactPage() {
                                         </a>
                                         <div className="channel-link cursor-default">
                                             <span className="text-[var(--nous-blue)] w-[18px]">◉</span>
-                                            <span className="text-[var(--text-main)]">Halle (Saale), Germany</span>
+                                            <span className="text-[var(--text-main)]">Stuttgart / Halle (Saale), Germany</span>
                                         </div>
                                     </div>
                                 </FadeIn>

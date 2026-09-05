@@ -26,12 +26,13 @@ export const portfolioData = {
     },
     hero: {
         headline: "Engineering Reliable Systems",
-        subheadline: "CS Student at MLU Halle | Backend Developer. Building scalable microservices and embedded solutions.",
+        subheadline: "B.Sc. Computer Science Graduate (MLU Halle) | Backend & Cloud Engineer. Building scalable microservices and intelligent systems.",
+        status: "AI & Cloud Intern @ Porsche AG · Stuttgart / Halle",
     },
     about: {
         headline: "Engineering with Precision & Purpose",
         paragraphs: [
-            "I am a computer science student based in Halle (Saale), Germany, with a strong focus on backend development, microservices, and cloud-native systems. I enjoy working close to production: designing APIs, containerizing services, and thinking about performance, reliability, and clean architecture.",
+            "I am a computer science graduate (B.Sc., MLU Halle) based in Germany, with a strong focus on backend development, microservices, and cloud-native systems. I enjoy working close to production: designing APIs, containerizing services, and thinking about performance, reliability, and clean architecture.",
             "Beyond university, I continuously explore topics like microservices architecture, system design, and infrastructure-as-code, and I am particularly interested in applying these skills in the automotive and embedded domains. I have already gained practical experience as a working student and through close contact with industry.",
             "Outside of software, I enjoy DIY electronics and motor-based projects, which keeps me connected to how software interacts with real hardware. I am comfortable working in multilingual environments (German, Russian, Uzbek, English) and I value clear communication, ownership, and long-term maintainability in every project I work on.",
         ],
@@ -50,10 +51,18 @@ export const portfolioData = {
             degree: "B.Sc. in Computer Science",
             institution: "Martin-Luther-University Halle-Wittenberg",
             period: "2023 – 2026",
+            grade: "Bachelor Thesis Defense: 1.0 (Sehr Gut)",
             coursework: ["Data Structures & Algorithms", "OOP", "Design", "Computer Organization", "Data Science", "ML", "AI", "Image Processing"],
         },
     ],
     experience: [
+        {
+            role: "AI & Cloud Engineer Intern",
+            company: "Porsche AG",
+            location: "Stuttgart-Zuffenhausen, Germany",
+            period: "Sep 2026 – Present",
+            description: "Engineering cloud-native backend services and intelligent agent workflows using Kotlin, Spring Boot, AWS, and Azure. Building modular tools and AI agent architectures with Strands Kit to power scalable, automated cloud operations.",
+        },
         {
             role: "Backend Software Developer Intern",
             company: "]init[ AG",
@@ -74,6 +83,7 @@ export const portfolioData = {
             location: "Zuffenhausen, Germany",
             period: "Nov. 21, 2025",
             description: "Selected participant for the exclusive talent networking event. Engaged in workshops focused on automotive software innovation. Won the coding challenge.",
+            award: "Won the coding challenge.",
         },
         {
             role: "Student Assistant – Data Analysis",
@@ -84,13 +94,13 @@ export const portfolioData = {
         },
     ],
     skills: {
-        backend: ["Java", "Spring Boot", "Spring Security", "JPA/Hibernate", "Python", "PostgreSQL", "SQLite"],
-        infrastructure: ["AWS", "Docker", "CI/CD", "Linux", "Bash"],
+        backend: ["Java", "Kotlin", "Spring Boot", "Spring Security", "JPA/Hibernate", "Python", "PostgreSQL", "SQLite"],
+        infrastructure: ["AWS", "Azure", "Docker", "CI/CD", "Linux", "Bash"],
         tools: ["Git", "VS Code", "Intellij", "Jupyter Notebooks", "Bruno", "K6", "Postman"],
         frontend: ["React.js", "JavaScript", "HTML", "CSS", "Streamlit"],
         data_science: ["Pandas", "Matplotlib", "Seaborn", "Hugging Face"],
         systems: ["Python", "C"],
-        all: ["Java", "Python", "C", "JavaScript", "SQL", "Spring Boot", "Spring Security", "JPA/Hibernate", "React.js", "TensorFlow (Java)", "Kafka", "Docker", "Linux", "Pandas", "Matplotlib", "Seaborn", "Hugging Face", "Streamlit", "SQLite"],
+        all: ["Java", "Kotlin", "Python", "C", "JavaScript", "SQL", "Spring Boot", "Spring Security", "JPA/Hibernate", "React.js", "TensorFlow (Java)", "Kafka", "AWS", "Azure", "Docker", "Linux", "Pandas", "Matplotlib", "Seaborn", "Hugging Face", "Streamlit", "SQLite"],
     },
     projects: [
         {
@@ -110,6 +120,7 @@ export const portfolioData = {
                     "Demonstrated strong Out-of-Distribution (OOD) generalization: Spider-DK (+4.67 PP), EHRSQL (+5.55 PP), and Spider-Realistic",
                     "Systematic iteration across 18 reward architectures over 4 generations, proving the superiority of Gen 4 strict binary database feedback over noisy lexical n-grams",
                     "Official submission and verified ranking on the BIRD Benchmark Leaderboard",
+                    "Bachelor Thesis Defense evaluated with grade 1.0 (Sehr Gut)",
                 ],
                 metrics: [
                     { label: "BIRD Test Set (0.8B)", value: "59.59% EX" },
@@ -117,7 +128,7 @@ export const portfolioData = {
                     { label: "OOD Gain (EHRSQL)", value: "+5.55 PP" },
                     { label: "Parameter Efficiency", value: "~10x vs 9B" },
                     { label: "Reward Architectures", value: "18 (4 Gens)" },
-                    { label: "Status", value: "Defense Ready" }
+                    { label: "Defense Grade", value: "1.0 (Sehr Gut)" }
                 ],
                 sections: [
                     {
@@ -291,6 +302,7 @@ export const portfolioData = {
         }
     ],
     awards: [
+        "Bachelor Thesis Defense graded 1.0 (Sehr Gut) — highest distinction in the German academic grading system.",
         "1st Place in Software Engineering course project reviews (out of 130 students).",
         "Golden Medal for top 1% academic performance and exemplary conduct in school.",
     ],

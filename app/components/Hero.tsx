@@ -74,7 +74,7 @@ export default function Hero() {
                 <div className="mt-16 pt-8 border-t border-[var(--border)] flex justify-between items-center gap-4 w-full">
                     <div className="status-row flex items-center gap-3 font-mono text-[12.5px] uppercase tracking-[0.08em] text-[var(--gray)]">
                         <span className="status-dot"></span>
-                        Available For Hire · Halle (Saale), DE
+                        {hero.status || "Available For Hire · Halle (Saale), DE"}
                     </div>
                 </div>
             </FadeIn>

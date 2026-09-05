@@ -7,10 +7,11 @@ export default function ExperiencePage() {
     const { experience, education } = portfolioData;
 
     // Map periods to the exact Nous Research style
-    const getPeriodStr = (company: string, original: string) => {
+    const getPeriodStr = (role: string, company: string, original: string) => {
+        if (role.toLowerCase().includes("ai & cloud")) return "[2026.09 — Present]";
         if (company.includes("init")) return "[2025.04 — 2026.03]";
         if (company.includes("Halle-Wittenberg")) return "[2025.10 — 2026.02]";
-        if (company.includes("Porsche")) return "[2025.11.21]";
+        if (role.includes("Talent Day") || original.includes("2025.11.21")) return "[2025.11.21]";
         if (company.includes("IWES")) return "[2023.03 — 2023.06]";
         return `[${original}]`;
     };
@@ -34,7 +35,7 @@ export default function ExperiencePage() {
                                     <FadeIn key={i} delay={i * 0.1}>
                                         <div className="exp-item-grid">
                                             <div className="font-mono text-[12.5px] text-[var(--gray)] tracking-wide pt-1.5">
-                                                {getPeriodStr(exp.company, exp.period)}
+                                                {getPeriodStr(exp.role, exp.company, exp.period)}
                                             </div>
                                             <div>
                                                 <div className="text-[19px] font-semibold text-[var(--text-main)] mb-1">
@@ -49,9 +50,9 @@ export default function ExperiencePage() {
                                                 <div className="text-[var(--light-blue)] text-[15px] max-w-[620px] leading-relaxed">
                                                     {exp.description}
                                                 </div>
-                                                {exp.company.includes("Porsche") && (
+                                                {((exp as { award?: string }).award || exp.role.includes("Talent Day")) && (
                                                     <div className="font-mono text-xs text-[var(--nous-blue)] mt-2">
-                                                        Award: Won the coding challenge.
+                                                        Award: {(exp as { award?: string }).award || "Won the coding challenge."}
                                                     </div>
                                                 )}
                                             </div>
@@ -83,6 +84,11 @@ export default function ExperiencePage() {
                                                     <div className="text-[var(--light-blue)] text-[15px] max-w-[620px] leading-relaxed">
                                                         Relevant coursework: {edu.coursework.join(" · ")}.
                                                     </div>
+                                                    {(edu as { grade?: string }).grade && (
+                                                        <div className="font-mono text-xs text-[var(--nous-blue)] mt-2">
+                                                            {(edu as { grade?: string }).grade}
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                         </FadeIn>

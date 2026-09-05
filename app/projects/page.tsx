@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { portfolioData } from "../data/portfolio";
 import { PageTransition, FadeIn } from "../components/Animations";
+import ResearchSpotlight from "../components/ResearchSpotlight";
 
 export default function ProjectsPage() {
     const { projects, personalInfo } = portfolioData;
@@ -42,6 +43,9 @@ export default function ProjectsPage() {
                                     </a>.
                                 </p>
                             </FadeIn>
+
+                            {/* Flagship Research Spotlight Card */}
+                            {selectedTech === "All" && <ResearchSpotlight />}
 
                             {/* Filters */}
                             <FadeIn delay={0.2}>

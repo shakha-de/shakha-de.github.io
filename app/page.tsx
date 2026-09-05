@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Link from "next/link";
 import { portfolioData } from "./data/portfolio";
 import { PageTransition, FadeIn } from "./components/Animations";
+import ResearchSpotlight from "./components/ResearchSpotlight";
 
 export default function Home() {
     const { projects, personalInfo } = portfolioData;
@@ -26,7 +27,7 @@ export default function Home() {
                                     Selected works.
                                 </h2>
                                 <p className="lede">
-                                    A selection of my recent technical work. Find more on my{" "}
+                                    A selection of my recent technical work and research. Find more on my{" "}
                                     <a
                                         href={personalInfo.github}
                                         target="_blank"
@@ -38,40 +39,46 @@ export default function Home() {
                                 </p>
                             </FadeIn>
 
-                            <div className="proj-list mt-12 border-t border-[var(--border-navy)]">
-                                {projects.slice(0, 3).map((project, i) => {
-                                    const indexStr = String(i + 1).padStart(2, "0");
-                                    return (
-                                        <FadeIn key={project.slug} delay={i * 0.1}>
-                                            <Link href={`/projects/${project.slug}`} className="proj-row">
-                                                <div className="font-mono text-[13px] text-[var(--gray)] pt-1">
-                                                    {indexStr}
-                                                </div>
-                                                <div>
-                                                    <div className="proj-title text-[22px] font-semibold tracking-tight mb-2 text-[var(--text-main)] transition-colors">
-                                                        {project.title.replace(" (In Progress)", "")}
-                                                        {project.title.includes("(In Progress)") && (
-                                                            <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--nous-blue)] ml-2.5 vertical-align-[3px]">
-                                                                In Progress
-                                                            </span>
-                                                        )}
+                            {/* B.Sc. Thesis & BIRD Benchmark Spotlight */}
+                            <ResearchSpotlight />
+
+                            <div className="mt-14 pt-8 border-t border-[var(--border-navy)]">
+                                <div className="eyebrow">More Projects</div>
+                                <div className="proj-list mt-6 border-t border-[var(--border-navy)]">
+                                    {projects.slice(1, 4).map((project, i) => {
+                                        const indexStr = String(i + 1).padStart(2, "0");
+                                        return (
+                                            <FadeIn key={project.slug} delay={i * 0.1}>
+                                                <Link href={`/projects/${project.slug}`} className="proj-row">
+                                                    <div className="font-mono text-[13px] text-[var(--gray)] pt-1">
+                                                        {indexStr}
                                                     </div>
-                                                    <div className="text-[var(--light-blue)] text-[15px] max-w-[560px] leading-relaxed">
-                                                        {project.description}
+                                                    <div>
+                                                        <div className="proj-title text-[22px] font-semibold tracking-tight mb-2 text-[var(--text-main)] transition-colors">
+                                                            {project.title.replace(" (In Progress)", "")}
+                                                            {project.title.includes("(In Progress)") && (
+                                                                <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--nous-blue)] ml-2.5 vertical-align-[3px]">
+                                                                    In Progress
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <div className="text-[var(--light-blue)] text-[15px] max-w-[560px] leading-relaxed">
+                                                            {project.description}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="hidden md:flex flex-col gap-1.5 font-mono text-xs text-[var(--gray)] pt-1.5">
-                                                    {project.content.techStack.slice(0, 3).map((tech) => (
-                                                        <span key={tech}>{tech}</span>
-                                                    ))}
-                                                </div>
-                                                <div className="hidden md:block proj-arrow font-mono text-[var(--gray)] transition-all text-right pt-1">
-                                                    →
-                                                </div>
-                                            </Link>
-                                        </FadeIn>
-                                    );
-                                })}
+                                                    <div className="hidden md:flex flex-col gap-1.5 font-mono text-xs text-[var(--gray)] pt-1.5">
+                                                        {project.content.techStack.slice(0, 3).map((tech) => (
+                                                            <span key={tech}>{tech}</span>
+                                                        ))}
+                                                    </div>
+                                                    <div className="hidden md:block proj-arrow font-mono text-[var(--gray)] transition-all text-right pt-1">
+                                                        →
+                                                    </div>
+                                                </Link>
+                                            </FadeIn>
+                                        );
+                                    })}
+                                </div>
                             </div>
 
                             <FadeIn delay={0.4}>

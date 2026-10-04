@@ -29,13 +29,42 @@ export default function SkillsPage() {
                                 </h1>
                             </FadeIn>
 
-                            <div className="skill-grid grid grid-cols-1 md:grid-cols-2 gap-12 gap-x-20 mt-12">
-                                {categories.map((cat, i) => (
+                            {/* Featured Skills */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+                                {categories.slice(0, 2).map((cat, i) => (
                                     <FadeIn key={i} delay={i * 0.08}>
-                                        <div className="skill-group">
-                                            <div className="sg-head flex items-center gap-2 mb-[18px]">
+                                        <div className="pillar-card">
+                                            <div className="sg-head flex items-center gap-2 mb-5">
                                                 <span className="font-mono text-xs text-[var(--nous-blue)] font-bold">
                                                     0{i + 1}.
+                                                </span>
+                                                <span className="sg-title font-mono text-xs tracking-[0.12em] uppercase text-[var(--text-main)]">
+                                                    {cat.name}
+                                                </span>
+                                            </div>
+                                            <div className="tag-row flex flex-wrap gap-2.5">
+                                                {cat.items.map((skill) => (
+                                                    <span
+                                                        key={skill}
+                                                        className="skill-tag text-[13.5px] px-3 py-1.5"
+                                                    >
+                                                        {skill}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </FadeIn>
+                                ))}
+                            </div>
+
+                            {/* Secondary Skills */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                                {categories.slice(2).map((cat, i) => (
+                                    <FadeIn key={i} delay={(i + 2) * 0.08}>
+                                        <div className="p-5 border border-[var(--border-navy)] h-full">
+                                            <div className="sg-head flex items-center gap-2 mb-4">
+                                                <span className="font-mono text-xs text-[var(--nous-blue)] font-bold">
+                                                    0{i + 3}.
                                                 </span>
                                                 <span className="sg-title font-mono text-xs tracking-[0.12em] uppercase text-[var(--text-main)]">
                                                     {cat.name}
@@ -62,14 +91,14 @@ export default function SkillsPage() {
                                         Honors & Recognition
                                     </div>
                                 </FadeIn>
-                                <div className="space-y-0">
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {awards.map((award, i) => (
                                         <FadeIn key={i} delay={0.3 + i * 0.1}>
-                                            <div className="h-item flex gap-4 py-[18px] border-b border-[var(--border)] items-start">
-                                                <span className="font-mono text-[var(--nous-blue)] font-bold text-sm select-none">
+                                            <div className="achievement-card">
+                                                <span className="font-mono text-[var(--nous-blue)] font-bold text-sm select-none shrink-0 mt-0.5">
                                                     ›
                                                 </span>
-                                                <span className="h-text text-[var(--text-muted)] text-[15px]">
+                                                <span className="text-[var(--text-muted)] text-[15px] leading-relaxed">
                                                     {award}
                                                 </span>
                                             </div>

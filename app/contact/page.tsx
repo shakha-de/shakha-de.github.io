@@ -46,7 +46,7 @@ export default function ContactPage() {
                                                 className="flex items-center gap-4 text-[var(--text-main)] hover:text-[var(--mid-light-blue)] transition-colors grow"
                                                 href={`mailto:${personalInfo.email}`}
                                             >
-                                                <span className="text-[var(--nous-blue)] w-[18px]">✉</span>
+                                                <span className="text-[var(--nous-blue)] w-[18px] channel-icon">✉</span>
                                                 <span>{personalInfo.email}</span>
                                             </a>
                                             <button
@@ -63,7 +63,7 @@ export default function ContactPage() {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
-                                            <span className="text-[var(--nous-blue)] w-[18px]">↗</span>
+                                            <span className="text-[var(--nous-blue)] w-[18px] channel-icon">↗</span>
                                             <span className="text-[var(--text-main)]">linkedin.com/in/shakhade</span>
                                         </a>
                                         <a
@@ -72,18 +72,18 @@ export default function ContactPage() {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
-                                            <span className="text-[var(--nous-blue)] w-[18px]">⟨⟩</span>
+                                            <span className="text-[var(--nous-blue)] w-[18px] channel-icon">⟨⟩</span>
                                             <span className="text-[var(--text-main)]">github.com/shakha-de</span>
                                         </a>
                                         <div className="channel-link cursor-default">
-                                            <span className="text-[var(--nous-blue)] w-[18px]">◉</span>
+                                            <span className="text-[var(--nous-blue)] w-[18px] channel-icon">◉</span>
                                             <span className="text-[var(--text-main)]">Stuttgart / Halle (Saale), Germany</span>
                                         </div>
                                     </div>
                                 </FadeIn>
 
                                 <FadeIn delay={0.3}>
-                                    <div>
+                                    <div className="section-alt p-6 border border-[var(--border-navy)]">
                                         <div className="sg-title font-mono text-xs tracking-[0.12em] uppercase text-[var(--text-main)] mb-[18px]">
                                             Languages
                                         </div>

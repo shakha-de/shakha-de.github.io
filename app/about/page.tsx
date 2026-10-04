@@ -69,10 +69,10 @@ export default function AboutPage() {
 
                             <div className="divider w-full my-12" />
 
-                            <div className="pillars grid grid-cols-1 md:grid-cols-3 gap-12 mt-16 max-w-[980px]">
+                            <div className="pillars grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-[980px]">
                                 {about.highlights?.map((item, i) => (
                                     <FadeIn key={i} delay={0.4 + i * 0.1}>
-                                        <div className="flex flex-col">
+                                        <div className="pillar-card">
                                             <div className="pillar-key">
                                                 {"0"}{i + 1}{" — "}{item.title}
                                             </div>
@@ -89,25 +89,25 @@ export default function AboutPage() {
                                 ))}
                             </div>
 
-                            <div className="meta-grid mt-16 pt-12 border-t border-[var(--border)] max-w-[980px]">
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-16 pt-12 border-t border-[var(--border)] max-w-[980px]">
                                 {about.stats.map((stat, i) => (
                                     <FadeIn key={i} delay={0.5 + i * 0.1}>
-                                        <div>
-                                            <div className="k font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--gray)] mb-2">
+                                        <div className="stat-block">
+                                            <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--gray)] mb-3">
                                                 {stat.label}
                                             </div>
-                                            <div className="v font-mono text-[22px] text-[var(--text-main)]">
+                                            <div className="font-mono text-[28px] font-bold text-[var(--text-main)]">
                                                 {stat.value}
                                             </div>
                                         </div>
                                     </FadeIn>
                                 ))}
                                 <FadeIn delay={0.7}>
-                                    <div>
-                                        <div className="k font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--gray)] mb-2">
+                                    <div className="stat-block">
+                                        <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--gray)] mb-3">
                                             Location
                                         </div>
-                                        <div className="v font-mono text-[22px] text-[var(--text-main)]">
+                                        <div className="font-mono text-[28px] font-bold text-[var(--text-main)]">
                                             Halle (Saale), DE
                                         </div>
                                     </div>

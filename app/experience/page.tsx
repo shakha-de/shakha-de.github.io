@@ -30,31 +30,33 @@ export default function ExperiencePage() {
                                 </h1>
                             </FadeIn>
 
-                            <div className="exp-list mt-8">
+                            <div className="timeline-list mt-8">
                                 {experience.map((exp, i) => (
                                     <FadeIn key={i} delay={i * 0.1}>
-                                        <div className="exp-item-grid">
-                                            <div className="font-mono text-[12.5px] text-[var(--gray)] tracking-wide pt-1.5">
-                                                {getPeriodStr(exp.role, exp.company, exp.period)}
-                                            </div>
-                                            <div>
-                                                <div className="text-[19px] font-semibold text-[var(--text-main)] mb-1">
-                                                    {exp.role}
+                                        <div className={`timeline-entry${i === 0 ? " active" : ""}`}>
+                                            <div className="exp-item-grid border-b-0">
+                                                <div className="font-mono text-[12.5px] text-[var(--gray)] tracking-wide pt-1.5">
+                                                    {getPeriodStr(exp.role, exp.company, exp.period)}
                                                 </div>
-                                                <div className="font-mono text-[13px] text-[var(--mid-light-blue)] mb-2.5">
-                                                    {exp.company}
-                                                    {exp.location && (
-                                                        <span className="text-[var(--gray)]"> · {exp.location}</span>
+                                                <div>
+                                                    <div className="text-[20px] font-semibold text-[var(--text-main)] mb-1">
+                                                        {exp.role}
+                                                    </div>
+                                                    <div className="font-mono text-[13px] text-[var(--mid-light-blue)] mb-2.5">
+                                                        {exp.company}
+                                                        {exp.location && (
+                                                            <span className="text-[var(--gray)]"> · {exp.location}</span>
+                                                        )}
+                                                    </div>
+                                                    <div className="text-[var(--light-blue)] text-[15px] max-w-[620px] leading-relaxed">
+                                                        {exp.description}
+                                                    </div>
+                                                    {((exp as { award?: string }).award || exp.role.includes("Talent Day")) && (
+                                                        <div className="font-mono text-xs text-[var(--nous-blue)] mt-2">
+                                                            Award: {(exp as { award?: string }).award || "Won the coding challenge."}
+                                                        </div>
                                                     )}
                                                 </div>
-                                                <div className="text-[var(--light-blue)] text-[15px] max-w-[620px] leading-relaxed">
-                                                    {exp.description}
-                                                </div>
-                                                {((exp as { award?: string }).award || exp.role.includes("Talent Day")) && (
-                                                    <div className="font-mono text-xs text-[var(--nous-blue)] mt-2">
-                                                        Award: {(exp as { award?: string }).award || "Won the coding challenge."}
-                                                    </div>
-                                                )}
                                             </div>
                                         </div>
                                     </FadeIn>
@@ -63,37 +65,37 @@ export default function ExperiencePage() {
 
                             <div className="edu mt-16">
                                 <FadeIn>
-                                    <h3 className="font-heading text-2xl tracking-[0.02em] uppercase text-[var(--text-main)] mb-6">
-                                        Education
-                                    </h3>
-                                </FadeIn>
-                                <div className="space-y-0">
-                                    {education.map((edu, i) => (
-                                        <FadeIn key={i} delay={0.2}>
-                                            <div className="exp-item-grid border-b-0 pt-0">
-                                                <div className="font-mono text-[12.5px] text-[var(--gray)] tracking-wide pt-1.5">
-                                                    [2023 — 2026]
-                                                </div>
-                                                <div>
-                                                    <div className="text-[19px] font-semibold text-[var(--text-main)] mb-1">
-                                                        {edu.degree}
+                                    <div className="section-alt p-8 border border-[var(--border-navy)]">
+                                        <h3 className="font-heading text-2xl tracking-[0.02em] uppercase text-[var(--text-main)] mb-6">
+                                            Education
+                                        </h3>
+                                        <div className="space-y-0">
+                                            {education.map((edu, i) => (
+                                                <div key={i} className="exp-item-grid border-b-0 pt-0">
+                                                    <div className="font-mono text-[12.5px] text-[var(--gray)] tracking-wide pt-1.5">
+                                                        [2023 — 2026]
                                                     </div>
-                                                    <div className="font-mono text-[13px] text-[var(--mid-light-blue)] mb-2.5">
-                                                        {edu.institution}
-                                                    </div>
-                                                    <div className="text-[var(--light-blue)] text-[15px] max-w-[620px] leading-relaxed">
-                                                        Relevant coursework: {edu.coursework.join(" · ")}.
-                                                    </div>
-                                                    {(edu as { grade?: string }).grade && (
-                                                        <div className="font-mono text-xs text-[var(--nous-blue)] mt-2">
-                                                            {(edu as { grade?: string }).grade}
+                                                    <div>
+                                                        <div className="text-[20px] font-semibold text-[var(--text-main)] mb-1">
+                                                            {edu.degree}
                                                         </div>
-                                                    )}
+                                                        <div className="font-mono text-[13px] text-[var(--mid-light-blue)] mb-2.5">
+                                                            {edu.institution}
+                                                        </div>
+                                                        <div className="text-[var(--light-blue)] text-[15px] max-w-[620px] leading-relaxed">
+                                                            Relevant coursework: {edu.coursework.join(" · ")}.
+                                                        </div>
+                                                        {(edu as { grade?: string }).grade && (
+                                                            <div className="font-mono text-xs text-[var(--nous-blue)] mt-2">
+                                                                {(edu as { grade?: string }).grade}
+                                                            </div>
+                                                        )}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </FadeIn>
-                                    ))}
-                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </FadeIn>
                             </div>
                         </div>
                     </section>

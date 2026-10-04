@@ -491,3 +491,121 @@ h1, h2, h3, h4, h5, h6 {
     gap: 28px;
   }
 }
+
+/* ---------- SECTION VARIATION ---------- */
+.section-alt {
+  background: color-mix(in srgb, var(--deep-navy) 40%, transparent);
+}
+
+/* ---------- TIMELINE ---------- */
+.timeline-list {
+  border-left: 1px solid var(--border-navy);
+  margin-left: 7px;
+  padding-left: 32px;
+}
+
+.timeline-entry {
+  position: relative;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border-navy);
+  transition: background 0.2s;
+}
+
+.timeline-entry:last-child {
+  border-bottom: none;
+}
+
+.timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -39px;
+  top: 36px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--border-navy);
+  background: var(--background);
+  transition: all 0.2s;
+}
+
+.timeline-entry.active::before {
+  border-color: var(--nous-blue);
+  background: var(--nous-blue);
+  box-shadow: 0 0 0 4px rgba(var(--nous-blue-rgb), 0.2);
+}
+
+.timeline-entry:hover::before {
+  border-color: var(--nous-blue);
+}
+
+.timeline-entry:hover {
+  background: rgba(var(--nous-blue-rgb), 0.03);
+}
+
+@media (max-width: 880px) {
+  .timeline-list {
+    border-left: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .timeline-entry::before {
+    display: none;
+  }
+}
+
+/* ---------- PILLAR CARD ---------- */
+.pillar-card {
+  padding: 28px;
+  border: 1px solid var(--border-navy);
+  border-left: 2px solid var(--nous-blue);
+  background: color-mix(in srgb, var(--deep-navy) 20%, transparent);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  height: 100%;
+}
+
+.pillar-card:hover {
+  border-color: var(--nous-blue);
+  background: rgba(var(--nous-blue-rgb), 0.06);
+  transform: translateY(-2px);
+}
+
+/* ---------- STAT BLOCK ---------- */
+.stat-block {
+  padding: 28px 24px;
+  border: 1px solid var(--border-navy);
+  background: var(--surface);
+  text-align: center;
+  transition: border-color 0.2s;
+  height: 100%;
+}
+
+.stat-block:hover {
+  border-color: var(--nous-blue);
+}
+
+/* ---------- ACHIEVEMENT CARD ---------- */
+.achievement-card {
+  padding: 20px 24px;
+  border: 1px solid var(--border-navy);
+  background: color-mix(in srgb, var(--deep-navy) 15%, transparent);
+  display: flex;
+  align-items: start;
+  gap: 16px;
+  transition: border-color 0.25s, transform 0.25s;
+  height: 100%;
+}
+
+.achievement-card:hover {
+  border-color: var(--nous-blue);
+  transform: translateY(-1px);
+}
+
+/* ---------- CHANNEL LINK ENHANCED ---------- */
+.channel-link .channel-icon {
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.channel-link:hover .channel-icon {
+  transform: translateX(3px);
+}

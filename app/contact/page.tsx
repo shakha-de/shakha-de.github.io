@@ -32,8 +32,8 @@ export default function ContactPage() {
                             <h1 className="text-[clamp(32px,4.5vw,56px)] font-bold leading-[1.05] tracking-tight mb-6 max-w-[880px]">
                                 Let&apos;s build something<br />reliable together.
                             </h1>
-                            <p className="body-text text-base sm:text-lg md:text-xl leading-relaxed max-w-[680px] text-[var(--text-muted)] mb-12">
-                                B.Sc. Computer Science graduate from Martin Luther University Halle-Wittenberg and current AI &amp; Cloud Engineer Intern at Porsche AG in Stuttgart. Open to engineering opportunities and technical collaborations.
+                            <p className="body-text text-base sm:text-lg leading-relaxed max-w-[680px] text-[var(--text-muted)] mb-12">
+                                Currently an AI &amp; Cloud Engineer Intern at Porsche AG in Stuttgart. Open to engineering opportunities and technical collaborations.
                             </p>
                         </FadeIn>
 

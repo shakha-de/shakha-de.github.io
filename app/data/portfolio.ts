@@ -32,9 +32,9 @@ export const portfolioData = {
     about: {
         headline: "Engineering with Precision & Purpose",
         paragraphs: [
-            "I am a computer science graduate (B.Sc., MLU Halle) based in Germany, with a strong focus on backend development, microservices, and cloud-native systems. I enjoy working close to production: designing APIs, containerizing services, and thinking about performance, reliability, and clean architecture.",
+            "I am a computer science graduate (B.Sc., MLU Halle) based in Germany, focused on backend development, microservices, and cloud-native systems — designing APIs, containerizing services, and building for performance and reliability.",
             "Beyond university, I continuously explore topics like microservices architecture, system design, and infrastructure-as-code, and I am particularly interested in applying these skills in the automotive and embedded domains. I have already gained practical experience as a working student and through close contact with industry.",
-            "Outside of software, I enjoy DIY electronics and motor-based projects, which keeps me connected to how software interacts with real hardware. I am comfortable working in multilingual environments (German, Russian, Uzbek, English) and I value clear communication, ownership, and long-term maintainability in every project I work on.",
+            "I am comfortable working in multilingual environments (German, Russian, Uzbek, English) and value clear communication, ownership, and long-term maintainability in every project I work on.",
         ],
         highlights: [
             { icon: "bolt", title: "Efficiency", description: "Minimalist and high-performance backend architectures." },

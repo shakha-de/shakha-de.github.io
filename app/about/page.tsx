@@ -46,7 +46,7 @@ export default function AboutPage() {
                                             const italicPart = p.substring(splitIndex);
                                             return (
                                                 <FadeIn key={i} delay={0.2 + i * 0.1}>
-                                                    <p className="body-text text-base sm:text-lg md:text-xl leading-relaxed mb-6">
+                                                    <p className="body-text text-base sm:text-lg leading-relaxed">
                                                         {normalPart}
                                                         <span className="serif text-[var(--light-blue)]">
                                                             {italicPart}
@@ -58,7 +58,7 @@ export default function AboutPage() {
                                     }
                                     return (
                                         <FadeIn key={i} delay={0.2 + i * 0.1}>
-                                            <p className="body-text text-base sm:text-lg md:text-xl leading-relaxed mb-6">
+                                            <p className="body-text text-base sm:text-lg leading-relaxed">
                                                 {p}
                                             </p>
                                         </FadeIn>
